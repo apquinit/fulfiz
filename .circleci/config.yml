@@ -6,16 +6,14 @@ version: 2
 jobs:
   build:
     docker:
-      # Specify the version you desire here
-      - image: circleci/php:7.1-node-browsers
+      - image: circleci/php:7.3-stretch-node-browsers
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # Using the RAM variation mitigates I/O contention
       # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
-      #
+      # - image: circleci/mysql:5.7-ram  
       # - image: redis:2.8.19
 
     steps:
@@ -25,7 +23,7 @@ jobs:
       - run: sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
 
-      # Download and cache dependencies
+      # Download and cache composer dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "composer.json" }}
@@ -46,3 +44,9 @@ jobs:
       - run: vendor/bin/phpcs --config-set show_warnings 0
       - run: vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migrations/*,*/tests/* app
       - run: vendor/bin/phpunit --coverage-text --testdox
+
+      # Store test results
+      - store_test_results:
+          path: tests/_output
+      - store_artifacts:
+          path: tests/_output
