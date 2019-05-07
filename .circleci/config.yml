@@ -43,6 +43,6 @@ jobs:
       - run: php artisan migrate --env=testing --database=sqlite_testing --force
 
       # Run tests and linter
-      - vendor/bin/phpcs --config-set show_warnings 0
-      - vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migrations/*,*/tests/* app
-      - vendor/bin/phpunit --coverage-text --testdox
+      - run: vendor/bin/phpcs --config-set show_warnings 0
+      - run: vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migrations/*,*/tests/* app
+      - run: vendor/bin/phpunit --coverage-text --testdox
