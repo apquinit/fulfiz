@@ -21,9 +21,13 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
+
+$app->configure('app');
+
+$app->configure('database');
 
 /*
 |--------------------------------------------------------------------------
@@ -94,7 +98,9 @@ $app->singleton(
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
-    require __DIR__.'/../routes/web.php';
+    foreach (glob(__DIR__ . '/../routes/*.php') as $route_file) {
+        require $route_file;
+    }
 });
 
 return $app;
