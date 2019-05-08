@@ -19,7 +19,7 @@ sudo: required
   
 before_script:
   - composer install --no-interaction
-  - mysql -e 'create database test;'
+  - mysql -e 'create database irene_test;'
   - cp .env.testing .env
   - php artisan migrate:refresh --seed --no-interaction
   
