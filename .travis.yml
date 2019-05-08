@@ -20,7 +20,7 @@ sudo: required
 before_script:
   - composer install --no-interaction
   - mysql -e 'create database test;'
-  - cp .env.travis .env
+  - cp .env.testing .env
   - php artisan migrate:refresh --seed --no-interaction
   
 script:
