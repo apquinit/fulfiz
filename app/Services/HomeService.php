@@ -14,8 +14,8 @@ class HomeService
         //
     }
 
-    public function getAppName()
+    public function getAppNameFromConfigurationFile()
     {
-        return 'Irene Fulfillment Server (0.0.0)';
+        return config('app.name');
     }
 }
