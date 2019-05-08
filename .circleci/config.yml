@@ -7,14 +7,8 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.3-stretch-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram  
-      # - image: redis:2.8.19
+      - image: circleci/mysql:5.7-ram
+      - image: redis:2.8.19
 
     steps:
       - checkout
@@ -36,9 +30,9 @@ jobs:
           paths:
             - ./vendor
 
-      # Prepare the test database
-      - run: touch storage/testing.sqlite
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+      # Run migrations
+      - run: mysql -e 'create database irene;'
+      - run: php artisan migrate --env=testing --seed --no-interaction
 
       # Run tests and linter
       - run: vendor/bin/phpcs --config-set show_warnings 0
