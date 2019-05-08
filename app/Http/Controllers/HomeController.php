@@ -20,6 +20,6 @@ class HomeController extends Controller
 
     public function show()
     {
-        return $this->homeService->getAppName();
+        return $this->homeService->getAppNameFromConfigurationFile();
     }
 }
