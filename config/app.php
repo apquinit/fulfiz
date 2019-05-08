@@ -2,6 +2,8 @@
 
 return [
 
+    'version' => env('APP_VERSION', getenv('APP_VERSION') ? null : '0.0.0'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -13,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Lumen'),
+    'name' => env('APP_NAME', getenv('APP_NAME') ? null : 'Lumen'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +28,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', getenv('APP_ENV') ? null : 'production'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +41,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', getenv('APP_DEBUG') ? null : false),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', getenv('APP_URL') ? null : 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -65,19 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Timezone Configuration
-    |--------------------------------------------------------------------------
-    |
-    | The application timezone determines the default timezone that will be used.
-    | You are free to set this value to any of the timezone which will be 
-    | supported by the application.
-    */
-
-    'timezone' => env('APP_LOCALE', 'en'),
+    'timezone' => env('APP_TIMEZONE', getenv('APP_TIMEZONE') ? null : 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -90,9 +80,6 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
-
-    'cipher' => 'AES-256-CBC',
-
-    'version' => env('APP_VERSION'),
+    'key' => env('APP_KEY', getenv('APP_KEY') ? null : null),
+    
 ];
