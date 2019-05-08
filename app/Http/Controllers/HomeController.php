@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\HomeService;
+
 class HomeController extends Controller
 {
+    private $homeService;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(HomeService $homeService)
     {
-        //
+        $this->homeService = $homeService;
     }
 
-    public function getAppName()
+    public function show()
     {
-        return 'Irene Fulfillment Server (0.0.0)';
+        return $this->homeService->getAppName();
     }
 }
