@@ -3,3 +3,5 @@
 $router->get('/', function () use ($router) {
     return 'Irene Fulfillment Server (0.0.0)';
 });
+
+$router->get('/', ['uses' => 'HomeController@getAppName']);
