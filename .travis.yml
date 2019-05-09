@@ -16,6 +16,10 @@ addons:
     packages:
     - postgresql-10
     - postgresql-client-10
+
+env:
+  global:
+  - PGPORT=5433
   
 before_script:
   - composer install --no-interaction
