@@ -7,11 +7,7 @@ services:
   - postgresql
 
 addons:
-  apt:
-    sources:
-      - mysql-5.7-trusty
-    packages:
-      - mysql-server
+  postgresql: "10.6"
 
 dist: trusty
 
@@ -19,8 +15,8 @@ sudo: required
   
 before_script:
   - composer install --no-interaction
-  - psql -c 'create database irene_test;' -U postgres
   - cp .env.testing .env
+  - psql -c 'create database irene_test;' -U postgres
   - php artisan migrate:refresh --seed --no-interaction
   
 script:
