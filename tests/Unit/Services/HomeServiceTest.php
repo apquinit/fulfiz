@@ -6,7 +6,9 @@ use App\Services\HomeService;
 
 class HomeServiceTest extends TestCase
 {
-    public function setUp(): void
+    use DatabaseMigrations;
+    
+    public function setUp() : void
     {
         parent::setUp();
         $this->homeService = new HomeService;
