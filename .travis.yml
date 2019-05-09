@@ -6,9 +6,10 @@ php:
   - '7.3'
   
 before_script:
-  - composer install --no-interaction
-  - touch database.sqlite
   - cp .env.testing .env
+  - composer install --no-interaction
+  - touch database/database.sqlite
+  - php artisan migrate --database=sqlite
   
 script:
   - vendor/bin/phpcs --config-set show_warnings 0
