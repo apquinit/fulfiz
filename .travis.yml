@@ -5,7 +5,7 @@ dist: trusty
 sudo: required
 
 php:
-  - '7'
+  - '7.3'
 
 services:
   - postgresql
@@ -16,10 +16,6 @@ addons:
     packages:
     - postgresql-10
     - postgresql-client-10
-
-env:
-  global:
-  - PGPORT=5432
   
 before_script:
   - composer install --no-interaction
