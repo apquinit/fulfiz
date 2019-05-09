@@ -1,7 +1,11 @@
 language: php
 
+dist: trusty
+
+sudo: required
+
 php:
-  - '7.3'
+  - '7'
 
 services:
   - postgresql
@@ -12,13 +16,10 @@ addons:
     packages:
     - postgresql-10
     - postgresql-client-10
+
 env:
   global:
   - PGPORT=5432
-
-dist: trusty
-
-sudo: required
   
 before_script:
   - composer install --no-interaction
