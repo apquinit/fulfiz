@@ -22,7 +22,7 @@ class AuthService
             'exp' => time() + config('jwt.lifetime') * 60,
         ];
 
-        return JWT::encode($payload, env('JWT_SECRET'));
+        return JWT::encode($payload, config('jwt.key'));
     }
 
     /**
@@ -33,7 +33,7 @@ class AuthService
      */
     protected function jwtDecodeToken(string $token)
     {
-        return JWT::decode($token, env('JWT_SECRET'), ['HS256']);
+        return JWT::decode($token, config('jwt.key'), ['HS256']);
     }
 
     /**
