@@ -27,6 +27,8 @@ $app->withEloquent();
 
 $app->configure('app');
 
+$app->configure('jwt');
+
 $app->configure('database');
 
 /*
