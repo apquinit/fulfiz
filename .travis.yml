@@ -8,6 +8,7 @@ php:
 before_script:
   - composer install --no-interaction
   - cp .env.testing .env
+  - touch database.sqlite
   - php artisan migrate:refresh --seed --no-interaction
   
 script:
