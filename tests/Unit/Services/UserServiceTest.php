@@ -8,6 +8,8 @@ use Mockery as Mockery;
 
 class UserServiceTest extends TestCase
 {
+    use DatabaseMigrations;
+    
     public function setUp() : void
     {
         parent::setUp();
