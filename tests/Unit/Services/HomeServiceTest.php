@@ -6,7 +6,7 @@ use App\Services\HomeService;
 
 class HomeServiceTest extends TestCase
 {
-    public function setUp(): void
+    public function setUp() : void
     {
         parent::setUp();
         $this->homeService = new HomeService;

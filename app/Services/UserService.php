@@ -23,11 +23,6 @@ class UserService
         $this->userRepository = $userRepository;
     }
 
-    public function getAllUsers()
-    {
-        return $this->userRepository->queryGetAllUsers();
-    }
-
     public function getUserByUsername(string $username)
     {
         return $this->userRepository->queryGetUserByUsername($username)->first();
