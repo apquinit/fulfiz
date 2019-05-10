@@ -47,5 +47,4 @@ class WeatherService
     {
         return $this->locationIqService->getLatitudeAndLongitude($cityName);
     }
-
 }
