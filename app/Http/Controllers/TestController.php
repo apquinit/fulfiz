@@ -20,7 +20,7 @@ class TestController extends Controller
         // return (new \App\Services\External\DarkSkyService)->getCurrentWeather('14.5906216', '120.9799696');
 
         // Dark Sky Date
-        // return (new \App\Services\External\DarkSkyService)->getCurrentWeather('14.5906216', '120.9799696', '2019-05-19T12:00:00+08:00');
+        // return (new \App\Services\External\DarkSkyService)->getWeatherByDate('14.5906216', '120.9799696', '2019-05-10T12:00:00+08:00');
 
         // Location IQ
         // return (new \App\Services\External\LocationIQService)->getLatitudeAndLongitude('Manila');

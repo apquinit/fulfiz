@@ -40,8 +40,8 @@ class DarkSkyService
         $requestUrl = config('api.dark_sky.base_url') . '/' . config('api.dark_sky.api_key') . '/' . $latitude . ',' . $longitude . ',' . $date . '?exclude=' . $exclude;
         $response  = $this->guzzleClient->get($requestUrl);
         $content = json_decode($response->getBody()->getContents(), true);
-        $currentWeather = $content['currently'];
+        $dateWeather = $content['currently'];
         
-        return $currentWeather;
+        return $dateWeather;
     }
 }
