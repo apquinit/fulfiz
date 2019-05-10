@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\LocationIQService;
+use App\Services\External\LocationIQService;
 
 class LocationIQServiceTest extends TestCase
 {
@@ -13,7 +13,7 @@ class LocationIQServiceTest extends TestCase
     /** @test */
     public function LocationIQServiceTest_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\LocationIQService::class));
+        $this->assertTrue(class_exists(App\Services\External\LocationIQService::class));
     }
 
     /** @test */

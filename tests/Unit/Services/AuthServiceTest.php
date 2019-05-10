@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\AuthService;
+use App\Services\Auth\AuthService;
 use App\Models\User;
 use Firebase\JWT\JWT;
 use Carbon\Carbon;
@@ -24,7 +24,7 @@ class AuthServiceTest extends TestCase
     /** @test */
     public function AuthService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\AuthService::class));
+        $this->assertTrue(class_exists(App\Services\Auth\AuthService::class));
     }
 
     /** @test */

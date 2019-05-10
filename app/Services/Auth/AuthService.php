@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Auth;
 
 use Firebase\JWT\JWT;
 use Carbon\Carbon;
