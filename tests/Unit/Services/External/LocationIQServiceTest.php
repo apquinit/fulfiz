@@ -11,7 +11,7 @@ class LocationIQServiceTest extends TestCase
     }
 
     /** @test */
-    public function LocationIQServiceTest_class_should_exist()
+    public function LocationIQService_class_should_exist()
     {
         $this->assertTrue(class_exists(App\Services\External\LocationIQService::class));
     }
