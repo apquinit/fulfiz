@@ -19,7 +19,7 @@ class LocationIQServiceTest extends TestCase
     /** @test */
     public function getLatitudeAndLongitude_method_should_return_latitude_and_longitude_when_passed_a_city_name()
     {
-        $response = $this->locationIqService->getLatitudeAndLongitude('Manila');
-        dd($response);
+        $location = $this->locationIqService->getLatitudeAndLongitude('Manila');
+        $this->assertTrue(array_key_exists('lat', $location) && array_key_exists('lon', $location));
     }
 }

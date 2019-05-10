@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'official-joke' => [
-        'url' => 'https://official-joke-api.appspot.com/jokes/random',
+    'location_iq' => [
+        'base_url' => 'https://us1.locationiq.com/v1/search.php',
+        'api_key' => '4c53f82e708066'
     ],
 ];
