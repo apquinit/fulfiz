@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action\Services;
+namespace App\Services\Action;
 
 class WeatherService
 {
