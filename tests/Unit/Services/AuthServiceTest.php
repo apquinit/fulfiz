@@ -1,7 +1,5 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
 use App\Services\AuthService;
 use App\Models\User;
 use Firebase\JWT\JWT;
@@ -9,8 +7,6 @@ use Carbon\Carbon;
 
 class AuthServiceTest extends TestCase
 {
-    use DatabaseMigrations;
-
     public function setUp() : void
     {
         parent::setUp();

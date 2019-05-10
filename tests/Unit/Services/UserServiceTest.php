@@ -1,15 +1,11 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
 use App\Services\UserService;
 use App\Models\User;
 use Mockery as Mockery;
 
 class UserServiceTest extends TestCase
 {
-    use DatabaseMigrations;
-    
     public function setUp() : void
     {
         parent::setUp();
