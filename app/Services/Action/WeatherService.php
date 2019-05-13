@@ -24,14 +24,33 @@ class WeatherService
     public function actionCurrentWeather($cityName)
     {
         // 1. Get latitude and longitude from Location IQ Service by city name.
-        $location = $this->getLatitudeAndLongitudeFromLocationService($cityName);
+        $location = $this->getLatitudeAndLongitudeFromLocationIqService($cityName);
         $latitude = $location['lat'];
         $longitude = $location['lon'];
 
         // 2. Get weather data from Dark Sky Service by latitude and longitude
-        // 3. Assemble text response from weather data.
+        $weather = $this->getCurrentWeatherFromDarkSkyService($latitude, $longitude);
 
-        $textResponse = 'The weather forecast calls for...';
+        // 3. Assemble text response from weather data.
+        $summary = $weather['summary'];
+        $temperature = $weather['temperature']; //Degrees Celsius.
+        $apparentTemperature = $weather['apparentTemperature']; //Degrees Celsius.
+        $humidity = $weather['humidity']; //Percentage.
+        $humidityPercent = round((float)$humidity * 100 ) . '%';
+        $pressure = $weather['pressure']; //Hectopascals.
+        $windSpeed = $weather['windSpeed']; //Meters per second.
+        $windGust = $weather['windGust']; //Meters per second.
+
+        $summaryTextResponse = 'The weather forecast calls for ' . $summary . '. ';
+        $temperatureTextResponse = 'Actual temperature is ' . $temperature . ' degrees celsius. ';
+        $apparentTemperatureTextResponse = 'Apparent temperature is ' . $apparentTemperature . ' degrees celsius. ';
+        $humidityTextResponse = 'Humidity is ' . $humidityPercent . ' percent. ';
+        $windTextResponse = 'Wind speed is currently at ' . $windSpeed . ' with a gust of ' . $windGust . ' meters per second. ';
+        $pressureTextResponse = 'Atmospheric pressure is ' . $pressure . ' hectopascals. ';
+
+        $textResponse = $summaryTextResponse . $temperatureTextResponse . $apparentTemperatureTextResponse . $humidityTextResponse . $windTextResponse . $pressureTextResponse;
+
+        return $textResponse;
     }
 
     public function actionWeatherByDate($cityName, $date)
@@ -43,8 +62,13 @@ class WeatherService
         $textResponse = 'The weather forecast calls for...';
     }
 
-    private function getLatitudeAndLongitudeFromLocationService($cityName)
+    private function getLatitudeAndLongitudeFromLocationIqService($cityName)
     {
         return $this->locationIqService->getLatitudeAndLongitude($cityName);
+    }
+
+    private function getCurrentWeatherFromDarkSkyService($latitude, $longitude)
+    {
+        return $this->darkSkyService->getCurrentWeather($latitude, $longitude);
     }
 }
