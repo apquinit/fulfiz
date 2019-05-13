@@ -25,6 +25,12 @@ class TestController extends Controller
         // Location IQ
         // return (new \App\Services\External\LocationIQService)->getLatitudeAndLongitude('Manila');
 
+        // Current Weather Action Service
+        // return (new \App\Services\Action\WeatherService)->getCurrentWeatherTextResponse('Manila');
+
+        // Weather by Date Action Service
+        // return (new \App\Services\Action\WeatherService)->getWeatherByDateTextResponse('Manila', '2019-05-14T12:00:00+08:00');
+
         return 'Test Endpoint';
     }
 }
