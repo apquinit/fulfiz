@@ -1,3 +1,3 @@
 <?php
 
-$router->get('webhook', ['uses' => 'WebhookController@handle']);
+$router->post('webhook', ['uses' => 'WebhookController@handle']);

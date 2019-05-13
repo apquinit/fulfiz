@@ -16,6 +16,6 @@ class WebhookController extends Controller
 
     public function handle()
     {
-        //
+        return 'Webhook Response';
     }
 }
