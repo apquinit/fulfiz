@@ -16,6 +16,9 @@ class WebhookController extends Controller
 
     public function handle()
     {
-        return 'Webhook Response';
+        return response()->json([
+            'fulfillmentText' => 'Test.',
+            'source' => config('app.url'),
+        ], 200);
     }
 }
