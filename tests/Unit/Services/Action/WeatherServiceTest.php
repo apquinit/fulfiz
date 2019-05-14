@@ -24,7 +24,7 @@ class WeatherServiceTest extends TestCase
     }
 
     /** @test */
-    public function getWeatherByDateTextResponse_method_should_return_string_when_passed_a_city_name()
+    public function getWeatherByDateTextResponse_method_should_return_string_when_passed_city_name_and_date()
     {
         $textResponse = $this->weatherService->getWeatherByDateTextResponse('Manila', '2019-05-14T12:00:00+08:00');
         $this->assertTrue(is_string($textResponse));
