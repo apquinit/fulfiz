@@ -3,22 +3,32 @@
 namespace App\Services;
 
 use Illuminate\Http\Request;
-use App\Services\Action\WeatherService;
+use App\Factories\ActionFactory;
 
 class FulfillmentService
 {
+    /**
+     * Action factory.
+     *
+     * @var string
+     */
+    private $actionFactory;
+
     /**
      * Create a new service instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ActionFactory $actionFactory)
     {
-        //
+        $this->actionFactory = $actionFactory;
     }
 
-    public function getfulfillmentText(Request $request)
+    public function getFulfillmentText(Request $request)
     {
-        return $request['queryResult']['action'];
+        $actionService = $this->actionFactory->mapActionToService($request['queryResult']['action']);
+        $fulfillmentText = $actionService->getTextResponse();
+        
+        return $fulfillmentText;
     }
 }

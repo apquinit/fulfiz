@@ -9,7 +9,7 @@ use Log;
 class WebhookController extends Controller
 {
     /**
-     * Intent srvice instance.
+     * Intent service instance.
      *
      * @var \App\Services\FulfillmentService
      */
