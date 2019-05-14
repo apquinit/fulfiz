@@ -13,7 +13,7 @@ class AuthServiceTest extends TestCase
         $this->userId = factory(User::class)->create()->id;
         $this->authService = new AuthService;
         $payload = [
-            'iss' => env('APP_NAME'),
+            'iss' => config('app.name'),
             'sub' => $this->userId,
             'iat' => time(),
             'exp' => time() + config('jwt.lifetime') * 60,
