@@ -29,9 +29,16 @@ class WebhookController extends Controller
     {
         Log::info($request);
 
-        return response()->json([
-            'fulfillmentText' => $this->fulfillmentService->getfulfillmentText($request),
-            'source' => config('app.url'),
-        ], 200);
+        try {
+            return response()->json([
+                'fulfillmentText' => $this->fulfillmentService->getfulfillmentText($request),
+                'source' => config('app.url'),
+            ], 200);
+        }
+        catch (\Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 }
