@@ -22,7 +22,7 @@ class LocationIQService
     public function getLatitudeAndLongitude($cityName)
     {
         // Location IQ request URL (https://us1.locationiq.com/v1/search.php?key=YOUR_PRIVATE_TOKEN&q=SEARCH_STRING&format=json)
-
+        
         $requestUrl = config('api.location_iq.base_url') . '?key=' . config('api.location_iq.api_key') . '&q=' . $cityName . '&format=json';
         $response  = $this->guzzleClient->get($requestUrl);
         $content = json_decode($response->getBody()->getContents(), true);

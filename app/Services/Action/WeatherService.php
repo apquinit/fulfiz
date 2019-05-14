@@ -7,20 +7,6 @@ use App\Services\External\DarkSkyService;
 
 class WeatherService
 {
-    private $locationIqService;
-    private $darkSkyService;
-
-    /**
-     * Create a new service instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->locationIqService = new LocationIQService;
-        $this->darkSkyService = new DarkSkyService;
-    }
-
     public function getCurrentWeatherTextResponse($cityName)
     {
         // 1. Get latitude and longitude from Location IQ Service by city name.
@@ -55,17 +41,20 @@ class WeatherService
 
     private function getLatitudeAndLongitudeFromLocationIqService($cityName)
     {
-        return $this->locationIqService->getLatitudeAndLongitude($cityName);
+        $locationIqService = new LocationIQService;
+        return $locationIqService->getLatitudeAndLongitude($cityName);
     }
 
     private function getCurrentWeatherFromDarkSkyService($latitude, $longitude)
     {
-        return $this->darkSkyService->getCurrentWeather($latitude, $longitude);
+        $darkSkyService = new DarkSkyService;
+        return $darkSkyService->getCurrentWeather($latitude, $longitude);
     }
 
     private function getWeatherByDateFromDarkSkyService($latitude, $longitude, $date)
     {
-        return $this->darkSkyService->getWeatherByDate($latitude, $longitude, $date);
+        $darkSkyService = new DarkSkyService;
+        return $darkSkyService->getWeatherByDate($latitude, $longitude, $date);
     }
 
     private function setTextResponse($weather)
