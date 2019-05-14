@@ -1,3 +1,3 @@
 <?php
 
-$router->get('/test', ['uses' => 'TestController@test']);
+$router->get('test', ['uses' => 'TestController@test']);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\User;
 
 use App\Repositories\UserRepository;
 
@@ -14,7 +14,7 @@ class UserService
     private $userRepository;
 
     /**
-     * Create a new user service instance.
+     * Create a new service instance.
      *
      * @return void
      */

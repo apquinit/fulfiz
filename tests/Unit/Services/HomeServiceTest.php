@@ -1,13 +1,9 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
 use App\Services\HomeService;
 
 class HomeServiceTest extends TestCase
 {
-    use DatabaseMigrations;
-    
     public function setUp() : void
     {
         parent::setUp();

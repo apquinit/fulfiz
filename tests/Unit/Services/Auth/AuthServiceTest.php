@@ -1,23 +1,19 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
-use App\Services\AuthService;
+use App\Services\Auth\AuthService;
 use App\Models\User;
 use Firebase\JWT\JWT;
 use Carbon\Carbon;
 
 class AuthServiceTest extends TestCase
 {
-    use DatabaseMigrations;
-
     public function setUp() : void
     {
         parent::setUp();
         $this->userId = factory(User::class)->create()->id;
         $this->authService = new AuthService;
         $payload = [
-            'iss' => env('APP_NAME'),
+            'iss' => config('app.name'),
             'sub' => $this->userId,
             'iat' => time(),
             'exp' => time() + config('jwt.lifetime') * 60,
@@ -28,7 +24,7 @@ class AuthServiceTest extends TestCase
     /** @test */
     public function AuthService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\AuthService::class));
+        $this->assertTrue(class_exists(App\Services\Auth\AuthService::class));
     }
 
     /** @test */
