@@ -44,7 +44,7 @@ class CurrentWeatherService
         $summaryTextResponse = $summary . '. ';
         $temperatureTextResponse = 'Actual temperature is ' . $temperature . ' degrees celsius. ';
         $apparentTemperatureTextResponse = 'Apparent temperature is ' . $apparentTemperature . ' degrees celsius. ';
-        $humidityTextResponse = 'Humidity is ' . $humidityPercent . ' percent. ';
+        $humidityTextResponse = 'Humidity is ' . $humidityPercent . '. ';
         $windTextResponse = 'Wind speed is currently at ' . $windSpeed . ' with a gust of ' . $windGust . ' meters per second. ';
         $pressureTextResponse = 'Atmospheric pressure is ' . $pressure . ' hectopascals.';
 
