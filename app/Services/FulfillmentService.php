@@ -26,7 +26,7 @@ class FulfillmentService
 
     public function getFulfillmentText(Request $request)
     {
-        $actionService = $this->actionFactory->mapActionToService($request['queryResult']['action']);
+        $actionService = $this->actionFactory->mapActionToService($request);
         $fulfillmentText = $actionService->getTextResponse();
         
         return $fulfillmentText;
