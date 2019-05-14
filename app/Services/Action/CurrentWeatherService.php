@@ -46,7 +46,7 @@ class CurrentWeatherService implements ActionServiceInterface
         $temperatureTextResponse = 'Actual temperature is ' . $temperature . ' °C. ';
         $apparentTemperatureTextResponse = 'Apparent temperature is ' . $apparentTemperature . ' °C. ';
         $humidityTextResponse = 'Humidity is ' . $humidityPercent . '. ';
-        $windTextResponse = 'Wind speed is currently at ' . $windSpeed . ' with a gust of ' . $windGust . ' m/s. ';
+        $windTextResponse = 'Wind speed is currently at ' . $windSpeed . ' m/s with a gust of ' . $windGust . ' m/s. ';
         $pressureTextResponse = 'Atmospheric pressure is ' . $pressure . ' hPa.';
 
         $textResponse = $summaryTextResponse . $temperatureTextResponse . $apparentTemperatureTextResponse . $humidityTextResponse . $windTextResponse . $pressureTextResponse;
