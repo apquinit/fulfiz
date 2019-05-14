@@ -45,11 +45,11 @@ class WeatherByDateService implements ActionServiceInterface
         $windGust = $weather['windGust']; // Meters per second.
 
         $summaryTextResponse = $summary . '. ';
-        $temperatureTextResponse = 'Actual temperature is ' . $temperature . ' degrees celsius. ';
-        $apparentTemperatureTextResponse = 'Apparent temperature is ' . $apparentTemperature . ' degrees celsius. ';
+        $temperatureTextResponse = 'Actual temperature is ' . $temperature . ' °C. ';
+        $apparentTemperatureTextResponse = 'Apparent temperature is ' . $apparentTemperature . ' °C. ';
         $humidityTextResponse = 'Humidity is ' . $humidityPercent . '. ';
-        $windTextResponse = 'Wind speed is currently at ' . $windSpeed . ' with a gust of ' . $windGust . ' meters per second. ';
-        $pressureTextResponse = 'Atmospheric pressure is ' . $pressure . ' hectopascals.';
+        $windTextResponse = 'Wind speed is currently at ' . $windSpeed . ' with a gust of ' . $windGust . ' m/s. ';
+        $pressureTextResponse = 'Atmospheric pressure is ' . $pressure . ' hPa.';
 
         $textResponse = $summaryTextResponse . $temperatureTextResponse . $apparentTemperatureTextResponse . $humidityTextResponse . $windTextResponse . $pressureTextResponse;
 
