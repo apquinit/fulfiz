@@ -1,3 +1,3 @@
 <?php
 
-$router->post('webhook', ['uses' => 'WebhookController@handle']);
+$router->post('webhook', ['uses' => 'WebhookController@handle', 'middleware' => 'jwt.auth']);
