@@ -12,8 +12,7 @@ class ActionFactory
     {
         if ($request['queryResult']['action'] == 'weather.current') {
             return new CurrentWeatherService($request['queryResult']['parameters']['geo-city']);
-        }
-        else if ($request['queryResult']['action'] == 'weather.date') {
+        } else if ($request['queryResult']['action'] == 'weather.date') {
             return new WeatherByDateService($request['queryResult']['parameters']['geo-city'], $request['queryResult']['parameters']['date']);
         }
     }
