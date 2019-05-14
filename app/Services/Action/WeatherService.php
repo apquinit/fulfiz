@@ -74,7 +74,7 @@ class WeatherService
         $temperature = $weather['temperature']; // Degrees Celsius.
         $apparentTemperature = $weather['apparentTemperature']; // Degrees Celsius.
         $humidity = $weather['humidity']; // Percentage.
-        $humidityPercent = round((float)$humidity * 100 ) . '%';
+        $humidityPercent = round((float)$humidity * 100) . '%';
         $pressure = $weather['pressure']; // Hectopascals.
         $windSpeed = $weather['windSpeed']; // Meters per second.
         $windGust = $weather['windGust']; // Meters per second.
@@ -90,5 +90,4 @@ class WeatherService
 
         return $textResponse;
     }
-
 }
