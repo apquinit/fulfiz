@@ -2,10 +2,11 @@
 
 namespace App\Services\Action;
 
+use App\Interfaces\ActionServiceInterface;
 use App\Services\External\LocationIQService;
 use App\Services\External\DarkSkyService;
 
-class WeatherByDateService
+class WeatherByDateService implements ActionServiceInterface
 {
     private $cityName;
     private $date;
