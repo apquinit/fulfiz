@@ -15,8 +15,10 @@
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./app/Http/Controllers</directory>
-            <directory suffix=".php">./app/Services</directory>
+            <directory suffix=".php">./app/Services/Action</directory>
+            <directory suffix=".php">./app/Services/Auth</directory>
+            <directory suffix=".php">./app/Services/External</directory>
+            <directory suffix=".php">./app/Services/User</directory>
         </whitelist>
     </filter>
     <php>

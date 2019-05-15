@@ -59,12 +59,14 @@ class WeatherByDateService implements ActionServiceInterface
     private function getLatitudeAndLongitudeFromLocationIqService()
     {
         $locationIqService = new LocationIQService;
+
         return $locationIqService->getLatitudeAndLongitude($this->cityName);
     }
 
     private function getWeatherByDateFromDarkSkyService($latitude, $longitude)
     {
         $darkSkyService = new DarkSkyService;
+        
         return $darkSkyService->getWeatherByDate($latitude, $longitude, $this->date);
     }
 }
