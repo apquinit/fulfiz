@@ -17,9 +17,6 @@
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app/Http/Controllers</directory>
             <directory suffix=".php">./app/Services</directory>
-            <exclude>
-                <file>FulfillmentService.php</file>
-            </exclude>
         </whitelist>
     </filter>
     <php>
