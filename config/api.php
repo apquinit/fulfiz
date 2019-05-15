@@ -10,5 +10,9 @@ return [
         'base_url' => 'https://api.darksky.net/forecast',
         'api_key' => '5a050170535218d28b85e8cad4e6f781',
         'units' => 'si',
+    ],
+
+    'duck_duck_go' => [
+        'base_url' => 'https://api.duckduckgo.com',
     ]
 ];
