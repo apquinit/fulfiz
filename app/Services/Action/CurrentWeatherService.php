@@ -49,8 +49,8 @@ class CurrentWeatherService implements ActionServiceInterface
         $pressure = $weather['pressure']; // Hectopascals.
 
         $summaryTextResponse = $summary . '. ';
-        $temperatureTextResponse = 'Actual temperature is ' . $temperature . ' °C. ';
-        $apparentTemperatureTextResponse = 'Apparent temperature is ' . $apparentTemperature . ' °C. ';
+        $temperatureTextResponse = 'Actual temperature is ' . $temperature . '°C. ';
+        $apparentTemperatureTextResponse = 'Apparent temperature is ' . $apparentTemperature . '°C. ';
         $precipTextResponse = 'Chance of ' . $precipType . ' is ' . $precipProbabilityPercent . ' with an intensity of ' .  $precipIntensityPercent . '. ';
         $humidityTextResponse = 'Humidity is ' . $humidityPercent . '. ';
         $windTextResponse = 'Wind speed is at ' . $windSpeed . ' m/s with gusts at about ' . $windGust . ' m/s. ';
