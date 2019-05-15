@@ -38,20 +38,27 @@ class WeatherByDateService implements ActionServiceInterface
         $summary = $weather['summary'];
         $temperature = $weather['temperature']; // Degrees Celsius.
         $apparentTemperature = $weather['apparentTemperature']; // Degrees Celsius.
+        
+        $precipType = $weather['precipType']; // Type.
+        $precipProbability = $weather['precipProbability']; // Percentage.
+        $precipProbabilityPercent = round((float)$precipProbability * 100) . '%';
+        $precipIntensity = $weather['precipIntensity']; // Percentage.
+        $precipIntensityPercent = round((float)$precipIntensity * 100) . '%';
         $humidity = $weather['humidity']; // Percentage.
         $humidityPercent = round((float)$humidity * 100) . '%';
-        $pressure = $weather['pressure']; // Hectopascals.
         $windSpeed = $weather['windSpeed']; // Meters per second.
         $windGust = $weather['windGust']; // Meters per second.
+        $pressure = $weather['pressure']; // Hectopascals.
 
         $summaryTextResponse = $summary . '. ';
         $temperatureTextResponse = 'Actual temperature is ' . $temperature . ' °C. ';
         $apparentTemperatureTextResponse = 'Apparent temperature is ' . $apparentTemperature . ' °C. ';
+        $precipTextResponse = 'Chance of ' . $precipType . ' is ' . $precipProbabilityPercent . ' with an intensity of ' .  $precipIntensityPercent . '. ';
         $humidityTextResponse = 'Humidity is ' . $humidityPercent . '. ';
-        $windTextResponse = 'Wind speed is at ' . $windSpeed . ' m/s with a gust of ' . $windGust . ' m/s. ';
+        $windTextResponse = 'Wind speed is at ' . $windSpeed . ' m/s with gusts at about ' . $windGust . ' m/s. ';
         $pressureTextResponse = 'Atmospheric pressure is ' . $pressure . ' hPa.';
 
-        $textResponse = $summaryTextResponse . $temperatureTextResponse . $apparentTemperatureTextResponse . $humidityTextResponse . $windTextResponse . $pressureTextResponse;
+        $textResponse = $summaryTextResponse . $temperatureTextResponse . $apparentTemperatureTextResponse . $precipTextResponse . $humidityTextResponse . $windTextResponse . $pressureTextResponse;
 
         return $textResponse;
     }
