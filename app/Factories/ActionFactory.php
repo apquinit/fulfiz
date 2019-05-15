@@ -5,6 +5,7 @@ namespace App\Factories;
 use Illuminate\Http\Request;
 use App\Services\Action\CurrentWeatherService;
 use App\Services\Action\WeatherByDateService;
+use App\Services\Action\WebSearchService;
 
 class ActionFactory
 {
@@ -14,6 +15,8 @@ class ActionFactory
             return new CurrentWeatherService($request['queryResult']['parameters']['geo-city']);
         } else if ($request['queryResult']['action'] == 'weather.date') {
             return new WeatherByDateService($request['queryResult']['parameters']['geo-city'], $request['queryResult']['parameters']['date']);
+        } else if ($request['queryResult']['action'] == 'web.search') {
+            return new WebSearchService($request['queryResult']['parameters']['any']);
         }
     }
 }
