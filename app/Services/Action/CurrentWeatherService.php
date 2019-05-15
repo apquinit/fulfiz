@@ -33,10 +33,15 @@ class CurrentWeatherService implements ActionServiceInterface
 
     private function setTextResponse($weather)
     {
+        if (array_key_exists('precipType', $weather)) {
+            $precipType = $weather['precipType'];
+        } else {
+            $precipType = 'precipitation';
+        }
+        
         $summary = $weather['summary'];
         $temperature = $weather['temperature']; // Degrees Celsius.
         $apparentTemperature = $weather['apparentTemperature']; // Degrees Celsius.
-        $precipType = $weather['precipType']; // Type.
         $precipProbability = $weather['precipProbability']; // Percentage.
         $precipProbabilityPercent = round((float)$precipProbability * 100) . '%';
         $precipIntensity = $weather['precipIntensity']; // Percentage.
