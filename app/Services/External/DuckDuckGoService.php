@@ -25,8 +25,8 @@ class DuckDuckGoService
 
         $requestUrl = config('api.duck_duck_go.base_url') . '/?q=' . $topic  . '&format=json&no_redirect=1&no_html=1&skip_disambig=1';
         $response  = $this->guzzleClient->get($requestUrl);
-        $content = json_decode($response->getBody()->getContents(), true);
+        $instantAnswer = json_decode($response->getBody()->getContents(), true);
 
-        return $content;
+        return $instantAnswer;
     }
 }
