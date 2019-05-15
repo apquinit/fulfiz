@@ -36,7 +36,6 @@ class CurrentWeatherService implements ActionServiceInterface
         $summary = $weather['summary'];
         $temperature = $weather['temperature']; // Degrees Celsius.
         $apparentTemperature = $weather['apparentTemperature']; // Degrees Celsius.
-        
         $precipType = $weather['precipType']; // Type.
         $precipProbability = $weather['precipProbability']; // Percentage.
         $precipProbabilityPercent = round((float)$precipProbability * 100) . '%';
