@@ -17,7 +17,7 @@ class CurrentWeatherServiceTest extends TestCase
     }
 
     /** @test */
-    public function getTextResponse_method_should_return_string_when_passed_a_city_name()
+    public function getTextResponse_method_should_return_weather_summary_of_type_string_when_passed_a_city_name()
     {
         $textResponse = $this->currentWeatherService->getTextResponse();
         $this->assertTrue(is_string($textResponse));

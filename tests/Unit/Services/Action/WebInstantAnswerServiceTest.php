@@ -17,7 +17,7 @@ class WebInstantAnswerServiceTest extends TestCase
     }
 
     /** @test */
-    public function getTextResponse_method_should_return_string_when_passed_a_topic()
+    public function getTextResponse_method_should_return_answer_of_type_string_when_passed_a_topic()
     {
         $textResponse = $this->webInstantAnswerService->getTextResponse();
         $this->assertTrue(is_string($textResponse));
