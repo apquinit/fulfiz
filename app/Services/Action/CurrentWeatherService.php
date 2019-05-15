@@ -57,12 +57,14 @@ class CurrentWeatherService implements ActionServiceInterface
     private function getLatitudeAndLongitudeFromLocationIqService()
     {
         $locationIqService = new LocationIQService;
+
         return $locationIqService->getLatitudeAndLongitude($this->cityName);
     }
 
     private function getCurrentWeatherFromDarkSkyService($latitude, $longitude)
     {
         $darkSkyService = new DarkSkyService;
+        
         return $darkSkyService->getCurrentWeather($latitude, $longitude);
     }
 }
