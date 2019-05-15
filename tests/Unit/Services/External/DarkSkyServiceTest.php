@@ -23,14 +23,10 @@ class DarkSkyServiceTest extends TestCase
         $this->assertTrue(
             array_key_exists('summary', $weather) &&
             array_key_exists('temperature', $weather) &&
-            array_key_exists('temperature', $weather) &&
             array_key_exists('apparentTemperature', $weather) &&
-
             array_key_exists('precipType', $weather) &&
             array_key_exists('precipProbability', $weather) &&
             array_key_exists('precipIntensity', $weather) &&
-
-
             array_key_exists('humidity', $weather) &&
             array_key_exists('pressure', $weather) &&
             array_key_exists('windSpeed', $weather) &&
@@ -44,8 +40,13 @@ class DarkSkyServiceTest extends TestCase
         $weather = $this->darkSkyService->getWeatherByDate('14.5906216', '120.9799696', '2019-05-10T12:00:00+08:00');
         $this->assertTrue(
             array_key_exists('summary', $weather) &&
-            array_key_exists('temperature', $weather) &&
-            array_key_exists('apparentTemperature', $weather) &&
+            array_key_exists('temperatureMin', $weather) &&
+            array_key_exists('temperatureMax', $weather) &&
+            array_key_exists('apparentTemperatureMin', $weather) &&
+            array_key_exists('apparentTemperatureMax', $weather) &&
+            array_key_exists('precipType', $weather) &&
+            array_key_exists('precipProbability', $weather) &&
+            array_key_exists('precipIntensity', $weather) &&
             array_key_exists('humidity', $weather) &&
             array_key_exists('pressure', $weather) &&
             array_key_exists('windSpeed', $weather) &&
