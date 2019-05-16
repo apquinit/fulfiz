@@ -32,7 +32,7 @@ class CurrentWeatherService implements ActionServiceInterface
     }
 
     private function setTextResponse($weather)
-    {      
+    {
         $summary = $weather['summary'];
         $temperature = $weather['temperature']; // Degrees Celsius.
         $apparentTemperature = $weather['apparentTemperature']; // Degrees Celsius.
