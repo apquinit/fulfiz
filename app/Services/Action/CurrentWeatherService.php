@@ -32,13 +32,7 @@ class CurrentWeatherService implements ActionServiceInterface
     }
 
     private function setTextResponse($weather)
-    {
-        if (array_key_exists('precipType', $weather)) {
-            $precipType = $weather['precipType'];
-        } else {
-            $precipType = 'precipitation';
-        }
-        
+    {      
         $summary = $weather['summary'];
         $temperature = $weather['temperature']; // Degrees Celsius.
         $apparentTemperature = $weather['apparentTemperature']; // Degrees Celsius.
@@ -52,10 +46,16 @@ class CurrentWeatherService implements ActionServiceInterface
         $windGust = $weather['windGust']; // Meters per second.
         $pressure = $weather['pressure']; // Hectopascals.
 
+        if (array_key_exists('precipType', $weather)) {
+            $precipType = $weather['precipType'];
+            $precipTextResponse = 'Chance of ' . $precipType . ' is ' . $precipProbabilityPercent . ' with an intensity of ' .  $precipIntensityPercent . '. ';
+        } else {
+            $precipTextResponse = 'Chance of precipitation is 0%. ';
+        }
+
         $summaryTextResponse = $summary . '. ';
         $temperatureTextResponse = 'Actual temperature is ' . $temperature . '°C. ';
         $apparentTemperatureTextResponse = 'Apparent temperature is ' . $apparentTemperature . '°C. ';
-        $precipTextResponse = 'Chance of ' . $precipType . ' is ' . $precipProbabilityPercent . ' with an intensity of ' .  $precipIntensityPercent . '. ';
         $humidityTextResponse = 'Humidity is ' . $humidityPercent . '. ';
         $windTextResponse = 'Wind speed is at ' . $windSpeed . ' m/s with gusts at about ' . $windGust . ' m/s. ';
         $pressureTextResponse = 'Atmospheric pressure is ' . $pressure . ' hPa.';
