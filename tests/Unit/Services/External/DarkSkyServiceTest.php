@@ -17,14 +17,13 @@ class DarkSkyServiceTest extends TestCase
     }
 
     /** @test */
-    public function getCurrentWeather_method_should_return_current_weather_data_array_key_exists_when_passed_longitude_and_latitude()
+    public function getCurrentWeather_method_should_return_current_weather_data_array_when_passed_longitude_and_latitude()
     {
         $weather = $this->darkSkyService->getCurrentWeather('14.5906216', '120.9799696');
         $this->assertTrue(
             array_key_exists('summary', $weather) &&
             array_key_exists('temperature', $weather) &&
             array_key_exists('apparentTemperature', $weather) &&
-            array_key_exists('precipType', $weather) &&
             array_key_exists('precipProbability', $weather) &&
             array_key_exists('precipIntensity', $weather) &&
             array_key_exists('humidity', $weather) &&
@@ -44,7 +43,6 @@ class DarkSkyServiceTest extends TestCase
             array_key_exists('temperatureMax', $weather) &&
             array_key_exists('apparentTemperatureMin', $weather) &&
             array_key_exists('apparentTemperatureMax', $weather) &&
-            array_key_exists('precipType', $weather) &&
             array_key_exists('precipProbability', $weather) &&
             array_key_exists('precipIntensity', $weather) &&
             array_key_exists('humidity', $weather) &&
