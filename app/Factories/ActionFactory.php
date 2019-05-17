@@ -7,12 +7,15 @@ use App\Services\Action\CurrentWeatherService;
 use App\Services\Action\WeatherByDateService;
 use App\Services\Action\WebInstantAnswerService;
 use App\Services\Action\VisionDescribeImageService;
+use App\Services\Action\DefaultFallbackService;
 
 class ActionFactory
 {
     public function mapActionToService(Request $request)
     {
-        if ($request['queryResult']['action'] == 'weather.current') {
+        if ($request['queryResult']['action'] == 'input.unknown') {
+            return new DefaultFallbackService($request['queryResult']['queryText']);
+        } else if ($request['queryResult']['action'] == 'weather.current') {
             return new CurrentWeatherService($request['queryResult']['parameters']['geo-city']);
         } else if ($request['queryResult']['action'] == 'weather.date') {
             return new WeatherByDateService($request['queryResult']['parameters']['geo-city'], $request['queryResult']['parameters']['date']);
