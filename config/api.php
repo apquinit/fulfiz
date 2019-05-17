@@ -14,5 +14,10 @@ return [
 
     'duck_duck_go' => [
         'base_url' => 'https://api.duckduckgo.com',
+    ],
+
+    'wolfram_alpha' => [
+        'base_url' => 'https://api.wolframalpha.com/v1/result',
+        'api_key' => 'ETLETX-AHJPWUWGQ4',
     ]
 ];
