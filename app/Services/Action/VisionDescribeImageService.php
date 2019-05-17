@@ -18,7 +18,12 @@ class VisionDescribeImageService implements ActionServiceInterface
     {
         // 1. Get image caption result from Caption Bot Service.
         $imageCaption = $this->getImageCaptionFromCaptionBotService();
-        $textResponse = $imageCaption;
+        // $textResponse = $imageCaption;
+        if (strpos($imageCaption, ".") !== false) {
+            $textResponse = ucfirst($imageCaption);
+        } else {
+            $textResponse = ucfirst($imageCaption) . '.';
+        }
 
         return $textResponse;
     }
