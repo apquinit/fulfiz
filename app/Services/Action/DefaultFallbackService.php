@@ -18,10 +18,16 @@ class DefaultFallbackService implements ActionServiceInterface
     {
         // 1. Get short answer result from Wolfram Alpha Service.
         $shortAnswer = $this->getShortAnswerFromWolframAlphaService();
-        if (strpos($shortAnswer, ".") !== false) {
-            $textResponse = ucfirst($shortAnswer);
+        $textResponse = $shortAnswer;
+
+        if (is_numeric($shortAnswer)) {
+            return $textResponse;
         } else {
-            $textResponse = ucfirst($shortAnswer) . '.';
+            if (strpos($shortAnswer, ".") !== false) {
+                $textResponse = ucfirst($shortAnswer);
+            } else {
+                $textResponse = ucfirst($shortAnswer) . '.';
+            }
         }
 
         return $textResponse;
