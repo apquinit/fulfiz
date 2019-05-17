@@ -3,12 +3,12 @@
 return [
     'location_iq' => [
         'base_url' => 'https://us1.locationiq.com/v1/search.php',
-        'api_key' => '4c53f82e708066'
+        'api_key' => env('API_LOCATION_IQ_KEY', getenv('API_LOCATION_IQ_KEY') ? null : null)
     ],
 
     'dark_sky' => [
         'base_url' => 'https://api.darksky.net/forecast',
-        'api_key' => '5a050170535218d28b85e8cad4e6f781',
+        'api_key' => env('API_DARK_SKY_KEY', getenv('API_DARK_SKY_KEY') ? null : null),
         'units' => 'si',
     ],
 
@@ -18,6 +18,6 @@ return [
 
     'wolfram_alpha' => [
         'base_url' => 'https://api.wolframalpha.com/v1/result',
-        'api_key' => 'ETLETX-AHJPWUWGQ4',
+        'api_key' => env('API_WOLFRAM_ALPHA_KEY', getenv('API_WOLFRAM_ALPHA_KEY') ? null : null),
     ]
 ];
