@@ -1,4 +1,6 @@
-![Fulfiz](/.github/banner.png)
+<p align="center">
+  <img width="460" height="300" src=".github/banner.png">
+</p>
 
 # Fulfiz
 
