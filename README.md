@@ -1,6 +1,11 @@
-[![Build Status](https://travis-ci.org/apquinit/irene-fulfillment-server.svg?branch=master)](https://travis-ci.org/apquinit/irene-fulfillment-server)
+<p align="center">
+  <img width="460" height="300" src=".github/banner.png">
+</p>
 
 # Fulfiz
+
+[![Build Status](https://travis-ci.org/apquinit/irene-fulfillment-server.svg?branch=master)](https://travis-ci.org/apquinit/irene-fulfillment-server)
+
 
 Fulfiz is a micro-framework for building Dialogflow fulfillments with expressive, elegant syntax. This framework attempts to take the pain out in developing a Dialogflow agent that is designed to handle multiple fulfillment services.
 
