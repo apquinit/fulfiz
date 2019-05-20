@@ -13,7 +13,7 @@ class ActionFactory
 {
     public function mapActionToService(Request $request)
     {
-        if ($request['queryResult']['action'] == 'input.unknown') {
+        if ($request['queryResult']['action'] == 'fallback.wolfram_alpha') {
             return new DefaultFallbackService($request['queryResult']['queryText']);
         } else if ($request['queryResult']['action'] == 'weather.current') {
             return new CurrentWeatherService($request['queryResult']['parameters']['geo-city']);
