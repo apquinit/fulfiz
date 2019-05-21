@@ -5,7 +5,7 @@ namespace App\Services\Action;
 use App\Interfaces\ActionServiceInterface;
 use App\Services\External\DuckDuckGoService;
 
-class WebInstantAnswerService implements ActionServiceInterface
+class WebSearchService implements ActionServiceInterface
 {
     private $topic;
 
@@ -17,17 +17,17 @@ class WebInstantAnswerService implements ActionServiceInterface
     public function getTextResponse()
     {
         // 1. Get Instant Answer result from DuckDuckGo Service.
-        $instantAnswer = $this->getInstantAnswerFromDuckDuckGoService();
+        $searchResult = $this->getInstantAnswerFromDuckDuckGoService();
 
         // 2. Assemble text response from search result data.
-        $textResponse = $this->setTextResponse($instantAnswer);
+        $textResponse = $this->setTextResponse($searchResult);
 
         return $textResponse;
     }
 
-    private function setTextResponse($instantAnswer)
+    private function setTextResponse($searchResult)
     {
-        $textResponse = $instantAnswer['AbstractText'];
+        $textResponse = $searchResult['AbstractText'];
         
         return $textResponse;
     }
