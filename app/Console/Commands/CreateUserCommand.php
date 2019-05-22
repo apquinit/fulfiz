@@ -32,16 +32,22 @@ class CreateUserCommand extends Command
     {
         $username = $this->ask('Enter username', 'default_user');
         $password = $this->secret('Enter password', 'password123!');
+        $confirmPassword = $this->secret('Confirm password', 'password123!');
 
-        if ($this->confirm('Proceed to user creation with provided details?', false)) {
-            factory(User::class)->create([
-                'username' => $username,
-                'password' => app('hash')->make($password),
-            ]);
-            $this->info('User created successfully.');
+        if ($password === $confirmPassword)
+        {
+            if ($this->confirm('Proceed to user creation with provided details?', false)) {
+                factory(User::class)->create([
+                    'username' => $username,
+                    'password' => app('hash')->make($password),
+                ]);
+                $this->info('User created successfully.');
+                exit(0);
+            }
+            $this->info('User creation aborted.');
             exit(0);
+        } else {
+            $this->error('Passwords do not match!');
         }
-        $this->info('User creation aborted.');
-        exit(0);
     }
 }
