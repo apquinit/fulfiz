@@ -34,8 +34,7 @@ class CreateUserCommand extends Command
         $password = $this->secret('Enter password', 'password123!');
         $confirmPassword = $this->secret('Confirm password', 'password123!');
 
-        if ($password === $confirmPassword)
-        {
+        if ($password === $confirmPassword) {
             if ($this->confirm('Proceed to user creation with provided details?', false)) {
                 factory(User::class)->create([
                     'username' => $username,
