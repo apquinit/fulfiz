@@ -69,6 +69,11 @@
                 <div class="title m-b-md">
                     <?php echo $app_name; ?>
                 </div>
+                
+                <div class="links">
+                    <a href="#">Request an Account</a>
+                    <a href="#">Get a Token</a>
+                </div>
             </div>
         </div>
     </body>
