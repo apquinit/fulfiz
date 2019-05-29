@@ -38,7 +38,7 @@ class DarkSkyService
 
         $exclude = '[currently,minutely,hourly,alerts,flags]';
         $requestUrl = config('api.dark_sky.base_url') . '/' . config('api.dark_sky.api_key') . '/' . $latitude . ',' . $longitude . ',' . $date . '?exclude=' . $exclude . '&units=' . config('api.dark_sky.units');
-        $response  = $this->guzzleClient->get($requestUrl);
+        $response = $this->guzzleClient->get($requestUrl);
         $content = json_decode($response->getBody()->getContents(), true);
         $dateWeather = $content['daily']['data'][0];
         
