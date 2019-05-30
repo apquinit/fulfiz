@@ -1,6 +1,7 @@
 /database/database.sqlite
 /vendor
 /.idea
+/.vagrant
 Homestead.json
 Homestead.yaml
 .env
