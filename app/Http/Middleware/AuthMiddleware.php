@@ -32,11 +32,11 @@ class AuthMiddleware
             $credentials = JWT::decode($token, config('jwt.key'), ['HS256']);
         } catch (ExpiredException $e) {
             return response()->json([
-                'error' => 'Provided token is expired.'
+                'error' => 'Token is expired.'
             ], 400);
         } catch (Exception $e) {
             return response()->json([
-                'error' => 'Provided token is invalid.'
+                'error' => 'Token is invalid.'
             ], 400);
         }
 
