@@ -24,7 +24,7 @@ class AuthMiddleware
         
         if (!$token) {
             return response()->json([
-                'error' => 'Token not provided.'
+                'error' => 'Token not provided'
             ], 401);
         }
 
@@ -32,11 +32,11 @@ class AuthMiddleware
             $credentials = JWT::decode($token, config('jwt.key'), ['HS256']);
         } catch (ExpiredException $e) {
             return response()->json([
-                'error' => 'Token is expired.'
+                'error' => 'Token is expired'
             ], 400);
         } catch (Exception $e) {
             return response()->json([
-                'error' => 'Token is invalid.'
+                'error' => 'Token is invalid'
             ], 400);
         }
 
