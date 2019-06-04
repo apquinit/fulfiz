@@ -20,6 +20,7 @@
             <directory suffix=".php">./app/Services/AuthService</directory>
             <directory suffix=".php">./app/Services/HomeService</directory>
             <directory suffix=".php">./app/Services/UserService</directory>
+            <directory suffix=".php">./app/Repositories</directory>
         </whitelist>
     </filter>
     <php>
