@@ -16,9 +16,10 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app/Services/Action</directory>
-            <directory suffix=".php">./app/Services/Auth</directory>
             <directory suffix=".php">./app/Services/External</directory>
-            <directory suffix=".php">./app/Services/User</directory>
+            <directory suffix=".php">./app/Services/AuthService</directory>
+            <directory suffix=".php">./app/Services/HomeService</directory>
+            <directory suffix=".php">./app/Services/UserService</directory>
         </whitelist>
     </filter>
     <php>

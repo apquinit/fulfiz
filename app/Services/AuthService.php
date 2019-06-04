@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Auth;
+namespace App\Services;
 
 use Firebase\JWT\JWT;
 use Carbon\Carbon;
@@ -31,31 +31,20 @@ class AuthService
      * @param  $token
      * @return string
      */
-    protected function jwtDecodeToken(string $token)
+    private function jwtDecodeToken(string $token)
     {
         return JWT::decode($token, config('jwt.key'), ['HS256']);
     }
 
     /**
-     * Decode token expiration.
+     * Decode token payload.
      *
      * @param  $token
      * @return string
      */
-    private function decodeTokenExpiration(string $token)
+    public function decodeTokenPayload(string $token)
     {
-        return Carbon::createFromTimestamp($this->jwtDecodeToken($token)->exp, config('app.timezone'))->toDateTimeString();
-    }
-
-    /**
-     * Decode token subject.
-     *
-     * @param  $token
-     * @return string
-     */
-    public function decodeTokenSubject(string $token)
-    {
-        return $this->jwtDecodeToken($token)->sub;
+        return $this->jwtDecodeToken($token);
     }
 
     /**
@@ -67,11 +56,7 @@ class AuthService
     public function generateToken(int $userId)
     {
         $token = $this->jwtEncodeToken($userId);
-        $expires_at = $this->decodeTokenExpiration($token);
 
-        return $response = [
-            'token' => $token,
-            'expires_at' => $expires_at,
-        ];
+        return $token;
     }
 }

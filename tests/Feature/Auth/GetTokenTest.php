@@ -20,15 +20,12 @@ class GetTokenTest extends TestCase
         $response = $this->post('/auth/token', ['username' => 'test_user', 'password' => 'test_password']);
         $response->assertResponseStatus(200);
         $response->seeJsonStructure([
-            "auth" => [
-                "token",
-                "expires_at",
-            ]
+            "token",
         ]);
     }
 
     /** @test */
-    public function get_token_endpoint_should_return_error_400_when_user_credentials_is_invalid()
+    public function get_token_endpoint_should_return_error_404_when_user_credentials_is_invalid()
     {
         $user = factory(App\Models\User::class)->create(
             [
@@ -38,7 +35,7 @@ class GetTokenTest extends TestCase
         );
 
         $response = $this->post('/auth/token', ['username' => 'test_user_invalid', 'password' => 'test_password_invalid']);
-        $response->assertResponseStatus(400);
+        $response->assertResponseStatus(404);
         $response->seeJsonStructure([
             "error",
         ]);

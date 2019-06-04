@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\User\UserService;
+use App\Services\UserService;
 use App\Models\User;
 use Mockery as Mockery;
 
@@ -22,7 +22,7 @@ class UserServiceTest extends TestCase
     /** @test */
     public function UserService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\User\UserService::class));
+        $this->assertTrue(class_exists(App\Services\UserService::class));
     }
 
     /** @test */

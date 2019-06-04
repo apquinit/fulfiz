@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\Auth\AuthService;
+use App\Services\AuthService;
 use App\Models\User;
 use Firebase\JWT\JWT;
 use Carbon\Carbon;
@@ -24,7 +24,7 @@ class AuthServiceTest extends TestCase
     /** @test */
     public function AuthService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\Auth\AuthService::class));
+        $this->assertTrue(class_exists(App\Services\AuthService::class));
     }
 
     /** @test */
@@ -35,16 +35,16 @@ class AuthServiceTest extends TestCase
     }
 
     /** @test */
-    public function decodeTokenSubject_method_should_return_decoded_subject_when_passed_a_valid_token()
+    public function decodeToken_method_should_return_decoded_token_when_passed_a_valid_token()
     {
-        $subject = $this->authService->decodeTokenSubject($this->token);
-        $this->assertTrue(is_int($subject));
+        $payload = $this->authService->decodeTokenPayload($this->token);
+        $this->assertTrue(array_key_exists('iss', $payload) && array_key_exists('sub', $payload) && array_key_exists('iat', $payload) && array_key_exists('exp', $payload));
     }
 
     /** @test */
-    public function generateToken_method_should_return_token_and_expiration_date_array_when_passed_a_valid_user_id()
+    public function generateToken_method_should_return_token_array_when_passed_a_valid_user_id()
     {
         $token = $this->authService->generateToken($this->userId);
-        $this->assertTrue(array_key_exists("token", $token) && array_key_exists("expires_at", $token));
+        $this->assertTrue(is_string($token));
     }
 }

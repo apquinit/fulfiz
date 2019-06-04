@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Services\Auth\AuthService;
-use App\Services\User\UserService;
+use App\Services\AuthService;
+use App\Services\UserService;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -20,14 +20,14 @@ class AuthController extends Controller
     /**
      * Auth service instance.
      *
-     * @var App\Services\AuthService
+     * @var App\ServicesService
      */
     private $authService;
 
     /**
      * User service instance.
      *
-     * @var App\Services\UserService
+     * @var App\ServicesService
      */
     private $userService;
 
@@ -64,33 +64,33 @@ class AuthController extends Controller
         // Verify if user exists.
         if (!$user) {
             return response()->json([
-                'error' => 'User does not exist.'
-            ], 400);
+                'error' => 'User not found'
+            ], 404);
         }
 
         // Verify the password and generate the token.
         if (Hash::check($this->request->input('password'), $user->password)) {
             return response()->json([
-                'auth' => $this->authService->generateToken($user->id)
+                'token' => $this->authService->generateToken($user->id)
             ], 200);
         }
 
         // Bad Request response.
         return response()->json([
-            'error' => 'Username or password is invalid.'
-        ], 400);
+            'error' => 'User not found'
+        ], 404);
     }
 
     /**
-     * Get token subject.
+     * Get token payload.
      *
      * @param  string $token
      * @return int
      */
-    public function getTokenSubject()
+    public function getTokenPayload()
     {
         return response()->json([
-            'user_id' => $this->authService->decodeTokenSubject($this->request->bearerToken())
+            'payload' => $this->authService->decodeTokenPayload($this->request->bearerToken())
         ], 200);
     }
 }
