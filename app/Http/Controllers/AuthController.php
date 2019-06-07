@@ -53,19 +53,16 @@ class AuthController extends Controller
     public function getToken(User $user)
     {
         // Validate user.
-        $this->validate($this->request, [
-            'username' => 'required|string',
-            'password' => 'required'
-        ]);
-
+        if (empty($this->request->input('username')) or empty($this->request->input('password'))) {
+            abort(404, 'User Not Found');
+        }
+        
         // Get user from database.
         $user = $this->userService->getUserByUsername($this->request->input('username'));
 
         // Verify if user exists.
         if (!$user) {
-            return response()->json([
-                'error' => 'User not found'
-            ], 404);
+            abort(404, 'User Not Found');
         }
 
         // Verify the password and generate the token.
@@ -75,10 +72,8 @@ class AuthController extends Controller
             ], 200);
         }
 
-        // Bad Request response.
-        return response()->json([
-            'error' => 'User not found'
-        ], 404);
+        // Thrown when password is invalid.
+        abort(404, 'User Not Found');
     }
 
     /**
