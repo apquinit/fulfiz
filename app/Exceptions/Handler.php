@@ -47,14 +47,12 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($exception instanceof HttpException) {
-
             if ($exception->getStatusCode() === 404 and $exception->getMessage() === "") {
                 return response(view('error', [
                     'message' => 'Page Not Found',
                     'code' => $exception->getStatusCode()
                 ]), $exception->getStatusCode());
             }
-
             if ($exception->getStatusCode() === 405 and $exception->getMessage() === "") {
                 return response(view('error', [
                     'message' => 'Method Not Allowed',
