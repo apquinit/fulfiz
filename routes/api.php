@@ -1,5 +1,7 @@
 <?php
 
+// API Routes
+
 $router->group(['prefix' => 'auth'], function () use ($router) {
     $router->group(['prefix' => 'token'], function () use ($router) {
 
