@@ -14,4 +14,4 @@ before_script:
 script:
   - vendor/bin/phpcs --config-set show_warnings 0
   - vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migrations/*,*/tests/* app
-  - vendor/bin/phpunit --coverage-text --testdox
+  - vendor/bin/phpunit --testdox
