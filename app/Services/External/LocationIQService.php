@@ -5,7 +5,7 @@ namespace App\Services\External;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
-class LocationIQService
+class LocationIqService
 {
     private $guzzleClient;
 

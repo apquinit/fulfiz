@@ -3,11 +3,12 @@
 namespace App\Factories;
 
 use Illuminate\Http\Request;
+use App\Services\Action\DefaultFallbackService;
 use App\Services\Action\CurrentWeatherService;
 use App\Services\Action\WeatherByDateService;
 use App\Services\Action\WebSearchService;
 use App\Services\Action\VisionDescribeImageService;
-use App\Services\Action\DefaultFallbackService;
+use App\Services\Action\CurrentDateTimeService;
 
 class ActionFactory
 {
@@ -23,6 +24,8 @@ class ActionFactory
             return new WebSearchService($request['queryResult']['parameters']['topic']);
         } else if ($request['queryResult']['action'] == 'vision.describe_image') {
             return new VisionDescribeImageService($request['originalDetectIntentRequest']['payload']['data']['message']['attachments'][0]['payload']['url']);
+        } else if ($request['queryResult']['action'] == 'datetime.current') {
+            return new CurrentDateTimeService($request['queryResult']['parameters']['geo-city']);
         }
     }
 }

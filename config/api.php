@@ -19,5 +19,10 @@ return [
     'wolfram_alpha' => [
         'base_url' => 'https://api.wolframalpha.com/v1/result',
         'api_key' => env('API_WOLFRAM_ALPHA_KEY', getenv('API_WOLFRAM_ALPHA_KEY') ? null : null),
+    ],
+
+    'timezone_db' => [
+        'base_url' => 'https://api.timezonedb.com/v2.1/get-time-zone',
+        'api_key' => env('API_TIMEZONE_DB_KEY', getenv('API_TIMEZONE_DB_KEY') ? null : null),
     ]
 ];
