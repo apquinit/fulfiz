@@ -36,8 +36,5 @@ class GetTokenTest extends TestCase
 
         $response = $this->post('/auth/token', ['username' => 'test_user_invalid', 'password' => 'test_password_invalid']);
         $response->assertResponseStatus(404);
-        $response->seeJsonStructure([
-            "error",
-        ]);
     }
 }
