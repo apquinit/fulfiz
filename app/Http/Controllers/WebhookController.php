@@ -25,7 +25,7 @@ class WebhookController extends Controller
         $this->fulfillmentService = $fulfillmentService;
     }
 
-    public function handle(Request $request)
+    public function dialogflow(Request $request)
     {
         Log::info($request);
 
