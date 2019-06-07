@@ -71,8 +71,7 @@
                 </div>
                 
                 <div class="links">
-                    <a href="#">Request an Account</a>
-                    <a href="#">Get a Token</a>
+                    <a href="#">View on GitHub</a>
                 </div>
             </div>
         </div>
