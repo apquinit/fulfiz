@@ -33,10 +33,10 @@ class CurrentDateTimeService implements ActionServiceInterface
 
     private function setTextResponse($currentDateTime)
     {
-        $time = date('h:i:s A', strtotime($timestamp));
-        $day = date('l', strtotime($timestamp));
-        $date = date('F j', strtotime($timestamp));
-        $year = date('Y', strtotime($timestamp));
+        $time = date('h:i:s A', strtotime($currentDateTime));
+        $day = date('l', strtotime($currentDateTime));
+        $date = date('F j', strtotime($currentDateTime));
+        $year = date('Y', strtotime($currentDateTime));
 
         $textResponse = $time . ', ' . $day . ', ' . $date. ', ' . $year;
         
