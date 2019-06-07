@@ -54,9 +54,9 @@ class AuthController extends Controller
     {
         // Validate user.
         if (empty($this->request->input('username')) or empty($this->request->input('password'))) {
-            abort(404, 'User Not Found');
+            abort(422, 'Unprocessable Entity');
         }
-        
+
         // Get user from database.
         $user = $this->userService->getUserByUsername($this->request->input('username'));
 
