@@ -1,5 +1,5 @@
-# Irene Fulfillment Server
+# Irene Server
 
-[![Build Status](https://travis-ci.org/apquinit/irene-fulfillment-server.svg?branch=master)](https://travis-ci.org/apquinit/irene-fulfillment-server)
+[![Build Status](https://travis-ci.org/apquinit/irene-server.svg?branch=master)](https://travis-ci.org/apquinit/irene-server)
 
-Irene Fulfillment Server is a micro-framework built on top of Laravel Lumen to handle webhooks from a Dialogflow agent.
+Irene Server is a server application that handles requests and webhooks from various Irene services.
