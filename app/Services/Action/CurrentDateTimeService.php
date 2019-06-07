@@ -56,5 +56,4 @@ class CurrentDateTimeService implements ActionServiceInterface
 
         return $timeZoneDbService->getCurrentDateTime($latitude, $longitude);
     }
-
 }
