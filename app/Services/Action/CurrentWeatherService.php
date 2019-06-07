@@ -3,7 +3,7 @@
 namespace App\Services\Action;
 
 use App\Interfaces\ActionServiceInterface;
-use App\Services\External\LocationIQService;
+use App\Services\External\LocationIqService;
 use App\Services\External\DarkSkyService;
 
 class CurrentWeatherService implements ActionServiceInterface
@@ -67,7 +67,7 @@ class CurrentWeatherService implements ActionServiceInterface
 
     private function getLatitudeAndLongitudeFromLocationIqService()
     {
-        $locationIqService = new LocationIQService;
+        $locationIqService = new LocationIqService;
 
         return $locationIqService->getLatitudeAndLongitude($this->cityName);
     }

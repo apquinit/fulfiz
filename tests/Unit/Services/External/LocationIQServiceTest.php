@@ -1,19 +1,19 @@
 <?php
 
-use App\Services\External\LocationIQService;
+use App\Services\External\LocationIqService;
 
-class LocationIQServiceTest extends TestCase
+class LocationIqServiceTest extends TestCase
 {
     public function setUp() : void
     {
         parent::setUp();
-        $this->locationIqService = new LocationIQService;
+        $this->locationIqService = new LocationIqService;
     }
 
     /** @test */
-    public function LocationIQService_class_should_exist()
+    public function LocationIqService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\External\LocationIQService::class));
+        $this->assertTrue(class_exists(App\Services\External\LocationIqService::class));
     }
 
     /** @test */
