@@ -69,9 +69,8 @@
                 <div class="title m-b-md">
                     <?php echo $app_name; ?>
                 </div>
-                
                 <div class="links">
-                    <a href="#">View on GitHub</a>
+                    <a href="https://github.com/apquinit/irene-server">View on GitHub</a>
                 </div>
             </div>
         </div>
