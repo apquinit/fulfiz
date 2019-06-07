@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title><?php echo $app_name; ?></title>
+        <title><?php echo $appName; ?></title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -67,7 +67,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    <?php echo $app_name; ?>
+                    <?php echo $appName; ?>
                 </div>
                 <div class="links">
                     <a href="https://github.com/apquinit/irene-server">View on GitHub</a>

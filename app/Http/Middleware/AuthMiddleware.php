@@ -23,21 +23,15 @@ class AuthMiddleware
         $token = $request->bearerToken();
         
         if (!$token) {
-            return response()->json([
-                'error' => 'Token not provided'
-            ], 401);
+            abort(401, 'Unauthorized');
         }
 
         try {
             $credentials = JWT::decode($token, config('jwt.key'), ['HS256']);
         } catch (ExpiredException $e) {
-            return response()->json([
-                'error' => 'Token is expired'
-            ], 400);
+            abort(400, 'Token Expired');
         } catch (Exception $e) {
-            return response()->json([
-                'error' => 'Token is invalid'
-            ], 400);
+            abort(400, 'Token Invalid');
         }
 
         $user = User::find($credentials->sub);

@@ -19,9 +19,6 @@ class GetTokenPayloadTest extends TestCase
     {
         $response = $this->get('/auth/token/decode', ['HTTP_Authorization' => 'Bearer ' . $this->token]);
         $response->assertResponseStatus(200);
-        $response->seeJsonStructure([
-            "payload",
-        ]);
     }
 
     /** @test */
@@ -30,9 +27,6 @@ class GetTokenPayloadTest extends TestCase
         $invalid_token = 'invalid_token';
         $response = $this->get('/auth/token/decode', ['HTTP_Authorization' => 'Bearer ' . $invalid_token]);
         $response->assertResponseStatus(400);
-        $response->seeJsonStructure([
-            "error",
-        ]);
     }
 
     protected function getToken()
