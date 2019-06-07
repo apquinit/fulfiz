@@ -38,7 +38,7 @@ class CurrentDateTimeService implements ActionServiceInterface
         $date = date('F j', strtotime($currentDateTime));
         $year = date('Y', strtotime($currentDateTime));
 
-        $textResponse = $time . ', ' . $day . ', ' . $date. ', ' . $year;
+        $textResponse = $time . ', ' . $day . ', ' . $date. ', ' . $year . '.';
         
         return $textResponse;
     }
