@@ -36,7 +36,7 @@ class DarkSkyServiceTest extends TestCase
     /** @test */
     public function getWeatherByDate_method_should_return_weather_data_by_date_array_key_exists_when_passed_longitude_and_latitude_and_timestamp()
     {
-        $weather = $this->darkSkyService->getWeatherByDate('14.5906216', '120.9799696', '2019-05-10T12:00:00+08:00');
+        $weather = $this->darkSkyService->getWeatherByDate('14.5906216', '120.9799696', '2019-05-16T12:00:00+08:00');
         $this->assertTrue(
             array_key_exists('summary', $weather) &&
             array_key_exists('temperatureMin', $weather) &&
