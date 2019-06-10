@@ -33,7 +33,7 @@ class CurrentDateTimeService implements ActionServiceInterface
 
     private function setTextResponse($currentDateTime)
     {
-        $time = date('h:i:s A', strtotime($currentDateTime));
+        $time = date('h:i A', strtotime($currentDateTime));
         $day = date('l', strtotime($currentDateTime));
         $date = date('F j', strtotime($currentDateTime));
         $year = date('Y', strtotime($currentDateTime));
