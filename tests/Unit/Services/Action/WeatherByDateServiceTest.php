@@ -7,7 +7,7 @@ class WeatherByDateServiceTest extends TestCase
     public function setUp() : void
     {
         parent::setUp();
-        $this->weatherByDateService = new WeatherByDateService('Manila', '2019-05-14T12:00:00+08:00');        
+        $this->weatherByDateService = new WeatherByDateService('Manila', '2019-06-17T12:00:00+08:00');        
     }
 
     /** @test */
