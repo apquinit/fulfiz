@@ -16,7 +16,7 @@ class CurrentDateTimeService implements ActionServiceInterface
         $this->agent = $agent;
     }
 
-    public function process()
+    public function process() : WebhookClient
     {
         // Get parameters from agent
         $parameters = $this->agent->getParameters();
@@ -35,7 +35,7 @@ class CurrentDateTimeService implements ActionServiceInterface
         return $this->agent->reply($textResponse);
     }
 
-    private function assembleTextResponse($currentDateTime)
+    private function assembleTextResponse(string $currentDateTime) : string
     {
         $time = date('h:i A', strtotime($currentDateTime));
         $day = date('l', strtotime($currentDateTime));
@@ -47,14 +47,14 @@ class CurrentDateTimeService implements ActionServiceInterface
         return $textResponse;
     }
 
-    private function getLatitudeAndLongitudeFromLocationIqService($city)
+    private function getLatitudeAndLongitudeFromLocationIqService(string $city) : array
     {
         $locationIqService = new LocationIqService;
 
         return $locationIqService->getLatitudeAndLongitude($city);
     }
 
-    private function getCurrentDateTimeFromTimeZoneDbService($latitude, $longitude)
+    private function getCurrentDateTimeFromTimeZoneDbService(float $latitude, float $longitude) : string
     {
         $timeZoneDbService = new TimeZoneDbService;
 

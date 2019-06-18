@@ -16,7 +16,7 @@ class WeatherByDateService implements ActionServiceInterface
         $this->agent = $agent;
     }
 
-    public function process()
+    public function process() : WebhookClient
     {
         // Get parameters from agent
         $parameters = $this->agent->getParameters();
@@ -35,7 +35,7 @@ class WeatherByDateService implements ActionServiceInterface
         return $this->agent->reply($textResponse);
     }
 
-    private function assembleTextResponse($weather)
+    private function assembleTextResponse(array $weather) : string
     {
         $summary = $weather['summary'];
         $temperatureMin = $weather['temperatureMin']; // Degrees Celsius.
@@ -71,14 +71,14 @@ class WeatherByDateService implements ActionServiceInterface
         return $textResponse;
     }
 
-    private function getLatitudeAndLongitudeFromLocationIqService($city)
+    private function getLatitudeAndLongitudeFromLocationIqService(string $city) : array
     {
         $locationIqService = new LocationIqService;
 
         return $locationIqService->getLatitudeAndLongitude($city);
     }
 
-    private function getWeatherByDateFromDarkSkyService($latitude, $longitude, $date)
+    private function getWeatherByDateFromDarkSkyService(float $latitude, float $longitude, string $date) : array
     {
         $darkSkyService = new DarkSkyService;
         

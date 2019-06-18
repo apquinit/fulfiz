@@ -15,7 +15,7 @@ class DefaultFallbackService implements ActionServiceInterface
         $this->agent = $agent;
     }
 
-    public function process()
+    public function process() : WebhookClient
     {
         // Get query from agent
         $query = $this->agent->getQuery();
@@ -29,7 +29,7 @@ class DefaultFallbackService implements ActionServiceInterface
         return $this->agent->reply($textResponse);
     }
 
-    private function assembleTextResponse($shortAnswer)
+    private function assembleTextResponse(string $shortAnswer) : string
     {
         if (is_numeric($shortAnswer)) {
             return $textResponse;
@@ -44,7 +44,7 @@ class DefaultFallbackService implements ActionServiceInterface
         return $textResponse;
     }
 
-    private function getShortAnswerFromWolframAlphaService($query)
+    private function getShortAnswerFromWolframAlphaService(string $query) : string
     {
         $wolframAlphaService = new WolframAlphaService;
         

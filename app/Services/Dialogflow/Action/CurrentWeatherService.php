@@ -16,7 +16,7 @@ class CurrentWeatherService implements ActionServiceInterface
         $this->agent = $agent;
     }
 
-    public function process()
+    public function process() : WebhookClient
     {
         // Get parameters from agent
         $parameters = $this->agent->getParameters();
@@ -35,7 +35,7 @@ class CurrentWeatherService implements ActionServiceInterface
         return $this->agent->reply($textResponse);
     }
 
-    private function assembleTextResponse($weather)
+    private function assembleTextResponse(array $weather) : string
     {
         $summary = $weather['summary'];
         $temperature = $weather['temperature']; // Degrees Celsius.
@@ -69,14 +69,14 @@ class CurrentWeatherService implements ActionServiceInterface
         return $textResponse;
     }
 
-    private function getLatitudeAndLongitudeFromLocationIqService($city)
+    private function getLatitudeAndLongitudeFromLocationIqService(string $city) : array
     {
         $locationIqService = new LocationIqService;
 
         return $locationIqService->getLatitudeAndLongitude($city);
     }
 
-    private function getCurrentWeatherFromDarkSkyService($latitude, $longitude)
+    private function getCurrentWeatherFromDarkSkyService(float $latitude, float $longitude) : array
     {
         $darkSkyService = new DarkSkyService;
         

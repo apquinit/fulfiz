@@ -15,7 +15,7 @@ class WebSearchService implements ActionServiceInterface
         $this->agent = $agent;
     }
 
-    public function process()
+    public function process() : WebhookClient
     {
         // Get parameters from agent
         $parameters = $this->agent->getParameters();
@@ -29,14 +29,14 @@ class WebSearchService implements ActionServiceInterface
         return $this->agent->reply($textResponse);
     }
 
-    private function assembleTextResponse($searchResult)
+    private function assembleTextResponse(array $searchResult) : string
     {
         $textResponse = $searchResult['AbstractText'];
         
         return $textResponse;
     }
 
-    private function getInstantAnswerFromDuckDuckGoService($topic)
+    private function getInstantAnswerFromDuckDuckGoService(string $topic) : array
     {
         $duckDuckGoService = new DuckDuckGoService;
         
