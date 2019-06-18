@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use Illuminate\Http\Request;
 use Dialogflow\WebhookClient;
 use App\Services\Dialogflow\Action\DefaultFallbackService;
@@ -25,6 +26,7 @@ class DialogflowController
     public function handle()
     {
         $agent = $this->mapRequestToService(WebhookClient::fromData($this->request->json()->all()))->process();
+        Log::info('Dialogflow Request', ['Query' => $agent->getQuery(), 'Intent' => $agent->getIntent(), 'Action' => $agent->getAction(), 'Response' => $agent->render()]);
         
         return response()->json($agent->render());
     }

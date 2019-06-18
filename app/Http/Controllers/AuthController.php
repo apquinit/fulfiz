@@ -48,7 +48,7 @@ class AuthController
 
         // Verify if user exists.
         if (!$user) {
-            Log::info('User failed to lorequest tokengin.', ['username' => $this->request->input('username')]);
+            Log::info('User failed to to request token.', ['username' => $this->request->input('username')]);
             abort(404, 'User Not Found');
         }
 
@@ -73,6 +73,7 @@ class AuthController
      */
     public function getTokenPayload()
     {
+        Log::info('User successfully decoded token.', ['username' => $this->request->input('username')]);
         return response()->json([
             'payload' => $this->decodeTokenPayload($this->request->bearerToken())
         ], 200);
