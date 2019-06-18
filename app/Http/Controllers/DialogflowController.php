@@ -26,15 +26,8 @@ class DialogflowController
     public function handle()
     {
         $agent = $this->mapRequestToService(WebhookClient::fromData($this->request->json()->all()))->process();
-        
-        Log::info('Dialogflow request', [
-            'Session' => $agent->getSession(),
-            'Query' => $agent->getQuery(),
-            'Intent' => $agent->getIntent(),
-            'Action' => $agent->getAction(),
-            'Response' => $agent->render()
-            ]
-        );
+
+        Log::info('Dialogflow request', ['Session' => $agent->getSession(), 'Query' => $agent->getQuery(), 'Intent' => $agent->getIntent(), 'Action' => $agent->getAction(), 'Response' => $agent->render()]);
         
         return response()->json($agent->render());
     }

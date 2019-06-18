@@ -28,12 +28,7 @@ class WolframAlphaService
         $response  = $this->guzzleClient->get($requestUrl);
         $shortAnswer = $response->getBody()->getContents();
 
-        Log::info('Wolfram Alpha Short Answer API fallback request', [
-            'Status' => $response->getStatusCode(),
-            'Request' => $requestUrl,
-            'Response' => $shortAnswer
-            ]
-        );
+        Log::info('Wolfram Alpha Short Answer API fallback request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $shortAnswer]);
 
         return $shortAnswer;
     }

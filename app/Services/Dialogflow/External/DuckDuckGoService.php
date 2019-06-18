@@ -28,12 +28,7 @@ class DuckDuckGoService
         $response  = $this->guzzleClient->get($requestUrl);
         $instantAnswer = json_decode($response->getBody()->getContents(), true);
 
-        Log::info('DuckDuckGo Instant Answer API topic request', [
-            'Status' => $response->getStatusCode(),
-            'Request' => $requestUrl,
-            'Response' => $instantAnswer
-            ]
-        );
+        Log::info('DuckDuckGo Instant Answer API topic request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $instantAnswer]);
 
         return $instantAnswer;
     }

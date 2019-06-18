@@ -50,12 +50,7 @@ class DarkSkyService
         $content = json_decode($response->getBody()->getContents(), true);
         $dateWeather = $content['daily']['data'][0];
 
-        Log::info('Dark Sky API weather by date request', [
-            'Status' => $response->getStatusCode(),
-            'Request' => $requestUrl,
-            'Response' => $dateWeather
-            ]
-        );
+        Log::info('Dark Sky API weather by date request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $dateWeather]);
         
         return $dateWeather;
     }

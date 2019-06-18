@@ -29,12 +29,7 @@ class TimeZoneDbService
         $content = json_decode($response->getBody()->getContents(), true);
         $currentDateTime = $content['formatted'];
 
-        Log::info('Timezone DB API current date and time request', [
-            'Status' => $response->getStatusCode(),
-            'Request' => $requestUrl,
-            'Response' => $currentDateTime
-            ]
-        );
+        Log::info('Timezone DB API current date and time request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $currentDateTime]);
 
         return $currentDateTime;
     }

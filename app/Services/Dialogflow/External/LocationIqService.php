@@ -32,12 +32,7 @@ class LocationIqService
             'lon' => $content[0]['lon'],
         ];
 
-        Log::info('Location IQ API latitude and longitude request', [
-            'Status' => $response->getStatusCode(),
-            'Request' => $requestUrl,
-            'Response' => $location
-            ]
-        );
+        Log::info('Location IQ API latitude and longitude request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $location]);
 
         return $location;
     }
