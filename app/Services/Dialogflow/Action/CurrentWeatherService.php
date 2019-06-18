@@ -4,8 +4,8 @@ namespace App\Services\Dialogflow\Action;
 
 use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
-use App\Services\External\LocationIqService;
-use App\Services\External\DarkSkyService;
+use App\Services\Dialogflow\External\LocationIqService;
+use App\Services\Dialogflow\External\DarkSkyService;
 
 class CurrentWeatherService implements ActionServiceInterface
 {

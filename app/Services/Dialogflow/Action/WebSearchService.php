@@ -4,7 +4,7 @@ namespace App\Services\Dialogflow\Action;
 
 use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
-use App\Services\External\DuckDuckGoService;
+use App\Services\Dialogflow\External\DuckDuckGoService;
 
 class WebSearchService implements ActionServiceInterface
 {

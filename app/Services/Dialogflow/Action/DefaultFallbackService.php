@@ -4,7 +4,7 @@ namespace App\Services\Dialogflow\Action;
 
 use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
-use App\Services\External\WolframAlphaService;
+use App\Services\Dialogflow\External\WolframAlphaService;
 
 class DefaultFallbackService implements ActionServiceInterface
 {
