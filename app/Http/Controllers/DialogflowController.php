@@ -33,7 +33,7 @@ class DialogflowController
     }
 
     private function mapRequestToService(WebhookClient $agent)
-    {   
+    {
         if ($agent->getAction() === 'fallback.wolfram_alpha') {
             return new DefaultFallbackService($agent);
         } else if ($agent->getAction() === 'weather.current') {

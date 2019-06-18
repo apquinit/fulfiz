@@ -30,12 +30,7 @@ class DarkSkyService
         $content = json_decode($response->getBody()->getContents(), true);
         $currentWeather = $content['currently'];
 
-        Log::info('Dark Sky API current weather request', [
-            'Status' => $response->getStatusCode(),
-            'Request' => $requestUrl,
-            'Response' => $currentWeather
-            ]
-        );
+        Log::info('Dark Sky API current weather request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $currentWeather]);
         
         return $currentWeather;
     }
