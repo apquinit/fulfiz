@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Dialogflow\WebhookClient;
-use App\Services\Action\DefaultFallbackService;
-use App\Services\Action\CurrentWeatherService;
-use App\Services\Action\WeatherByDateService;
-use App\Services\Action\WebSearchService;
-use App\Services\Action\CurrentDateTimeService;
+use App\Services\Dialogflow\Action\DefaultFallbackService;
+use App\Services\Dialogflow\Action\CurrentWeatherService;
+use App\Services\Dialogflow\Action\WeatherByDateService;
+use App\Services\Dialogflow\Action\WebSearchService;
+use App\Services\Dialogflow\Action\CurrentDateTimeService;
 
 class DialogflowController
 {

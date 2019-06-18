@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Action;
+namespace App\Services\Dialogflow\Action;
 
 use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
