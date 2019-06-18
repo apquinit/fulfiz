@@ -69,10 +69,6 @@ $app->routeMiddleware([
     'auth' => App\Http\Middleware\AuthMiddleware::class
 ]);
 
-$app->routeMiddleware([
-    'fulfillment' => App\Http\Middleware\FulfillmentMiddleware::class
-]);
-
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
