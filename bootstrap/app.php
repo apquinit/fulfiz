@@ -66,7 +66,11 @@ $app->singleton(
 */
 
 $app->routeMiddleware([
-    'jwt.auth' => App\Http\Middleware\AuthMiddleware::class
+    'auth' => App\Http\Middleware\AuthMiddleware::class
+]);
+
+$app->routeMiddleware([
+    'fulfillment' => App\Http\Middleware\FulfillmentMiddleware::class
 ]);
 
 /*
