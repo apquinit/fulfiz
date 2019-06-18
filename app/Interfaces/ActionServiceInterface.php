@@ -4,5 +4,5 @@ namespace App\Interfaces;
 
 interface ActionServiceInterface
 {
-    public function getTextResponse();
+    public function process();
 }

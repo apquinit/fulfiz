@@ -2,40 +2,44 @@
 
 namespace App\Services\Action;
 
+use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
 use App\Services\External\DuckDuckGoService;
 
 class WebSearchService implements ActionServiceInterface
 {
-    private $topic;
+    private $agent;
 
-    public function __construct($topic)
+    public function __construct(WebhookClient $agent)
     {
-        $this->topic = $topic;
+        $this->agent = $agent;
     }
 
-    public function getTextResponse()
+    public function process()
     {
-        // 1. Get Instant Answer result from DuckDuckGo Service.
-        $searchResult = $this->getInstantAnswerFromDuckDuckGoService();
+        // Get parameters from agent
+        $parameters = $this->agent->getParameters();
 
-        // 2. Assemble text response from search result data.
-        $textResponse = $this->setTextResponse($searchResult);
+        // Get Instant Answer result from DuckDuckGo Service.
+        $searchResult = $this->getInstantAnswerFromDuckDuckGoService($parameters['topic']);
 
-        return $textResponse;
+        // Assemble text response from search result data.
+        $textResponse = $this->assembleTextResponse($searchResult);
+
+        return $this->agent->reply($textResponse);
     }
 
-    private function setTextResponse($searchResult)
+    private function assembleTextResponse($searchResult)
     {
         $textResponse = $searchResult['AbstractText'];
         
         return $textResponse;
     }
 
-    private function getInstantAnswerFromDuckDuckGoService()
+    private function getInstantAnswerFromDuckDuckGoService($topic)
     {
         $duckDuckGoService = new DuckDuckGoService;
         
-        return $duckDuckGoService->getInstantAnswer($this->topic);
+        return $duckDuckGoService->getInstantAnswer($topic);
     }
 }

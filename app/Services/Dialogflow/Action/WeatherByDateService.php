@@ -2,38 +2,40 @@
 
 namespace App\Services\Action;
 
+use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
 use App\Services\External\LocationIqService;
 use App\Services\External\DarkSkyService;
 
 class WeatherByDateService implements ActionServiceInterface
 {
-    private $cityName;
-    private $date;
+    private $agent;
 
-    public function __construct($cityName, $date)
+    public function __construct(WebhookClient $agent)
     {
-        $this->cityName = $cityName;
-        $this->date = $date;
+        $this->agent = $agent;
     }
 
-    public function getTextResponse()
+    public function process()
     {
-        // 1. Get latitude and longitude from Location IQ Service by city name.
-        $location = $this->getLatitudeAndLongitudeFromLocationIqService();
+        // Get parameters from agent
+        $parameters = $this->agent->getParameters();
+
+        // Get latitude and longitude from Location IQ Service by city name.
+        $location = $this->getLatitudeAndLongitudeFromLocationIqService($parameters['city']);
         $latitude = $location['lat'];
         $longitude = $location['lon'];
 
-        // 2. Get weather data from Dark Sky Service by latitude and longitude
-        $weather = $this->getWeatherByDateFromDarkSkyService($latitude, $longitude);
+        // Get weather data from Dark Sky Service by latitude and longitude
+        $weather = $this->getWeatherByDateFromDarkSkyService($latitude, $longitude, $parameters['date']);
 
-        // 3. Assemble text response from weather data.
-        $textResponse = $this->setTextResponse($weather);
+        // Assemble text response from weather data.
+        $textResponse = $this->assembleTextResponse($weather);
 
-        return $textResponse;
+        return $this->agent->reply($textResponse);
     }
 
-    private function setTextResponse($weather)
+    private function assembleTextResponse($weather)
     {
         $summary = $weather['summary'];
         $temperatureMin = $weather['temperatureMin']; // Degrees Celsius.
@@ -69,17 +71,17 @@ class WeatherByDateService implements ActionServiceInterface
         return $textResponse;
     }
 
-    private function getLatitudeAndLongitudeFromLocationIqService()
+    private function getLatitudeAndLongitudeFromLocationIqService($city)
     {
         $locationIqService = new LocationIqService;
 
-        return $locationIqService->getLatitudeAndLongitude($this->cityName);
+        return $locationIqService->getLatitudeAndLongitude($city);
     }
 
-    private function getWeatherByDateFromDarkSkyService($latitude, $longitude)
+    private function getWeatherByDateFromDarkSkyService($latitude, $longitude, $date)
     {
         $darkSkyService = new DarkSkyService;
         
-        return $darkSkyService->getWeatherByDate($latitude, $longitude, $this->date);
+        return $darkSkyService->getWeatherByDate($latitude, $longitude, $date);
     }
 }

@@ -2,36 +2,40 @@
 
 namespace App\Services\Action;
 
+use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
 use App\Services\External\LocationIqService;
 use App\Services\External\TimeZoneDbService;
 
 class CurrentDateTimeService implements ActionServiceInterface
 {
-    private $cityName;
+    private $agent;
 
-    public function __construct($cityName)
+    public function __construct(WebhookClient $agent)
     {
-        $this->cityName = $cityName;
+        $this->agent = $agent;
     }
 
-    public function getTextResponse()
+    public function process()
     {
-        // 1. Get latitude and longitude from Location IQ Service by city name.
-        $location = $this->getLatitudeAndLongitudeFromLocationIqService();
+        // Get parameters from agent
+        $parameters = $this->agent->getParameters();
+
+        // Get latitude and longitude from Location IQ Service by city name.
+        $location = $this->getLatitudeAndLongitudeFromLocationIqService($parameters['city']);
         $latitude = $location['lat'];
         $longitude = $location['lon'];
 
-        // 2. Get weather data from Dark Sky Service by latitude and longitude
+        // Get time and date data from Time Zone DB Service by latitude and longitude
         $currentDateTime = $this->getCurrentDateTimeFromTimeZoneDbService($latitude, $longitude);
 
-        // 3. Assemble text response from weather data.
-        $textResponse = $this->setTextResponse($currentDateTime);
+        // Assemble text response from weather data.
+        $textResponse = $this->assembleTextResponse($currentDateTime);
 
-        return $textResponse;
+        return $this->agent->reply($textResponse);
     }
 
-    private function setTextResponse($currentDateTime)
+    private function assembleTextResponse($currentDateTime)
     {
         $time = date('h:i A', strtotime($currentDateTime));
         $day = date('l', strtotime($currentDateTime));
@@ -43,11 +47,11 @@ class CurrentDateTimeService implements ActionServiceInterface
         return $textResponse;
     }
 
-    private function getLatitudeAndLongitudeFromLocationIqService()
+    private function getLatitudeAndLongitudeFromLocationIqService($city)
     {
         $locationIqService = new LocationIqService;
 
-        return $locationIqService->getLatitudeAndLongitude($this->cityName);
+        return $locationIqService->getLatitudeAndLongitude($city);
     }
 
     private function getCurrentDateTimeFromTimeZoneDbService($latitude, $longitude)

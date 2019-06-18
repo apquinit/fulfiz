@@ -3,5 +3,5 @@
 // Webhook Routes
 
 $router->group(['prefix' => 'webhook'], function () use ($router) {
-    $router->post('dialogflow', ['uses' => 'WebhookController@dialogflow', 'middleware' => 'auth']);    
+    $router->post('dialogflow', ['uses' => 'DialogflowController@handle', 'middleware' => 'auth']);    
 });

@@ -2,24 +2,35 @@
 
 namespace App\Services\Action;
 
+use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
 use App\Services\External\WolframAlphaService;
 
 class DefaultFallbackService implements ActionServiceInterface
 {
-    private $queryText;
+    private $agent;
 
-    public function __construct($queryText)
+    public function __construct(WebhookClient $agent)
     {
-        $this->queryText = $queryText;
+        $this->agent = $agent;
     }
 
-    public function getTextResponse()
+    public function process()
     {
-        // 1. Get short answer result from Wolfram Alpha Service.
-        $shortAnswer = $this->getShortAnswerFromWolframAlphaService();
-        $textResponse = $shortAnswer;
+        // Get query from agent
+        $query = $this->agent->getQuery();
 
+        // Get short answer result from Wolfram Alpha Service.
+        $shortAnswer = $this->getShortAnswerFromWolframAlphaService($query);
+
+        // Assemble text response from weather data.
+        $textResponse = $this->assembleTextResponse($shortAnswer);
+
+        return $this->agent->reply($textResponse);
+    }
+
+    private function assembleTextResponse($shortAnswer)
+    {
         if (is_numeric($shortAnswer)) {
             return $textResponse;
         } else {
@@ -29,14 +40,14 @@ class DefaultFallbackService implements ActionServiceInterface
                 $textResponse = ucfirst($shortAnswer) . '.';
             }
         }
-
+        
         return $textResponse;
     }
 
-    private function getShortAnswerFromWolframAlphaService()
+    private function getShortAnswerFromWolframAlphaService($query)
     {
         $wolframAlphaService = new WolframAlphaService;
         
-        return $wolframAlphaService->getShortAnswer($this->queryText);
+        return $wolframAlphaService->getShortAnswer($query);
     }
 }
