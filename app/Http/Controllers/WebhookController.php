@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\FulfillmentService;
 use Log;
 
-class WebhookController extends Controller
+class WebhookController
 {
     /**
      * Intent service instance.

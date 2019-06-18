@@ -2,24 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\HomeService;
-
-class HomeController extends Controller
+class HomeController
 {
-    private $homeService;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct(HomeService $homeService)
-    {
-        $this->homeService = $homeService;
-    }
-
     public function show()
     {
-        return view('home', ['appName' => $this->homeService->getAppNameFromConfigurationFile()]);
+        return view('home', ['appName' => config('app.name')]);
     }
 }

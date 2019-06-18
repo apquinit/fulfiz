@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\AuthService;
-use App\Services\UserService;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends Controller
+class AuthController
 {
     /**
      * Request instance.
@@ -25,23 +24,15 @@ class AuthController extends Controller
     private $authService;
 
     /**
-     * User service instance.
-     *
-     * @var App\ServicesService
-     */
-    private $userService;
-
-    /**
      * Create a new controller instance.
      *
      * @param  \Illuminate\Http\Request $request
      * @return void
      */
-    public function __construct(Request $request, AuthService $authService, UserService $userService)
+    public function __construct(Request $request, AuthService $authService)
     {
         $this->request = $request;
         $this->authService = $authService;
-        $this->userService = $userService;
     }
 
     /**
@@ -58,7 +49,7 @@ class AuthController extends Controller
         }
 
         // Get user from database.
-        $user = $this->userService->getUserByUsername($this->request->input('username'));
+        $user = User::where('username', $this->request->input('username'))->first();
 
         // Verify if user exists.
         if (!$user) {
