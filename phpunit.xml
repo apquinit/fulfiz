@@ -15,7 +15,7 @@
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./app/Services/External</directory>
+            <directory suffix=".php">./app/Services/Dialogflow/External</directory>
         </whitelist>
     </filter>
     <php>

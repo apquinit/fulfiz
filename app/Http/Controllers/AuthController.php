@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Services\AuthService;
 use Illuminate\Support\Facades\Hash;
+use Firebase\JWT\JWT;
+use Carbon\Carbon;
 
 class AuthController
 {
@@ -17,22 +18,14 @@ class AuthController
     private $request;
 
     /**
-     * Auth service instance.
-     *
-     * @var App\ServicesService
-     */
-    private $authService;
-
-    /**
      * Create a new controller instance.
      *
      * @param  \Illuminate\Http\Request $request
      * @return void
      */
-    public function __construct(Request $request, AuthService $authService)
+    public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->authService = $authService;
     }
 
     /**
@@ -59,7 +52,7 @@ class AuthController
         // Verify the password and generate the token.
         if (Hash::check($this->request->input('password'), $user->password)) {
             return response()->json([
-                'token' => $this->authService->generateToken($user->id)
+                'token' => $this->generateToken($user->id)
             ], 200);
         }
 
@@ -76,7 +69,60 @@ class AuthController
     public function getTokenPayload()
     {
         return response()->json([
-            'payload' => $this->authService->decodeTokenPayload($this->request->bearerToken())
+            'payload' => $this->decodeTokenPayload($this->request->bearerToken())
         ], 200);
+    }
+
+    /**
+     * Encode a new token.
+     *
+     * @param  $userId
+     * @return string
+     */
+    public function jwtEncodeToken(int $userId)
+    {
+        $payload = [
+            'iss' => env('APP_NAME'),
+            'sub' => $userId,
+            'iat' => time(),
+            'exp' => time() + config('jwt.lifetime') * 60,
+        ];
+
+        return JWT::encode($payload, config('jwt.key'));
+    }
+
+    /**
+     * Decode token.
+     *
+     * @param  $token
+     * @return string
+     */
+    private function jwtDecodeToken(string $token)
+    {
+        return JWT::decode($token, config('jwt.key'), ['HS256']);
+    }
+
+    /**
+     * Decode token payload.
+     *
+     * @param  $token
+     * @return string
+     */
+    private function decodeTokenPayload(string $token)
+    {
+        return $this->jwtDecodeToken($token);
+    }
+
+    /**
+     * Generate token.
+     *
+     * @param  $userId
+     * @return mixed
+     */
+    private function generateToken(int $userId)
+    {
+        $token = $this->jwtEncodeToken($userId);
+
+        return $token;
     }
 }
