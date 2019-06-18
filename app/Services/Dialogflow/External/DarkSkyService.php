@@ -19,7 +19,7 @@ class DarkSkyService
         $this->guzzleClient = new Client;
     }
 
-    public function getCurrentWeather($latitude, $longitude)
+    public function getCurrentWeather(float $latitude, float $longitude) : array
     {
         // Dark Sky forecast request URL (https://api.darksky.net/forecast/5a050170535218d28b85e8cad4e6f781/14.5906216,120.9799696?exclude=[minutely,hourly,daily,alerts,flags]&units=si)
 
@@ -32,7 +32,7 @@ class DarkSkyService
         return $currentWeather;
     }
 
-    public function getWeatherByDate($latitude, $longitude, $date)
+    public function getWeatherByDate(float $latitude, float $longitude, string $date) : array
     {
         // Dark Sky forecast request URL (https://api.darksky.net/forecast/5a050170535218d28b85e8cad4e6f781/14.5906216,120.9799696,2019-05-10T12:00:00+08:00?exclude=[minutely,hourly,daily,alerts,flags]&units=si)
 

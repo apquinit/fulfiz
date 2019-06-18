@@ -19,7 +19,7 @@ class WolframAlphaService
         $this->guzzleClient = new Client;
     }
 
-    public function getShortAnswer($queryText)
+    public function getShortAnswer(string $queryText) : string
     {
         // Short Answer request URL (https://api.wolframalpha.com/v1/result?appid=DEMO&i=QUERY)
         

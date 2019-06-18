@@ -19,7 +19,7 @@ class TimeZoneDbService
         $this->guzzleClient = new Client;
     }
 
-    public function getCurrentDateTime($latitude, $longitude)
+    public function getCurrentDateTime(float $latitude, float $longitude) : string
     {
         // Location IQ request URL (https://api.timezonedb.com/v2.1/get-time-zone?key=0RPFRW3KR7BJ&format=json&by=position&lat=14.5906216&lng=120.9799696)
         

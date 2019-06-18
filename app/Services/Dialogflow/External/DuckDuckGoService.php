@@ -19,7 +19,7 @@ class DuckDuckGoService
         $this->guzzleClient = new Client;
     }
 
-    public function getInstantAnswer($topic)
+    public function getInstantAnswer(string $topic) : array
     {
         // DuckDuckGo Instant Answer request URL (https://api.duckduckgo.com/?q=artificial%20intelligence&format=json&no_redirect=1&no_html=1&skip_disambig=1)
 
