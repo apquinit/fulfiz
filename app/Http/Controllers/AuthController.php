@@ -94,7 +94,7 @@ class AuthController
             'exp' => time() + config('jwt.lifetime') * 60,
         ];
 
-        return JWT::encode($payload, config('jwt.ke'));
+        return JWT::encode($payload, config('jwt.key'));
     }
 
     /**
