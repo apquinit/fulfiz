@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -38,6 +39,7 @@ class AuthController
     {
         // Validate user.
         if (empty($this->request->input('username')) or empty($this->request->input('password'))) {
+            Log::info('User failed to request token.', ['username' => $this->request->input('username')]);
             abort(422, 'Unprocessable Entity');
         }
 
@@ -46,17 +48,20 @@ class AuthController
 
         // Verify if user exists.
         if (!$user) {
+            Log::info('User failed to lorequest tokengin.', ['username' => $this->request->input('username')]);
             abort(404, 'User Not Found');
         }
 
         // Verify the password and generate the token.
         if (Hash::check($this->request->input('password'), $user->password)) {
+            Log::info('User successfully requested token.', ['username' => $this->request->input('username')]);
             return response()->json([
                 'token' => $this->generateToken($user->id)
             ], 200);
         }
 
         // Thrown when password is invalid.
+        Log::info('User failed to request token.', ['username' => $this->request->input('username')]);
         abort(404, 'User Not Found');
     }
 
@@ -79,7 +84,7 @@ class AuthController
      * @param  $userId
      * @return string
      */
-    public function jwtEncodeToken(int $userId)
+    private function jwtEncodeToken(int $userId)
     {
         $payload = [
             'iss' => env('APP_NAME'),
