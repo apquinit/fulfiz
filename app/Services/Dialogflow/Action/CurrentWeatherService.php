@@ -1,37 +1,41 @@
 <?php
 
-namespace App\Services\Action;
+namespace App\Services\Dialogflow\Action;
 
+use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
-use App\Services\External\LocationIqService;
-use App\Services\External\DarkSkyService;
+use App\Services\Dialogflow\External\LocationIqService;
+use App\Services\Dialogflow\External\DarkSkyService;
 
 class CurrentWeatherService implements ActionServiceInterface
 {
-    private $cityName;
+    private $agent;
 
-    public function __construct($cityName)
+    public function __construct(WebhookClient $agent)
     {
-        $this->cityName = $cityName;
+        $this->agent = $agent;
     }
 
-    public function getTextResponse()
+    public function process() : WebhookClient
     {
-        // 1. Get latitude and longitude from Location IQ Service by city name.
-        $location = $this->getLatitudeAndLongitudeFromLocationIqService();
+        // Get parameters from agent
+        $parameters = $this->agent->getParameters();
+
+        // Get latitude and longitude from Location IQ Service by city name.
+        $location = $this->getLatitudeAndLongitudeFromLocationIqService($parameters['city']);
         $latitude = $location['lat'];
         $longitude = $location['lon'];
 
-        // 2. Get weather data from Dark Sky Service by latitude and longitude
+        // Get weather data from Dark Sky Service by latitude and longitude
         $weather = $this->getCurrentWeatherFromDarkSkyService($latitude, $longitude);
 
-        // 3. Assemble text response from weather data.
-        $textResponse = $this->setTextResponse($weather);
+        // Assemble text response from weather data.
+        $textResponse = $this->assembleTextResponse($weather);
 
-        return $textResponse;
+        return $this->agent->reply($textResponse);
     }
 
-    private function setTextResponse($weather)
+    private function assembleTextResponse(array $weather) : string
     {
         $summary = $weather['summary'];
         $temperature = $weather['temperature']; // Degrees Celsius.
@@ -65,14 +69,14 @@ class CurrentWeatherService implements ActionServiceInterface
         return $textResponse;
     }
 
-    private function getLatitudeAndLongitudeFromLocationIqService()
+    private function getLatitudeAndLongitudeFromLocationIqService(string $city) : array
     {
         $locationIqService = new LocationIqService;
 
-        return $locationIqService->getLatitudeAndLongitude($this->cityName);
+        return $locationIqService->getLatitudeAndLongitude($city);
     }
 
-    private function getCurrentWeatherFromDarkSkyService($latitude, $longitude)
+    private function getCurrentWeatherFromDarkSkyService(float $latitude, float $longitude) : array
     {
         $darkSkyService = new DarkSkyService;
         

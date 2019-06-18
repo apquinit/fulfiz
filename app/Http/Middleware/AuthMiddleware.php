@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Log;
 use Closure;
 use Exception;
 use App\Models\User;
@@ -23,14 +24,17 @@ class AuthMiddleware
         $token = $request->bearerToken();
         
         if (!$token) {
+            Log::alert('Unauthorized request');
             abort(401, 'Unauthorized');
         }
 
         try {
             $credentials = JWT::decode($token, config('jwt.key'), ['HS256']);
         } catch (ExpiredException $e) {
+            Log::alert('User provided token is expired');
             abort(400, 'Token Expired');
         } catch (Exception $e) {
+            Log::alert('User provided token is invalid');
             abort(400, 'Token Invalid');
         }
 

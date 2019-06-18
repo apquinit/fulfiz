@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Services\AuthService;
-use App\Services\UserService;
 use Illuminate\Support\Facades\Hash;
+use Firebase\JWT\JWT;
+use Carbon\Carbon;
 
-class AuthController extends Controller
+class AuthController
 {
     /**
      * Request instance.
@@ -18,30 +19,14 @@ class AuthController extends Controller
     private $request;
 
     /**
-     * Auth service instance.
-     *
-     * @var App\ServicesService
-     */
-    private $authService;
-
-    /**
-     * User service instance.
-     *
-     * @var App\ServicesService
-     */
-    private $userService;
-
-    /**
      * Create a new controller instance.
      *
      * @param  \Illuminate\Http\Request $request
      * @return void
      */
-    public function __construct(Request $request, AuthService $authService, UserService $userService)
+    public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->authService = $authService;
-        $this->userService = $userService;
     }
 
     /**
@@ -54,25 +39,29 @@ class AuthController extends Controller
     {
         // Validate user.
         if (empty($this->request->input('username')) or empty($this->request->input('password'))) {
+            Log::alert('User failed to request token', ['username' => $this->request->input('username')]);
             abort(422, 'Unprocessable Entity');
         }
 
         // Get user from database.
-        $user = $this->userService->getUserByUsername($this->request->input('username'));
+        $user = User::where('username', $this->request->input('username'))->first();
 
         // Verify if user exists.
         if (!$user) {
+            Log::alert('User failed to to request token', ['username' => $this->request->input('username')]);
             abort(404, 'User Not Found');
         }
 
         // Verify the password and generate the token.
         if (Hash::check($this->request->input('password'), $user->password)) {
+            Log::info('User successfully requested token', ['username' => $this->request->input('username')]);
             return response()->json([
-                'token' => $this->authService->generateToken($user->id)
+                'token' => $this->generateToken($user->id)
             ], 200);
         }
 
         // Thrown when password is invalid.
+        Log::alert('User failed to request token', ['username' => $this->request->input('username')]);
         abort(404, 'User Not Found');
     }
 
@@ -84,8 +73,62 @@ class AuthController extends Controller
      */
     public function getTokenPayload()
     {
+        Log::info('User successfully decoded token');
         return response()->json([
-            'payload' => $this->authService->decodeTokenPayload($this->request->bearerToken())
+            'payload' => $this->decodeTokenPayload($this->request->bearerToken())
         ], 200);
+    }
+
+    /**
+     * Encode a new token.
+     *
+     * @param  $userId
+     * @return string
+     */
+    private function jwtEncodeToken(int $userId)
+    {
+        $payload = [
+            'iss' => env('APP_NAME'),
+            'sub' => $userId,
+            'iat' => time(),
+            'exp' => time() + config('jwt.lifetime') * 60,
+        ];
+
+        return JWT::encode($payload, config('jwt.key'));
+    }
+
+    /**
+     * Decode token.
+     *
+     * @param  $token
+     * @return string
+     */
+    private function jwtDecodeToken(string $token)
+    {
+        return JWT::decode($token, config('jwt.key'), ['HS256']);
+    }
+
+    /**
+     * Decode token payload.
+     *
+     * @param  $token
+     * @return string
+     */
+    private function decodeTokenPayload(string $token)
+    {
+        return $this->jwtDecodeToken($token);
+    }
+
+    /**
+     * Generate token.
+     *
+     * @param  $userId
+     * @return mixed
+     */
+    private function generateToken(int $userId)
+    {
+        $token = $this->jwtEncodeToken($userId);
+
+        return $token;
     }
 }

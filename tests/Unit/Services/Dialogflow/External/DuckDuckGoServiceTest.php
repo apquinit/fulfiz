@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\External\DuckDuckGoService;
+use App\Services\Dialogflow\External\DuckDuckGoService;
 
 class DuckDuckGoServiceTest extends TestCase
 {
@@ -13,7 +13,7 @@ class DuckDuckGoServiceTest extends TestCase
     /** @test */
     public function DuckDuckGoService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\External\DuckDuckGoService::class));
+        $this->assertTrue(class_exists(App\Services\Dialogflow\External\DuckDuckGoService::class));
     }
 
     /** @test */

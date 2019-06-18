@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\HomeService;
+use Log;
+use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController
 {
-    private $homeService;
-
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(HomeService $homeService)
+    public function __construct(Request $request)
     {
-        $this->homeService = $homeService;
+        $this->request = $request;
     }
 
     public function show()
     {
-        return view('home', ['appName' => $this->homeService->getAppNameFromConfigurationFile()]);
+        Log::info('User successfully accessed Home page');
+        return view('home', ['appName' => config('app.name')]);
     }
 }

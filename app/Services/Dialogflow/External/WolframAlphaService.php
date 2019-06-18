@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Services\External;
+namespace App\Services\Dialogflow\External;
 
+use Log;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
@@ -19,13 +20,15 @@ class WolframAlphaService
         $this->guzzleClient = new Client;
     }
 
-    public function getShortAnswer($queryText)
+    public function getShortAnswer(string $queryText) : string
     {
         // Short Answer request URL (https://api.wolframalpha.com/v1/result?appid=DEMO&i=QUERY)
         
         $requestUrl = config('api.wolfram_alpha.base_url') . '?appid=' . config('api.wolfram_alpha.api_key') . '&i=' . $queryText . '&units=metric';
         $response  = $this->guzzleClient->get($requestUrl);
         $shortAnswer = $response->getBody()->getContents();
+
+        Log::info('Wolfram Alpha Short Answer API fallback request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $shortAnswer]);
 
         return $shortAnswer;
     }

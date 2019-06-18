@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Services\External;
+namespace App\Services\Dialogflow\External;
 
+use Log;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
@@ -19,7 +20,7 @@ class DarkSkyService
         $this->guzzleClient = new Client;
     }
 
-    public function getCurrentWeather($latitude, $longitude)
+    public function getCurrentWeather(float $latitude, float $longitude) : array
     {
         // Dark Sky forecast request URL (https://api.darksky.net/forecast/5a050170535218d28b85e8cad4e6f781/14.5906216,120.9799696?exclude=[minutely,hourly,daily,alerts,flags]&units=si)
 
@@ -28,11 +29,18 @@ class DarkSkyService
         $response  = $this->guzzleClient->get($requestUrl);
         $content = json_decode($response->getBody()->getContents(), true);
         $currentWeather = $content['currently'];
+
+        Log::info('Dark Sky API current weather request', [
+            'Status' => $response->getStatusCode(),
+            'Request' => $requestUrl,
+            'Response' => $currentWeather
+            ]
+        );
         
         return $currentWeather;
     }
 
-    public function getWeatherByDate($latitude, $longitude, $date)
+    public function getWeatherByDate(float $latitude, float $longitude, string $date) : array
     {
         // Dark Sky forecast request URL (https://api.darksky.net/forecast/5a050170535218d28b85e8cad4e6f781/14.5906216,120.9799696,2019-05-10T12:00:00+08:00?exclude=[minutely,hourly,daily,alerts,flags]&units=si)
 
@@ -41,6 +49,8 @@ class DarkSkyService
         $response = $this->guzzleClient->get($requestUrl);
         $content = json_decode($response->getBody()->getContents(), true);
         $dateWeather = $content['daily']['data'][0];
+
+        Log::info('Dark Sky API weather by date request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $dateWeather]);
         
         return $dateWeather;
     }

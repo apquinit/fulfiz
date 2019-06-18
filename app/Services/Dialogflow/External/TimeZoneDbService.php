@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Services\External;
+namespace App\Services\Dialogflow\External;
 
+use Log;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
@@ -19,7 +20,7 @@ class TimeZoneDbService
         $this->guzzleClient = new Client;
     }
 
-    public function getCurrentDateTime($latitude, $longitude)
+    public function getCurrentDateTime(float $latitude, float $longitude) : string
     {
         // Location IQ request URL (https://api.timezonedb.com/v2.1/get-time-zone?key=0RPFRW3KR7BJ&format=json&by=position&lat=14.5906216&lng=120.9799696)
         
@@ -27,6 +28,8 @@ class TimeZoneDbService
         $response  = $this->guzzleClient->get($requestUrl);
         $content = json_decode($response->getBody()->getContents(), true);
         $currentDateTime = $content['formatted'];
+
+        Log::info('Timezone DB API current date and time request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $currentDateTime]);
 
         return $currentDateTime;
     }
