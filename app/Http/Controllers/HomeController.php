@@ -19,7 +19,7 @@ class HomeController
 
     public function show()
     {
-        Log::info('User successfully accessed Home page.');
+        Log::info('User successfully accessed Home page');
         return view('home', ['appName' => config('app.name')]);
     }
 }

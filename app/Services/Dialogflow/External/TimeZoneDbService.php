@@ -2,6 +2,7 @@
 
 namespace App\Services\Dialogflow\External;
 
+use Log;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
@@ -27,6 +28,13 @@ class TimeZoneDbService
         $response  = $this->guzzleClient->get($requestUrl);
         $content = json_decode($response->getBody()->getContents(), true);
         $currentDateTime = $content['formatted'];
+
+        Log::info('Timezone DB API current date and time request', [
+            'Status' => $response->getStatusCode(),
+            'Request' => $requestUrl,
+            'Response' => $currentDateTime
+            ]
+        );
 
         return $currentDateTime;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Services\Dialogflow\External;
 
+use Log;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
@@ -26,6 +27,13 @@ class DuckDuckGoService
         $requestUrl = config('api.duck_duck_go.base_url') . '/?q=' . $topic  . '&format=json&no_redirect=1&no_html=1&skip_disambig=1';
         $response  = $this->guzzleClient->get($requestUrl);
         $instantAnswer = json_decode($response->getBody()->getContents(), true);
+
+        Log::info('DuckDuckGo Instant Answer API topic request', [
+            'Status' => $response->getStatusCode(),
+            'Request' => $requestUrl,
+            'Response' => $instantAnswer
+            ]
+        );
 
         return $instantAnswer;
     }

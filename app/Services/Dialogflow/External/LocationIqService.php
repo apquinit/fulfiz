@@ -2,6 +2,7 @@
 
 namespace App\Services\Dialogflow\External;
 
+use Log;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
@@ -30,6 +31,13 @@ class LocationIqService
             'lat' => $content[0]['lat'],
             'lon' => $content[0]['lon'],
         ];
+
+        Log::info('Location IQ API latitude and longitude request', [
+            'Status' => $response->getStatusCode(),
+            'Request' => $requestUrl,
+            'Response' => $location
+            ]
+        );
 
         return $location;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Services\Dialogflow\External;
 
+use Log;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
@@ -28,6 +29,13 @@ class DarkSkyService
         $response  = $this->guzzleClient->get($requestUrl);
         $content = json_decode($response->getBody()->getContents(), true);
         $currentWeather = $content['currently'];
+
+        Log::info('Dark Sky API current weather request', [
+            'Status' => $response->getStatusCode(),
+            'Request' => $requestUrl,
+            'Response' => $currentWeather
+            ]
+        );
         
         return $currentWeather;
     }
@@ -41,6 +49,13 @@ class DarkSkyService
         $response = $this->guzzleClient->get($requestUrl);
         $content = json_decode($response->getBody()->getContents(), true);
         $dateWeather = $content['daily']['data'][0];
+
+        Log::info('Dark Sky API weather by date request', [
+            'Status' => $response->getStatusCode(),
+            'Request' => $requestUrl,
+            'Response' => $dateWeather
+            ]
+        );
         
         return $dateWeather;
     }
