@@ -21,20 +21,21 @@ class LaunchSmartphoneApplicationService implements ActionServiceInterface
         $parameters = $this->agent->getParameters();
 
         // Launch smartphone application using Launch Smartphone Application Service.
-        $responseMessage = $this->sendMessageToTaskerAutoRemoteService('LAUNCH ' . strtoupper($parameters['application']));
+        $statusCode = $this->sendMessageToTaskerAutoRemoteService('LAUNCH ' . strtoupper($parameters['application']));
 
         // Assemble text response from response message.
-        $textResponse = $this->assembleTextResponse($responseMessage);
+        $textResponse = $this->assembleTextResponse($statusCode);
 
         return $this->agent->reply($textResponse);
     }
 
-    private function assembleTextResponse(string $responseMessage) : string
+    private function assembleTextResponse($statusCode) : string
     {
-        if ($responseMessage === 'OK') {
-            $textResponse = 'Got it. Opening application.';   
+        if ($statusCode === 200) {
+            $textResponseArray = ['Okay.', 'Sure!', 'Got it.', 'Opening application', 'Okay. Opening application.', 'Sure! Opening application.', 'Got it. Opening application.'];
+            $textResponse = array_rand($textResponseArray, 1);   
         } else {
-            $textResponse = 'Ooops! An error occured while trying to contact your smartphone.';
+            $textResponse = 'An error occured while I\'m trying to contact your smartphone.';
         }
 
         return $textResponse;
