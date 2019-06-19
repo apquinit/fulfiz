@@ -35,7 +35,7 @@ class LaunchSmartphoneApplicationService implements ActionServiceInterface
             $textResponseArray = ['Okay.', 'Sure!', 'Got it.', 'Opening application', 'Okay. Opening application.', 'Sure! Opening application.', 'Got it. Opening application.'];
             $textResponse = array_rand($textResponseArray, 1);   
         } else {
-            $textResponse = 'An error occured while I\'m trying to contact your smartphone.';
+            $textResponse = 'An error occured while I\'m trying to access your smartphone.';
         }
 
         return $textResponse;
