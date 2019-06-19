@@ -10,6 +10,7 @@ use App\Services\Dialogflow\Action\CurrentWeatherService;
 use App\Services\Dialogflow\Action\WeatherByDateService;
 use App\Services\Dialogflow\Action\WebSearchService;
 use App\Services\Dialogflow\Action\CurrentDateTimeService;
+use App\Services\Dialogflow\Action\LaunchSmartphoneApplicationService;
 
 class DialogflowController
 {
@@ -44,6 +45,8 @@ class DialogflowController
             return new WebSearchService($agent);
         } else if ($agent->getAction() === 'datetime.current') {
             return new CurrentDateTimeService($agent);
+        } else if ($agent->getAction() === 'smartphone.launch_application') {
+            return new LaunchSmartphoneApplicationService($agent);
         }
     }
 }
