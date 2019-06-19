@@ -29,7 +29,7 @@ class LaunchSmartphoneApplicationService implements ActionServiceInterface
         return $this->agent->reply($textResponse);
     }
 
-    private function assembleTextResponse($statusCode) : string
+    private function assembleTextResponse(int $statusCode) : string
     {
         if ($statusCode === 200) {
             $textResponseArray = ['Okay.', 'Sure!', 'Got it.', 'Opening application', 'Okay. Opening application.', 'Sure! Opening application.', 'Got it. Opening application.'];
