@@ -34,15 +34,12 @@ class LaunchSmartphoneApplicationService implements ActionServiceInterface
     {
         if ($statusCode === 200) {
             $textResponseArray = ['Okay.', 'Sure!', 'Got it.', 'Opening application', 'Okay. Opening application.', 'Sure! Opening application.', 'Got it. Opening application.'];
-            $textResponse = array_rand($textResponseArray, 1);
+            $textResponseIndex = array_rand($textResponseArray);
+            $textResponse = $textResponseArray[$textResponseIndex];
 
-            Log::info($textResponseArray, $textResponse, $textResponse[0]);
-
-            return $textResponse[0];
+            return $textResponse;
         } else {
             $textResponse = 'An error occured while I\'m trying to access your smartphone.';
-
-            Log::info($textResponse);
             
             return $textResponse;
         }
