@@ -24,29 +24,37 @@ class PushbulletService
     {
         // Pushbullet request URL (https://api.pushbullet.com/v2/pushes)
         
-        $requestUrl = config('services.pushbullet.base_url') . '/pushes';
-        $requestHeader = [
-            'headers' => [
-                'Access-Token' => config('services.pushbullet.api_key'),
-                'Content-Type' => 'application/json',
-            ]
-        ];
-        $requestBody = [
-            'form_params' => [
-                'type' => 'note',
-                'title' => 'Irene',
-                'body' => $message,
-                'channel_tag' => $channelTag,
-            ]
-        ];
-    
+        // $requestUrl = config('services.pushbullet.base_url') . '/pushes';
+        // $requestHeader = [
+        //     'headers' => [
+        //         'Access-Token' => config('services.pushbullet.api_key'),
+        //         'Content-Type' => 'application/json',
+        //     ]
+        // ];
+        // $requestBody = [
+        //     'json' => [
+        //         'type' => 'note',
+        //         'title' => 'Irene',
+        //         'body' => $message,
+        //         'channel_tag' => $channelTag,
+        //     ]
+        // ];
 
-        // dd($requestUrl, $requestHeader, $requestBody);
+        // $response  = $this->guzzleClient->post($requestUrl, $requestHeader, $requestBody);
 
-        $response  = $this->guzzleClient->post($requestUrl, $requestHeader, $requestBody);
+        $curl = curl_init(config('services.pushbullet.base_url') . '/pushes');
 
-        Log::info('Pushbullet push note to channel request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => 'OK']);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, ['Access-Token: ' . config('services.pushbullet.api_key', 'Content-Type: application/json')]);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, ['channel_tag' => $channelTag, 'type' => 'note', 'title' => 'Irene', 'body' => $message]);
 
-        return $response->getStatusCode();
+        $response = curl_exec($curl);
+
+        if($response === '{}') {
+            return 200;
+        } else {
+            return 500;
+        }
     }
 }
