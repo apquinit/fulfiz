@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Pushbullet;
+namespace App\Services\External;
 
 use Log;
 use GuzzleHttp\Exception\GuzzleException;
@@ -24,23 +24,26 @@ class PushbulletService
     {
         // Pushbullet request URL (https://api.pushbullet.com/v2/pushes)
         
-        $requestUrl = config('api.pusher.base_url') . '/pushes';
+        $requestUrl = config('api.pushbullet.base_url') . '/pushes';
         $requestHeader = [
             'headers' => [
-                'Access-Token' => config('api.pusher.api_key'),
+                'Access-Token' => config('api.pushbullet.api_key'),
                 'Content-Type' => 'application/json',
-                ]
-            ];
+            ]
+        ];
         $requestBody = [
             'form_params' => [
                 'type' => 'note',
                 'title' => 'Irene',
                 'body' => $message,
                 'channel_tag' => $channelTag,
-                ]
-            ];
+            ]
+        ];
+    
 
-        $response  = $this->guzzleClient->post($requestUrl, $requestBody, $requestHeader);
+        // dd($requestUrl, $requestHeader, $requestBody);
+
+        $response  = $this->guzzleClient->post($requestUrl, $requestHeader, $requestBody);
 
         Log::info('Pushbullet push note to channel request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => 'OK']);
 

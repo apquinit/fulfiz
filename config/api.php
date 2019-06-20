@@ -31,8 +31,8 @@ return [
         'api_key' => env('API_AUTOREMOTE_KEY', getenv('API_AUTOREMOTE_KEY') ? null : null),
     ],
 
-    'pusher' => [
+    'pushbullet' => [
         'base_url' => 'https://api.pushbullet.com/v2',
-        'api_key' => env('API_PUSHER_KEY', getenv('API_PUSHER_KEY') ? null : null),
+        'api_key' => env('API_PUSHBULLET_KEY', getenv('API_PUSHBULLET_KEY') ? null : null),
     ]
 ];

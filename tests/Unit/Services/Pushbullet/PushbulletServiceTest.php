@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\Pushbullet\PushbulletService;
+use App\Services\External\PushbulletService;
 
 class PushbulletServiceTest extends TestCase
 {
