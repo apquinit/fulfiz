@@ -20,8 +20,16 @@ class LaunchSmartphoneApplicationService implements ActionServiceInterface
         // Get parameters from agent
         $parameters = $this->agent->getParameters();
 
-        // Launch smartphone application using Launch Smartphone Application Service.
-        $statusCode = $this->sendMessageToAutoRemoteService('LAUNCH ' . strtoupper($parameters['application']));
+        // Check device
+        if ($parameters['device'] === 'computer') {
+            // To Do
+            return $this->agent->reply('Sorry, my computer application launcher module is still in development.');
+        }
+        
+        if ($parameters['device'] === 'smartphone') {
+            // Launch smartphone application using Launch Smartphone Application Service.
+            $statusCode = $this->sendMessageToAutoRemoteService('LAUNCH ' . strtoupper($parameters['application']));
+        }
 
         // Assemble text response from response message.
         $textResponse = $this->assembleTextResponse($statusCode);
