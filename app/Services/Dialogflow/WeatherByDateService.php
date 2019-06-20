@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\Dialogflow\Action;
+namespace App\Services\Dialogflow;
 
 use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
-use App\Services\Dialogflow\External\LocationIqService;
-use App\Services\Dialogflow\External\DarkSkyService;
+use App\Services\External\LocationIqService;
+use App\Services\External\DarkSkyService;
 
 class WeatherByDateService implements ActionServiceInterface
 {

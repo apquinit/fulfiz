@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\Dialogflow\External\DarkSkyService;
+use App\Services\External\DarkSkyService;
 
 class DarkSkyServiceTest extends TestCase
 {
@@ -13,7 +13,7 @@ class DarkSkyServiceTest extends TestCase
     /** @test */
     public function DarkSkyService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\Dialogflow\External\DarkSkyService::class));
+        $this->assertTrue(class_exists(App\Services\External\DarkSkyService::class));
     }
 
     /** @test */

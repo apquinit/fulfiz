@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\Dialogflow\External\TimeZoneDbService;
+use App\Services\External\TimeZoneDbService;
 
 class TimeZoneDbServiceTest extends TestCase
 {
@@ -13,7 +13,7 @@ class TimeZoneDbServiceTest extends TestCase
     /** @test */
     public function TimeZoneDbService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\Dialogflow\External\TimeZoneDbService::class));
+        $this->assertTrue(class_exists(App\Services\External\TimeZoneDbService::class));
     }
 
     /** @test */

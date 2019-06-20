@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services\Dialogflow\Action;
+namespace App\Services\Dialogflow;
 
 use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
-use App\Services\Dialogflow\External\TaskerAutoRemoteService;
+use App\Services\External\AutoRemoteService;
 
-class LaunchSmartphoneApplicationService implements ActionServiceInterface
+class LaunchDeviceApplicationService implements ActionServiceInterface
 {
     private $agent;
 
@@ -20,8 +20,16 @@ class LaunchSmartphoneApplicationService implements ActionServiceInterface
         // Get parameters from agent
         $parameters = $this->agent->getParameters();
 
-        // Launch smartphone application using Launch Smartphone Application Service.
-        $statusCode = $this->sendMessageToTaskerAutoRemoteService('LAUNCH ' . strtoupper($parameters['application']));
+        // Check device
+        if ($parameters['device'] === 'computer') {
+            // To Do
+            return $this->agent->reply('Sorry, my computer application launcher module is still in development.');
+        }
+        
+        if ($parameters['device'] === 'smartphone') {
+            // Launch smartphone application using Launch Smartphone Application Service.
+            $statusCode = $this->sendMessageToAutoRemoteService('LAUNCH ' . strtoupper($parameters['application']));
+        }
 
         // Assemble text response from response message.
         $textResponse = $this->assembleTextResponse($statusCode);
@@ -44,10 +52,10 @@ class LaunchSmartphoneApplicationService implements ActionServiceInterface
         }
     }
 
-    private function sendMessageToTaskerAutoRemoteService(string $message) : string
+    private function sendMessageToAutoRemoteService(string $message) : string
     {
-        $taskerAutoRemoteService = new TaskerAutoRemoteService;
+        $autoRemoteService = new AutoRemoteService;
         
-        return $taskerAutoRemoteService->sendMessage($message);
+        return $autoRemoteService->sendMessage($message);
     }
 }

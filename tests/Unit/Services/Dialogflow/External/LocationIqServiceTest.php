@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\Dialogflow\External\LocationIqService;
+use App\Services\External\LocationIqService;
 
 class LocationIqServiceTest extends TestCase
 {
@@ -13,7 +13,7 @@ class LocationIqServiceTest extends TestCase
     /** @test */
     public function LocationIqService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\Dialogflow\External\LocationIqService::class));
+        $this->assertTrue(class_exists(App\Services\External\LocationIqService::class));
     }
 
     /** @test */
