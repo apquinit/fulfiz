@@ -29,7 +29,7 @@ class AuthMiddleware
         }
 
         try {
-            $credentials = JWT::decode($token, config('jwt.key'), ['HS256']);
+            $credentials = JWT::decode($token, config('auth.key'), ['HS256']);
         } catch (ExpiredException $e) {
             Log::alert('User provided token is expired');
             abort(400, 'Token Expired');

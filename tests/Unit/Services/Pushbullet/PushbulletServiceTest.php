@@ -13,7 +13,7 @@ class PushbulletServiceTest extends TestCase
     /** @test */
     public function PushbulletService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\Pushbullet\PushbulletService::class));
+        $this->assertTrue(class_exists(App\Services\External\PushbulletService::class));
     }
 
     /** @test */

@@ -24,10 +24,10 @@ class PushbulletService
     {
         // Pushbullet request URL (https://api.pushbullet.com/v2/pushes)
         
-        $requestUrl = config('api.pushbullet.base_url') . '/pushes';
+        $requestUrl = config('services.pushbullet.base_url') . '/pushes';
         $requestHeader = [
             'headers' => [
-                'Access-Token' => config('api.pushbullet.api_key'),
+                'Access-Token' => config('services.pushbullet.api_key'),
                 'Content-Type' => 'application/json',
             ]
         ];

@@ -91,10 +91,10 @@ class AuthController
             'iss' => env('APP_NAME'),
             'sub' => $userId,
             'iat' => time(),
-            'exp' => time() + config('jwt.lifetime') * 60,
+            'exp' => time() + config('auth.lifetime') * 60,
         ];
 
-        return JWT::encode($payload, config('jwt.key'));
+        return JWT::encode($payload, config('auth.key'));
     }
 
     /**
@@ -105,7 +105,7 @@ class AuthController
      */
     private function jwtDecodeToken(string $token)
     {
-        return JWT::decode($token, config('jwt.key'), ['HS256']);
+        return JWT::decode($token, config('auth.key'), ['HS256']);
     }
 
     /**
