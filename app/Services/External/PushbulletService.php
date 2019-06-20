@@ -20,7 +20,7 @@ class PushbulletService
         $this->guzzleClient = new Client;
     }
 
-    public function pushNoteToChannel(string $channelTag, string $message) : int
+    public function pushNoteToChannel(string $channelTag, string $title, string $message) : int
     {
         // Pushbullet request URL (https://api.pushbullet.com/v2/pushes)
         
@@ -47,11 +47,11 @@ class PushbulletService
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, ['Access-Token: ' . config('services.pushbullet.api_key', 'Content-Type: application/json')]);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, ['channel_tag' => $channelTag, 'type' => 'note', 'title' => 'Irene', 'body' => $message]);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, ['channel_tag' => $channelTag, 'type' => 'note', 'title' => $title, 'body' => $message]);
 
         $response = curl_exec($curl);
 
-        if($response === '{}') {
+        if ($response === '{}') {
             return 200;
         } else {
             return 500;

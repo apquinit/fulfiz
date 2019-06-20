@@ -19,7 +19,7 @@ class PushbulletServiceTest extends TestCase
     /** @test */
     public function pushNoteToChannel_method_should_return_OK_when_passed_channel_tag_and_message()
     {
-        $statusCode = $this->pushbulletService->pushNoteToChannel('irene', 'Test message.');
+        $statusCode = $this->pushbulletService->pushNoteToChannel('irene-test', 'Irene', 'Test message.');
 
         $this->assertTrue($statusCode === 200);
     }
