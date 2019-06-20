@@ -3,10 +3,10 @@
 namespace App\Services\Dialogflow;
 
 use Dialogflow\WebhookClient;
-use App\Interfaces\ActionServiceInterface;
+use App\Interfaces\DialogflowServiceInterface;
 use App\Services\External\WolframAlphaService;
 
-class DefaultFallbackService implements ActionServiceInterface
+class DefaultFallbackService implements DialogflowServiceInterface
 {
     private $agent;
 

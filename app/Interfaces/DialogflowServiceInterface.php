@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 use Dialogflow\WebhookClient;
 
-interface ActionServiceInterface
+interface DialogflowServiceInterface
 {
     public function process() : WebhookClient;
 }
