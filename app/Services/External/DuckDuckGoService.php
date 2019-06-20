@@ -24,7 +24,7 @@ class DuckDuckGoService
     {
         // DuckDuckGo Instant Answer request URL (https://api.duckduckgo.com/?q=artificial%20intelligence&format=json&no_redirect=1&no_html=1&skip_disambig=1)
 
-        $requestUrl = config('api.duck_duck_go.base_url') . '/?q=' . $topic  . '&format=json&no_redirect=1&no_html=1&skip_disambig=1';
+        $requestUrl = config('services.duck_duck_go.base_url') . '/?q=' . $topic  . '&format=json&no_redirect=1&no_html=1&skip_disambig=1';
         $response  = $this->guzzleClient->get($requestUrl);
         $instantAnswer = json_decode($response->getBody()->getContents(), true);
 

@@ -29,5 +29,10 @@ return [
     'autoremote' => [
         'base_url' => 'https://autoremotejoaomgcd.appspot.com/sendmessage',
         'api_key' => env('API_AUTOREMOTE_KEY', getenv('API_AUTOREMOTE_KEY') ? null : null),
+    ],
+
+    'pushbullet' => [
+        'base_url' => 'https://api.pushbullet.com/v2',
+        'api_key' => env('API_PUSHBULLET_KEY', getenv('API_PUSHBULLET_KEY') ? null : null),
     ]
 ];
