@@ -26,8 +26,8 @@ return [
         'api_key' => env('API_TIMEZONE_DB_KEY', getenv('API_TIMEZONE_DB_KEY') ? null : null),
     ],
 
-    'tasker_autoremote' => [
+    'autoremote' => [
         'base_url' => 'https://autoremotejoaomgcd.appspot.com/sendmessage',
-        'api_key' => env('API_TASKER_AUTOREMOTE_KEY', getenv('API_TASKER_AUTOREMOTE_KEY') ? null : null),
+        'api_key' => env('API_AUTOREMOTE_KEY', getenv('API_AUTOREMOTE_KEY') ? null : null),
     ]
 ];

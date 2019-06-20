@@ -4,7 +4,7 @@ namespace App\Services\Dialogflow\Action;
 
 use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
-use App\Services\Dialogflow\External\TaskerAutoRemoteService;
+use App\Services\Dialogflow\External\AutoRemoteService;
 
 class LaunchSmartphoneApplicationService implements ActionServiceInterface
 {
@@ -21,7 +21,7 @@ class LaunchSmartphoneApplicationService implements ActionServiceInterface
         $parameters = $this->agent->getParameters();
 
         // Launch smartphone application using Launch Smartphone Application Service.
-        $statusCode = $this->sendMessageToTaskerAutoRemoteService('LAUNCH ' . strtoupper($parameters['application']));
+        $statusCode = $this->sendMessageToAutoRemoteService('LAUNCH ' . strtoupper($parameters['application']));
 
         // Assemble text response from response message.
         $textResponse = $this->assembleTextResponse($statusCode);
@@ -44,9 +44,9 @@ class LaunchSmartphoneApplicationService implements ActionServiceInterface
         }
     }
 
-    private function sendMessageToTaskerAutoRemoteService(string $message) : string
+    private function sendMessageToAutoRemoteService(string $message) : string
     {
-        $taskerAutoRemoteService = new TaskerAutoRemoteService;
+        $taskerAutoRemoteService = new AutoRemoteService;
         
         return $taskerAutoRemoteService->sendMessage($message);
     }
