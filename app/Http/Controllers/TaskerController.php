@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Log;
 use Illuminate\Http\Request;
-use App\Services\Tasker\NotifyPresenceService;
+use App\Services\Tasker\NotifyLocationPresenceService;
 
 class TaskerController
 {
@@ -30,7 +30,7 @@ class TaskerController
     private function mapRequestToService(string $profile)
     {
         if ($profile === 'home.arrived' or $profile === 'home.left' or $profile === 'office.arrived' or $profile === 'office.left') {
-            return new NotifyPresenceService($profile);
+            return new NotifyLocationPresenceService($profile);
         }
     }
 }

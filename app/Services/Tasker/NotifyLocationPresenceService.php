@@ -5,7 +5,7 @@ namespace App\Services\Tasker;
 use App\Interfaces\TaskerServiceInterface;
 use App\Services\External\PushbulletService;
 
-class NotifyPresenceService implements TaskerServiceInterface
+class NotifyLocationPresenceService implements TaskerServiceInterface
 {
     private $profile;
 
