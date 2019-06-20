@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Dialogflow\Action;
+namespace App\Services\Dialogflow;
 
 use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
-use App\Services\Dialogflow\External\AutoRemoteService;
+use App\Services\External\AutoRemoteService;
 
 class LaunchSmartphoneApplicationService implements ActionServiceInterface
 {
@@ -46,8 +46,8 @@ class LaunchSmartphoneApplicationService implements ActionServiceInterface
 
     private function sendMessageToAutoRemoteService(string $message) : string
     {
-        $taskerAutoRemoteService = new AutoRemoteService;
+        $autoRemoteService = new AutoRemoteService;
         
-        return $taskerAutoRemoteService->sendMessage($message);
+        return $autoRemoteService->sendMessage($message);
     }
 }

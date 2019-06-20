@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\Dialogflow\External\WolframAlphaService;
+use App\Services\External\WolframAlphaService;
 
 class WolframAlphaServiceTest extends TestCase
 {
@@ -13,7 +13,7 @@ class WolframAlphaServiceTest extends TestCase
     /** @test */
     public function WolframAlphaService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\Dialogflow\External\WolframAlphaService::class));
+        $this->assertTrue(class_exists(App\Services\External\WolframAlphaService::class));
     }
 
     /** @test */

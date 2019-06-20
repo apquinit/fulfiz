@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Dialogflow\External;
+namespace App\Services\External;
 
 use Log;
 use GuzzleHttp\Exception\GuzzleException;

@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\Dialogflow\External\AutoRemoteService;
+use App\Services\External\AutoRemoteService;
 
 class AutoRemoteServiceTest extends TestCase
 {
@@ -13,7 +13,7 @@ class AutoRemoteServiceTest extends TestCase
     /** @test */
     public function AutoRemoteService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\Dialogflow\External\AutoRemoteService::class));
+        $this->assertTrue(class_exists(App\Services\External\AutoRemoteService::class));
     }
 
     /** @test */
