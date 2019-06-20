@@ -19,16 +19,16 @@ class NotifyLocationService implements TaskerServiceInterface
         $channelTag = 'irene';
         $title = 'Irene';
         
-        if ($this->profile === 'arrived.home') {
+        if ($this->profile === 'home.arrived') {
             $note = 'Paul arrived home.';
             $textResponse = $this->sendNoteToPushbulletService($channelTag, $title, $note);
-        } else if ($this->profile === 'left.home') {
+        } else if ($this->profile === 'home.left') {
             $note = 'Paul left home.';
             $textResponse = $this->sendNoteToPushbulletService($channelTag, $title, $note);
-        } else if ($this->profile === 'arrived.office') {
+        } else if ($this->profile === 'office.arrived') {
             $note = 'Paul arrived at the office.';
             $textResponse = $this->sendNoteToPushbulletService($channelTag, $title, $note);
-        } else if ($this->profile === 'left.office') {
+        } else if ($this->profile === 'office.left') {
             $note = 'Paul left the office.';
             $textResponse = $this->sendNoteToPushbulletService($channelTag, $title, $note);
         }
@@ -40,7 +40,7 @@ class NotifyLocationService implements TaskerServiceInterface
     {
         $pushbulletService = new PushbulletService;
         
-        $statusCode = $pushbulletService->pushNoteToChannel($note);
+        $statusCode = $pushbulletService->pushNoteToChannel($channelTag, $title, $note);
 
         if ($statusCode === 200) {
             return 'Success.';

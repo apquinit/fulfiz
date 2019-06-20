@@ -29,7 +29,7 @@ class TaskerController
 
     private function mapRequestToService(string $profile)
     {
-        if ($profile === 'arrived.home' or $profile === 'left.home' or $profile === 'arrived.office' or $profile === 'left.office') {
+        if ($profile === 'home.arrived' or $profile === 'home.left' or $profile === 'office.arrived' or $profile === 'office.left') {
             return new NotifyLocationService($profile);
         }
     }
