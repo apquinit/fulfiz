@@ -6,7 +6,7 @@ use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
 use App\Services\External\AutoRemoteService;
 
-class LaunchSmartphoneApplicationService implements ActionServiceInterface
+class LaunchDeviceApplicationService implements ActionServiceInterface
 {
     private $agent;
 
