@@ -29,5 +29,10 @@ return [
     'tasker_autoremote' => [
         'base_url' => 'https://autoremotejoaomgcd.appspot.com/sendmessage',
         'api_key' => env('API_TASKER_AUTOREMOTE_KEY', getenv('API_TASKER_AUTOREMOTE_KEY') ? null : null),
+    ],
+
+    'pusher' => [
+        'base_url' => 'https://api.pushbullet.com/v2',
+        'api_key' => env('API_PUSHER_KEY', getenv('API_PUSHER_KEY') ? null : null),
     ]
 ];
