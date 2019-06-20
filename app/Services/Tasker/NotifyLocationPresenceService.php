@@ -43,9 +43,9 @@ class NotifyLocationPresenceService implements TaskerServiceInterface
         $statusCode = $pushbulletService->pushNoteToChannel($channelTag, $title, $note);
 
         if ($statusCode === 200) {
-            return 'Success.';
+            return 'Success';
         } else {
-            return 'Error.';
+            return 'Error';
         }
     }
 }
