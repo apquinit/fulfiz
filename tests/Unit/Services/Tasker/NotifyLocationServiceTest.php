@@ -1,18 +1,18 @@
 <?php
 
-use App\Services\Tasker\NotifyLocationService;
+use App\Services\Tasker\NotifyPresenceService;
 
-class NotifyLocationServiceTest extends TestCase
+class NotifyPresenceServiceTest extends TestCase
 {
     public function setUp() : void
     {
         parent::setUp();
-        $this->notifyLocationService = new NotifyLocationService('arrived.home');
+        $this->notifyLocationService = new NotifyPresenceService('arrived.home');
     }
 
     /** @test */
-    public function NotifyLocationService_class_should_exist()
+    public function NotifyPresenceService_class_should_exist()
     {
-        $this->assertTrue(class_exists(App\Services\Tasker\NotifyLocationService::class));
+        $this->assertTrue(class_exists(App\Services\Tasker\NotifyPresenceService::class));
     }
 }
