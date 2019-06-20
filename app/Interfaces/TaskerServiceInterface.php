@@ -4,5 +4,5 @@ namespace App\Interfaces;
 
 interface TaskerServiceInterface
 {
-    public function process();
+    public function process() : string;
 }
