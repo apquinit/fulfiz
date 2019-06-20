@@ -3,11 +3,11 @@
 namespace App\Services\Dialogflow;
 
 use Dialogflow\WebhookClient;
-use App\Interfaces\ActionServiceInterface;
+use App\Interfaces\DialogflowServiceInterface;
 use App\Services\External\LocationIqService;
 use App\Services\External\DarkSkyService;
 
-class CurrentWeatherService implements ActionServiceInterface
+class CurrentWeatherService implements DialogflowServiceInterface
 {
     private $agent;
 
