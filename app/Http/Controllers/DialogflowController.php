@@ -45,7 +45,7 @@ class DialogflowController
             return new WebSearchService($agent);
         } else if ($agent->getAction() === 'datetime.current') {
             return new CurrentDateTimeService($agent);
-        } else if ($agent->getAction() === 'smartphone.launch_application') {
+        } else if ($agent->getAction() === 'device.launch_application') {
             return new LaunchDeviceApplicationService($agent);
         }
     }
