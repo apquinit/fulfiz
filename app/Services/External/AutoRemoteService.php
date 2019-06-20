@@ -26,7 +26,7 @@ class AutoRemoteService
         $requestUrl = config('api.autoremote.base_url') . '?key=' . config('api.autoremote.api_key') . '&message=' . $message;
         $response  = $this->guzzleClient->get($requestUrl);
 
-        Log::info('Tasker AutoRemote API send message request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => 'OK']);
+        Log::info('AutoRemote API send message request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => 'OK']);
 
         return $response->getStatusCode();
     }
