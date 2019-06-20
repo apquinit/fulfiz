@@ -27,11 +27,11 @@ $app->withEloquent();
 
 $app->configure('app');
 
-$app->configure('api');
-
-$app->configure('jwt');
+$app->configure('auth');
 
 $app->configure('database');
+
+$app->configure('services');
 
 /*
 |--------------------------------------------------------------------------

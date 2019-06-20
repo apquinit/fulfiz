@@ -24,7 +24,7 @@ class WolframAlphaService
     {
         // Short Answer request URL (https://api.wolframalpha.com/v1/result?appid=DEMO&i=QUERY)
         
-        $requestUrl = config('api.wolfram_alpha.base_url') . '?appid=' . config('api.wolfram_alpha.api_key') . '&i=' . $queryText . '&units=metric';
+        $requestUrl = config('services.wolfram_alpha.base_url') . '?appid=' . config('services.wolfram_alpha.api_key') . '&i=' . $queryText . '&units=metric';
         $response  = $this->guzzleClient->get($requestUrl);
         $shortAnswer = $response->getBody()->getContents();
 
