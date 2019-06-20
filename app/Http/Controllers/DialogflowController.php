@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use Log;
 use Illuminate\Http\Request;
 use Dialogflow\WebhookClient;
-use App\Services\Dialogflow\Action\DefaultFallbackService;
-use App\Services\Dialogflow\Action\CurrentWeatherService;
-use App\Services\Dialogflow\Action\WeatherByDateService;
-use App\Services\Dialogflow\Action\WebSearchService;
-use App\Services\Dialogflow\Action\CurrentDateTimeService;
-use App\Services\Dialogflow\Action\LaunchSmartphoneApplicationService;
+use App\Services\Dialogflow\DefaultFallbackService;
+use App\Services\Dialogflow\CurrentWeatherService;
+use App\Services\Dialogflow\WeatherByDateService;
+use App\Services\Dialogflow\WebSearchService;
+use App\Services\Dialogflow\CurrentDateTimeService;
+use App\Services\Dialogflow\LaunchDeviceApplicationService;
 
 class DialogflowController
 {
@@ -45,8 +45,8 @@ class DialogflowController
             return new WebSearchService($agent);
         } else if ($agent->getAction() === 'datetime.current') {
             return new CurrentDateTimeService($agent);
-        } else if ($agent->getAction() === 'smartphone.launch_application') {
-            return new LaunchSmartphoneApplicationService($agent);
+        } else if ($agent->getAction() === 'device.launch_application') {
+            return new LaunchDeviceApplicationService($agent);
         }
     }
 }

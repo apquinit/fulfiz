@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Dialogflow\Action;
+namespace App\Services\Dialogflow;
 
 use Dialogflow\WebhookClient;
 use App\Interfaces\ActionServiceInterface;
-use App\Services\Dialogflow\External\DuckDuckGoService;
+use App\Services\External\DuckDuckGoService;
 
 class WebSearchService implements ActionServiceInterface
 {
