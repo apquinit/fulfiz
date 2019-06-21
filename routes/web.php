@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('home', ['appName' => config('app.name')]);
 });
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
