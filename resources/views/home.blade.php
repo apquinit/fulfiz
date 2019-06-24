@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/admin') }}">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}">Dashboard</a>
                     <a href="https://github.com/apquinit/irene-server">Documentation</a>
                     <a href="https://github.com/apquinit/irene-server">GitHub</a>
                 </div>
