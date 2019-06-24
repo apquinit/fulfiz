@@ -5,7 +5,7 @@ namespace App\Services\Tasker;
 use App\Interfaces\TaskerServiceInterface;
 use App\Services\External\PushbulletService;
 
-class NotifyLocationService implements TaskerServiceInterface
+class NotifyLocationPresenceService implements TaskerServiceInterface
 {
     private $profile;
 
@@ -43,9 +43,9 @@ class NotifyLocationService implements TaskerServiceInterface
         $statusCode = $pushbulletService->pushNoteToChannel($channelTag, $title, $note);
 
         if ($statusCode === 200) {
-            return 'Success.';
+            return 'Success';
         } else {
-            return 'Error.';
+            return 'Error';
         }
     }
 }
