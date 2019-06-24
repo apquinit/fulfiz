@@ -6,6 +6,7 @@ php:
   - '7.3'
   
 before_script:
+  - php artisan key:generate
   - cp .env.testing .env
   - composer install --no-interaction
   - touch database/database.sqlite
