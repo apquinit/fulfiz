@@ -6,9 +6,9 @@ php:
   - '7.3'
   
 before_script:
-  - php artisan config:clear
   - composer install --no-interaction
   - cp .env.example .env
+  - php artisan config:clear
   - php artisan key:generate
   - touch database/database.sqlite
   - php artisan migrate --database=sqlite
