@@ -42,7 +42,7 @@
                         <img src="{{ $user_avatar }}" class="profile-img">
                         <div class="profile-body">
                             <h5>{{ app('VoyagerAuth')->user()->name }}</h5>
-                            <h6>{{ app('VoyagerAuth')->user()->email }}</h6>
+                            <h7>{{ app('VoyagerAuth')->user()->email }}</h7>
                         </div>
                     </li>
                     <li class="divider"></li>

@@ -96,7 +96,7 @@
                     </button>
 
                     <button type="submit" style="margin:5px;" class="btn btn-block login-button">
-                            <span> <a style="color: #FFFFFF" href="{{ url('/') }}">Back to Home</a> </span>
+                            <a style="color: #FFFFFF" href="{{ url('/') }}">Back to Home</a>
                     </button>
 
               </form>
