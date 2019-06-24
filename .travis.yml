@@ -10,8 +10,8 @@ before_script:
   - cp .env.example .env
   - php artisan config:clear
   - php artisan key:generate
-  - touch database/database.sqlite
-  - php artisan migrate --database=sqlite
+  # - touch database/database.sqlite
+  # - php artisan migrate --database=sqlite
   
 script:
   - vendor/bin/phpcs --config-set show_warnings 0
