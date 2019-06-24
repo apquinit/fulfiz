@@ -8,12 +8,12 @@ php:
 before_script:
   - composer install --no-interaction
   - cp .env.example .env
-  - php artisan config:clear
   - php artisan key:generate
   # - touch database/database.sqlite
   # - php artisan migrate --database=sqlite
   
-script:
-  - vendor/bin/phpcs --config-set show_warnings 0
-  - vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migrations/*,*/tests/* app
-  - vendor/bin/phpunit --coverage-text --testdox
+# script:
+#   - php artisan key:generate
+#   - vendor/bin/phpcs --config-set show_warnings 0
+#   - vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migrations/*,*/tests/* app
+#   - vendor/bin/phpunit --coverage-text --testdox
