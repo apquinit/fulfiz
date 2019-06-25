@@ -28,8 +28,8 @@ class DialogflowFulfillmentController extends Controller
 
     public function handle()
     {
-        dd(get_current_date_time(14.5906216, 120.9799696));
-
+        // dd(get_current_date_time(14.5906216, 120.9799696));
+        
         // Instantiate a Dialogflow Webhook client from the request
         $this->agent = WebhookClient::fromData($this->request->json()->all());
 
