@@ -24,7 +24,8 @@
         "laravel/homestead": "^8.6",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^7.5",
+        "thanhnamcnv/laravel-make-repository-service": "^1.0"
     },
     "config": {
         "optimize-autoloader": true,

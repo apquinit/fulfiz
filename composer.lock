@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4718ecc799c5835146564623f0052bb2",
+    "content-hash": "7f3a2b5b97e32c57a2a95a5ffbc8a097",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -5994,6 +5994,52 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2019-04-06T14:04:46+00:00"
+        },
+        {
+            "name": "thanhnamcnv/laravel-make-repository-service",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thanhnamcnv/laravel-make-repository-service.git",
+                "reference": "098b76ba9fb8808de233908c798febde4c95ec2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thanhnamcnv/laravel-make-repository-service/zipball/098b76ba9fb8808de233908c798febde4c95ec2e",
+                "reference": "098b76ba9fb8808de233908c798febde4c95ec2e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.0",
+                "illuminate/database": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NamTran\\LaravelMakeRepositoryService\\RepositoryServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NamTran\\LaravelMakeRepositoryService\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nam Tran",
+                    "email": "thanhnam2494@gmail.com"
+                }
+            ],
+            "description": "A simple package to create a make:repository, make:service command for Laravel 5+",
+            "time": "2019-04-04T19:51:45+00:00"
         },
         {
             "name": "theseer/tokenizer",
