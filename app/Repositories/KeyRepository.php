@@ -5,10 +5,7 @@ namespace App\Repositories;
 use App\Interfaces\KeyRepositoryInterface;
 use App\Models\Key;
 
-/**
- * Class KeyRepository.
- */
-class KeyRepository implements KeyRepositoryInterface
+class KeyRepository extends Repository implements KeyRepositoryInterface
 {
     public function getByNameAndStatus(string $name, string $status) : Key
     {
