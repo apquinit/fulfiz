@@ -21,8 +21,14 @@ class DateTimeCurrentFulfillmentService extends DialogflowFulfillmentService imp
 
     public function process() : void
     {
-        $this->textResponse = 'Test!';
-        
+        $currentDateTime = get_current_date_time(14.5906216, 120.9799696);
+        $hour = date('h:i A', strtotime($currentDateTime));
+        $day = date('l', strtotime($currentDateTime));
+        $date = date('F j', strtotime($currentDateTime));
+        $year = date('Y', strtotime($currentDateTime));
+
+        $this->textResponse = $hour . ', ' . $day . ', ' . $date. ', ' . $year . '.';
+
         return;
     }
 }
