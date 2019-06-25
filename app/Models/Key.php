@@ -8,13 +8,4 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Key extends Model
 {
     use SoftDeletes;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'description', 'status', 'key',
-    ];
 }

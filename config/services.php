@@ -44,4 +44,39 @@ return [
         ],
     ],
 
+    'location_iq' => [
+        'base_url' => env('LOCATION_IQ_URL', null),
+        'api_key' => env('LOCATION_IQ_KEY', null)
+    ],
+
+    'dark_sky' => [
+        'base_url' => env('DARK_SKY_URL', null),
+        'api_key' => env('DARK_SKY_KEY', null),
+        'units' => 'si',
+    ],
+    
+    'duck_duck_go' => [
+        'base_url' => env('DUCK_DUCK_GO_URL', null),
+    ],
+
+    'wolfram_alpha' => [
+        'base_url' => env('WOLFRAM_ALPHA_URL', null),
+        'api_key' => env('WOLFRAM_ALPHA_KEY', null),
+    ],
+
+    'timezone_db' => [
+        'base_url' => env('TIMEZONE_DB_URL', null),
+        'api_key' => env('TIMEZONE_DB_KEY', null),
+    ],
+
+    'autoremote' => [
+        'base_url' => env('AUTOREMOTE_URL', null),
+        'api_key' => env('AUTOREMOTE_KEY', null),
+    ],
+
+    'pushbullet' => [
+        'base_url' => env('PUSHBULLET_URL', null),
+        'api_key' => env('PUSHBULLET_KEY', null),
+    ]
+
 ];
