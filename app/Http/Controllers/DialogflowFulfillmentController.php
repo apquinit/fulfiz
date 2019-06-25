@@ -23,7 +23,6 @@ class DialogflowFulfillmentController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        // $this->fulfillmentService = $fulfillmentService;
     }
 
     public function handle()
