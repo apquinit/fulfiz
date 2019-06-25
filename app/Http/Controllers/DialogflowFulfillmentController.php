@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use Log;
 use Illuminate\Http\Request;
 use Dialogflow\WebhookClient;
-use App\Interfaces\DialogflowFulfillmentInterface;
-
-use App\Helpers\TimeZoneDbHelper;
 
 class DialogflowFulfillmentController extends Controller
 {
@@ -41,7 +38,7 @@ class DialogflowFulfillmentController extends Controller
         // Get user based on the session/device ID
 
         // Resolve service class from action
-        $this->fulfillmentService = $this->mapActionToService($this->action);
+        $this->fulfillmentService = map_action_to_service($this->action);
 
         // Pass parameters array to setParameters() methode
         $this->fulfillmentService->setParameters($this->parameters);
@@ -68,12 +65,5 @@ class DialogflowFulfillmentController extends Controller
 
         // Return response to Dialogflow
         return response()->json($this->agent->render());
-    }
-
-    private function mapActionToService(string $action) : DialogflowFulfillmentInterface
-    {
-        if ($action === 'datetime.current') {
-            return resolve('DateTimeCurrentFulfillmentService');
-        }
     }
 }
