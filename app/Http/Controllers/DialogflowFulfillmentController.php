@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Log;
 use Illuminate\Http\Request;
 use Dialogflow\WebhookClient;
+use App\Interfaces\DialogflowFulfillmentServiceInterface;
 
 class DialogflowFulfillmentController extends Controller
 {
@@ -17,9 +18,10 @@ class DialogflowFulfillmentController extends Controller
     private $parameters;
     private $fulfillmentService;
 
-    public function __construct(Request $request)
+    public function __construct(Request $request, DialogflowFulfillmentServiceInterface $fulfillmentService)
     {
         $this->request = $request;
+        $this->fulfillmentService = $fulfillmentService;
     }
 
     public function handle()
@@ -36,9 +38,6 @@ class DialogflowFulfillmentController extends Controller
 
         // Get session/device ID from request
         // Get user based on the session/device ID
-
-        // Resolve service class from action
-        $this->fulfillmentService = map_action_to_service($this->action);
 
         // Pass parameters array to setParameters() methode
         $this->fulfillmentService->setParameters($this->parameters);

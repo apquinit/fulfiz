@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+        \App\Http\Middleware\BindFulfillmentInterfaceToService::class,
     ];
 
     /**
@@ -57,6 +58,7 @@ class Kernel extends HttpKernel
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'dialogflow.bind' => \App\Http\Middleware\BindFulfillmentInterfaceToService::class,
         'dialogflow.key' => \App\Http\Middleware\VerifyDialogflowKey::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,

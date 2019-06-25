@@ -2,12 +2,12 @@
 
 namespace App\Services\Dialogflow;
 
-use App\Interfaces\DialogflowFulfillmentInterface;
+use App\Interfaces\DialogflowFulfillmentServiceInterface;
 
 /**
  * Class KeyRepository.
  */
-class DateTimeCurrentFulfillmentService extends DialogflowFulfillmentService implements DialogflowFulfillmentInterface
+class DateTimeCurrentFulfillmentService extends DialogflowFulfillmentService implements DialogflowFulfillmentServiceInterface
 {
     public function setParameters(array $parameters) : void
     {

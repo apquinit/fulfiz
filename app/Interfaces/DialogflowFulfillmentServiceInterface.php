@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface DialogflowFulfillmentInterface
+interface DialogflowFulfillmentServiceInterface
 {
     /**
      * Set required parameters to properties
