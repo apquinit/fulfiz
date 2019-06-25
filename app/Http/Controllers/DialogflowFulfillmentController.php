@@ -15,7 +15,7 @@ class DialogflowFulfillmentController extends Controller
     public function __construct(Request $request, DialogflowFulfillmentServiceInterface $service)
     {
         $this->request = $request;
-        $this->fulfillmentService = $service;
+        $this->service = $service;
     }
 
     public function handle()
@@ -27,13 +27,13 @@ class DialogflowFulfillmentController extends Controller
         // Get user based on the session/device ID
 
         // Pass parameters array to setParameters() 
-        $this->fulfillmentService->setParameters($this->request->agent->getParameters());
+        $this->service->setParameters($this->request->agent->getParameters());
 
         // Execute process and generate a text response
-        $this->fulfillmentService->process();
+        $this->service->process();
 
         // Get generated text response property
-        $textResponse = $this->fulfillmentService->getTextResponse();
+        $textResponse = $this->service->getTextResponse();
 
         // Pass text response to agent->reply() method
         $this->request->agent->reply($textResponse);
