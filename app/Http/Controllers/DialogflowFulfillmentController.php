@@ -10,12 +10,6 @@ use App\Interfaces\DialogflowFulfillmentServiceInterface;
 class DialogflowFulfillmentController extends Controller
 {
     private $request;
-    private $agent;
-    private $session;
-    private $query;
-    private $intent;
-    private $action;
-    private $parameters;
     private $fulfillmentService;
 
     public function __construct(Request $request, DialogflowFulfillmentServiceInterface $fulfillmentService)
@@ -27,42 +21,35 @@ class DialogflowFulfillmentController extends Controller
     public function handle()
     {        
         // Instantiate a Dialogflow Webhook client from the request
-        $this->agent = WebhookClient::fromData($this->request->json()->all());
-
-        // Store values to properties
-        $this->session = $this->agent->getSession();
-        $this->query = $this->agent->getQuery();
-        $this->intent = $this->agent->getIntent();
-        $this->action = $this->agent->getAction();
-        $this->parameters = $this->agent->getParameters();
+        $this->request->agent = $this->request->agent;
 
         // Get session/device ID from request
         // Get user based on the session/device ID
 
-        // Pass parameters array to setParameters() methode
-        $this->fulfillmentService->setParameters($this->parameters);
+        // Pass parameters array to setParameters() 
+        $this->fulfillmentService->setParameters($this->request->agent->getParameters());
 
-        // Call process() method to execute action and generate a text response
+        // Execute process and generate a text response
         $this->fulfillmentService->process();
 
-        // Call getTextResponse() method to get generated text response property
+        // Get generated text response property
         $textResponse = $this->fulfillmentService->getTextResponse();
 
         // Pass text response to agent->reply() method
-        $this->agent->reply($textResponse);
+        $this->request->agent->reply($textResponse);
 
         // Log request and response data
         Log::info('Dialogflow request', [
-            'Session' => $this->session,
-            'Query' => $this->query,
-            'Intent' => $this->intent,
-            'Action' => $this->action,
-            'Parameters' => $this->parameters,
-            'Response' => $this->agent->render()
+            'Session' => $this->request->agent->getSession(),
+            'Query' => $this->request->agent->getQuery(),
+            'Intent' => $this->request->agent->getIntent(),
+            'Action' => $this->request->agent->getAction(),
+            'Parameters' => $this->request->agent->getParameters(),
+            'Response' => $this->request->agent->render()
             ]
         );
 
         // Return response to Dialogflow
-        return response()->json($this->agent->render());
+        return response()->json($this->request->agent->render());
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Dialogflow\WebhookClient;
 use App\Interfaces\DialogflowFulfillmentServiceInterface;
-use App\Services\Dialogflow\DateTimeCurrentFulfillmentService;
 
 class BindFulfillmentInterfaceToService
 {
@@ -17,11 +17,24 @@ class BindFulfillmentInterfaceToService
      */
     public function handle($request, Closure $next)
     {
-        app()->bind(
-            'App\Interfaces\DialogflowFulfillmentServiceInterface',
-            'App\Services\Dialogflow\DateTimeCurrentFulfillmentService'
-        );
+        if ($request->is('api/dialogflow')) {
+            $agent = WebhookClient::fromData($request->json()->all());
 
+            app()->bind(
+                'App\Interfaces\DialogflowFulfillmentServiceInterface', function () use ($agent) {
+                    if ($agent->getAction() === 'datetime.current') {
+                        return new \App\Services\Dialogflow\DateTimeCurrentFulfillmentService;
+                    } else {
+                        abort(500, 'Internal Server Error');
+                    }
+                }
+            );
+
+            $request->agent = $agent;
+
+            return $next($request);
+        }
+        
         return $next($request);
     }
 }
