@@ -21,6 +21,8 @@ class DateTimeCurrentFulfillmentService extends DialogflowFulfillmentService imp
 
     public function process() : void
     {
+        $this->textResponse = 'Test!';
+        
         return;
     }
 }
