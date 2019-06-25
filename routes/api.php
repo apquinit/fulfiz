@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //     return '$request->user()';
 // });
 
-Route::middleware('service.key')->prefix('dialogflow')->group(function () {
+Route::middleware('dialogflow.key')->prefix('dialogflow')->group(function () {
     Route::post('/', [
         'uses' => 'DialogflowFulfillmentController@handle'
     ]);
