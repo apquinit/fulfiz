@@ -10,12 +10,12 @@ use App\Interfaces\DialogflowFulfillmentServiceInterface;
 class DialogflowFulfillmentController extends Controller
 {
     private $request;
-    private $fulfillmentService;
+    private $service;
 
-    public function __construct(Request $request, DialogflowFulfillmentServiceInterface $fulfillmentService)
+    public function __construct(Request $request, DialogflowFulfillmentServiceInterface $service)
     {
         $this->request = $request;
-        $this->fulfillmentService = $fulfillmentService;
+        $this->fulfillmentService = $service;
     }
 
     public function handle()
