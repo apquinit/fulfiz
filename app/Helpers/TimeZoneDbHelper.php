@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 if (!function_exists('get_current_date_time')) {
 
     /**
-     * description
+     * Get current date and time of a city by latitude and longitude.
      *
      * @param
      * @return

@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 if (!function_exists('get_latitude_and_longitude')) {
 
     /**
-     * description
+     * Get latitude and langitude of a city.
      *
      * @param
      * @return
