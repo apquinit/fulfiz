@@ -2,20 +2,19 @@
 
 namespace App\Repositories;
 
-use NamTran\LaravelMakeRepositoryService\Repository\BaseRepository;
-//use Your Model
+use App\Repositories\Repository;
+use App\Interfaces\KeyRepositoryInterface;
+use App\Models\Key;
 
 /**
  * Class KeyRepository.
  */
-class KeyRepository extends BaseRepository
+class KeyRepository extends Repository implements KeyRepositoryInterface
 {
-    /**
-     * @return string
-     *  Return the model
-     */
-    public function model()
+    public function getByNameAndStatus(string $name, string $status) : Key
     {
-        //return YourModel::class;
+        return Key::where('name', $name)
+            ->where('status', $status)
+            ->firstOrFail();
     }
 }
