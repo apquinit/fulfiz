@@ -61,7 +61,7 @@ class Handler extends ExceptionHandler
                     'message' => 'Page Not Found',
                     'code' => $exception->getStatusCode()
                 ]), $exception->getStatusCode());
-            } elseif ($exception->getStatusCode() === 405 and $exception->getMessage() === "") {
+            } else if ($exception->getStatusCode() === 405 and $exception->getMessage() === "") {
                 return response(view('error', [
                     'message' => 'Method Not Allowed',
                     'code' => $exception->getStatusCode()
