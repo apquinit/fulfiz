@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 // });
 
 Route::middleware('service.key')->prefix('dialogflow')->group(function () {
-    Route::get('/', [
+    Route::post('/', [
         'uses' => 'DialogflowFulfillmentController@handle'
     ]);
 });
