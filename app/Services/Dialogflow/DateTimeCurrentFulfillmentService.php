@@ -21,7 +21,12 @@ class DateTimeCurrentFulfillmentService extends DialogflowFulfillmentService imp
 
     public function process() : void
     {
-        $currentDateTime = get_current_date_time(14.5906216, 120.9799696);
+        $location = get_latitude_and_longitude($this->parameters['city']);
+        $latitude = $location['lat'];
+        $longitude = $location['lon'];
+
+        $currentDateTime = get_current_date_time($latitude, $longitude);
+        
         $hour = date('h:i A', strtotime($currentDateTime));
         $day = date('l', strtotime($currentDateTime));
         $date = date('F j', strtotime($currentDateTime));

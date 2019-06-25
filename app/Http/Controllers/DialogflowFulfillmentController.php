@@ -20,10 +20,10 @@ class DialogflowFulfillmentController extends Controller
     private $parameters;
     private $fulfillmentService;
 
-    public function __construct(Request $request, DialogflowFulfillmentInterface $fulfillmentService)
+    public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->fulfillmentService = $fulfillmentService;
+        // $this->fulfillmentService = $fulfillmentService;
     }
 
     public function handle()
@@ -41,6 +41,9 @@ class DialogflowFulfillmentController extends Controller
         // Get session/device ID from request
         // Get user based on the session/device ID
 
+        // Resolve service class from action
+        $this->fulfillmentService = $this->mapActionToService($this->action);
+
         // Pass parameters array to setParameters() method of $dialogflowFulfillmentService
         $this->fulfillmentService->setParameters($this->parameters);
 
@@ -53,17 +56,25 @@ class DialogflowFulfillmentController extends Controller
         // Pass text response to agent->reply() method
         $this->agent->reply($textResponse);
 
+        // Log request and response data
         Log::info('Dialogflow request', [
             'Session' => $this->session,
             'Query' => $this->query,
             'Intent' => $this->intent,
             'Action' => $this->action,
             'Parameters' => $this->parameters,
-            'Response' => $agent->render()
+            'Response' => $this->agent->render()
             ]
         );
 
         // Return response to Dialogflow
-        return response()->json($agent->render());
+        return response()->json($this->agent->render());
+    }
+
+    private function mapActionToService(string $action) : DialogflowFulfillmentInterface
+    {
+        if ($action === 'datetime.current') {
+            return resolve('DateTimeCurrentFulfillmentService');
+        }
     }
 }
