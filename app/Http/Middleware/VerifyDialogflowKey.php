@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Interfaces\KeyRepositoryInterface;
+use App\Repositories\KeyRepository;
 
 class VerifyDialogflowKey
 {
@@ -13,9 +13,9 @@ class VerifyDialogflowKey
     /**
      * VerifyServiceKey constructor.
      *
-     * @param KeyRepositoryInterface $key
+     * @param KeyRepository $key
      */
-    public function __construct(KeyRepositoryInterface $keyRepository)
+    public function __construct(KeyRepository $keyRepository)
     {
         $this->keyRepository = $keyRepository;
     }
