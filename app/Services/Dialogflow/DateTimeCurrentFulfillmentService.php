@@ -9,25 +9,18 @@ use App\Interfaces\DialogflowFulfillmentInterface;
  */
 class DateTimeCurrentFulfillmentService extends DialogflowFulfillmentService implements DialogflowFulfillmentInterface
 {
-    protected $parameters;
-
-    public function __construct()
-    {
-
-    }
-
     public function setParameters(array $parameters) : void
     {
-
+        $this->parameters = $parameters;
     }
 
     public function getTextResponse() : string
     {
-
+        return $this->textResponse;
     }
 
     public function process() : void
     {
-        
+        return;
     }
 }
