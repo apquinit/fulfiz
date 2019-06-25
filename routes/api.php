@@ -13,10 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('service.key')->get('/dialogflow', function (Request $request) {
-//     return '$request->user()';
-// });
-
 Route::middleware('dialogflow.key')->prefix('dialogflow')->group(function () {
     Route::post('/', [
         'uses' => 'DialogflowFulfillmentController@handle'
