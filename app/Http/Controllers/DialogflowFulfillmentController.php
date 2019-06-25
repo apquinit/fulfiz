@@ -43,13 +43,13 @@ class DialogflowFulfillmentController extends Controller
         // Resolve service class from action
         $this->fulfillmentService = $this->mapActionToService($this->action);
 
-        // Pass parameters array to setParameters() method of $dialogflowFulfillmentService
+        // Pass parameters array to setParameters() methode
         $this->fulfillmentService->setParameters($this->parameters);
 
-        // Call process() method in $dialogflowFulfillmentService to execute action and generate a text response
+        // Call process() method to execute action and generate a text response
         $this->fulfillmentService->process();
 
-        // Call getTextResponse() method of $dialogflowFulfillmentService to get generated text response property
+        // Call getTextResponse() method to get generated text response property
         $textResponse = $this->fulfillmentService->getTextResponse();
 
         // Pass text response to agent->reply() method
