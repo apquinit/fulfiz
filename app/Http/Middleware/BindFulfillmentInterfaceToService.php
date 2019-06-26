@@ -17,7 +17,7 @@ class BindFulfillmentInterfaceToService
      */
     public function handle($request, Closure $next)
     {
-        if ($request->is('api/dialogflow')) {
+        if ($request->is('api/dialogflow/fulfillment')) {
             $agent = WebhookClient::fromData($request->json()->all());
 
             app()->bind(

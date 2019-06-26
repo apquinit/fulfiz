@@ -18,7 +18,7 @@ class DialogflowFulfillmentController extends Controller
         $this->service = $service;
     }
 
-    public function handle()
+    public function __invoke()
     {        
         // Instantiate a Dialogflow Webhook client from the request
         $this->request->agent = $this->request->agent;
