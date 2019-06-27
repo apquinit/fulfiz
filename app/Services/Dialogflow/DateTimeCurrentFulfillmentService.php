@@ -23,7 +23,7 @@ class DateTimeCurrentFulfillmentService extends DialogflowFulfillmentService imp
         $latitude = $location['lat'];
         $longitude = $location['lon'];
 
-        $currentDateTime = get_current_date_time($latitude, $longitude);
+        $currentDateTime = get_current_date_time($this->user['id'], $latitude, $longitude);
         
         $hour = date('h:i A', strtotime($currentDateTime));
         $day = date('l', strtotime($currentDateTime));
