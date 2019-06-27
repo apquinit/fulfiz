@@ -38,7 +38,9 @@ class BindSessionToDevice
             Log::info('Bind session to device', ['Session' => $session, 'Device' => $device->name]);
         }
 
-        $request->user_id = $user;
+        $request->user = [
+            'id' => $user
+        ];
 
         return $next($request);
     }
