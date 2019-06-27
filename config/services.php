@@ -70,8 +70,7 @@ return [
     ],
 
     'autoremote' => [
-        'base_url' => env('AUTOREMOTE_URL', null),
-        'api_key' => env('AUTOREMOTE_KEY', null),
+        'base_url' => env('AUTOREMOTE_URL', null)
     ],
 
     'pushbullet' => [

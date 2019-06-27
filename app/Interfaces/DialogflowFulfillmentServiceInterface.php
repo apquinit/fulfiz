@@ -9,7 +9,7 @@ interface DialogflowFulfillmentServiceInterface
      *
      * @var parameters
      */
-    public function setParameters(array $parameters) : void;
+    public function setParameters(array $user, array $parameters) : void;
 
     /**
      * Get generated text response

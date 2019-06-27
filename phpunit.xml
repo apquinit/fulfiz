@@ -19,7 +19,9 @@
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./app/Helpers</directory>
+            <directory suffix=".php">./app/Repositories</directory>
+            <directory suffix=".php">./app/Services</directory>
         </whitelist>
     </filter>
     <php>

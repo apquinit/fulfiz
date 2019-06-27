@@ -23,11 +23,11 @@ class DialogflowFulfillmentController extends Controller
         // Instantiate a Dialogflow Webhook client from the request
         $this->request->agent = $this->request->agent;
 
-        // Get session/device ID from request
-        // Get user based on the session/device ID
+        // Get session ID (device code) from request
+        // Get user and user-related records based on the session ID
 
         // Pass parameters array to setParameters() 
-        $this->service->setParameters($this->request->agent->getParameters());
+        $this->service->setParameters($this->request->user, $this->request->agent->getParameters());
 
         // Execute process and generate a text response
         $this->service->process();

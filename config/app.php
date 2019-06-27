@@ -125,6 +125,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Dialogflow Agent Identifiers
+    |--------------------------------------------------------------------------
+    |
+    | This value is the of Irene and Irene Lite on Messenger. This value is used when the
+    | framework needs to place the agent's id in condition checks in helpers or
+    | any other location as required by the application or its packages.
+    |
+    */
+
+    'dialogflow' => [
+        'irene' => env('DIALOGFLOW_AGENT_IRENE_ID'),
+        'irene_lite' => env('DIALOGFLOW_AGENT_IRENE_LITE_ID'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |

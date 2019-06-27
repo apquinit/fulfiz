@@ -3,6 +3,7 @@
 use Log as Log;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use App\Repositories\LocationIqUserRepository;
 
 if (!function_exists('get_latitude_and_longitude')) {
 
@@ -12,13 +13,27 @@ if (!function_exists('get_latitude_and_longitude')) {
      * @param
      * @return
      */
-    function get_latitude_and_longitude(string $city) : array
+    function get_latitude_and_longitude(string $userId, string $city) : array
     {
         // Location IQ request URL (https://us1.locationiq.com/v1/search.php?key=YOUR_PRIVATE_TOKEN&q=SEARCH_STRING&format=json)
 
-        $guzzleClient = new Client;
+        if (strpos($userId, config('app.dialogflow.irene_lite')) !== false or strpos($userId, config('app.dialogflow.irene')) !== false) {
+            $key = config('services.location_iq.api_key');
+        } else {
+            $locationIqUsersRepository = new LocationIqUserRepository;
+            $locationIqUser = $locationIqUsersRepository->getByUserId($userId);
 
-        $requestUrl = config('services.location_iq.base_url') . '?key=' . config('services.location_iq.api_key') . '&q=' . $city . '&format=json';
+            if ($locationIqUser->status === 'ENABLED') {
+                $key = $locationIqUser->token;
+            } elseif ($locationIqUser->status === 'DISABLED')  {
+                abort(401, 'Service Disabled');
+            } else {
+                abort(500, 'Internal Server Error');
+            }
+        }
+
+        $guzzleClient = new Client;
+        $requestUrl = config('services.location_iq.base_url') . '?key=' . $key . '&q=' . $city . '&format=json';
         $response  = $guzzleClient->get($requestUrl);
         $content = json_decode($response->getBody()->getContents(), true);
         $location = [

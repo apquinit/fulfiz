@@ -6,10 +6,8 @@ use App\Models\Key;
 
 class KeyRepository extends Repository
 {
-    public function getByNameAndStatus(string $name, string $status) : Key
+    public function getByName(string $name) : Key
     {
-        return Key::where('name', $name)
-            ->where('status', $status)
-            ->firstOrFail();
+        return Key::where('name', $name)->firstOrFail();
     }
 }
