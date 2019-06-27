@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Log;
 
 class BindSessionToDevice
 {
@@ -15,6 +16,8 @@ class BindSessionToDevice
      */
     public function handle($request, Closure $next)
     {
+        Log::info('Bind session to device', ['Session' => $request->session]);
+
         return $next($request);
     }
 }
