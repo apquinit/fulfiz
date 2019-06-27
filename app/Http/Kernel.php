@@ -58,8 +58,8 @@ class Kernel extends HttpKernel
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'dialogflow.bind' => \App\Http\Middleware\BindFulfillmentInterfaceToService::class,
         'dialogflow.key' => \App\Http\Middleware\VerifyDialogflowKey::class,
+        'dialogflow.session' => \App\Http\Middleware\BindSessionToDevice::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
@@ -79,5 +79,7 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\AuthenticateSession::class,
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,
+        \App\Http\Middleware\VerifyDialogflowKey::class,
+        \App\Http\Middleware\BindSessionToDevice::class,
     ];
 }
