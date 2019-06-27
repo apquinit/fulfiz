@@ -4,13 +4,11 @@ namespace App\Services\Dialogflow;
 
 use App\Interfaces\DialogflowFulfillmentServiceInterface;
 
-/**
- * Class KeyRepository.
- */
 class DateTimeCurrentFulfillmentService extends DialogflowFulfillmentService implements DialogflowFulfillmentServiceInterface
 {
-    public function setParameters(array $parameters) : void
+    public function setParameters(array $user, array $parameters) : void
     {
+        $this->user = $user;
         $this->parameters = $parameters;
     }
 
@@ -21,7 +19,7 @@ class DateTimeCurrentFulfillmentService extends DialogflowFulfillmentService imp
 
     public function process() : void
     {
-        $location = get_latitude_and_longitude($this->parameters['city']);
+        $location = get_latitude_and_longitude($this->user['id'], $this->parameters['city']);
         $latitude = $location['lat'];
         $longitude = $location['lon'];
 

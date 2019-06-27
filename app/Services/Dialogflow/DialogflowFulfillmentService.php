@@ -2,11 +2,10 @@
 
 namespace App\Services\Dialogflow;
 
-/**
- * Class KeyRepository.
- */
 class DialogflowFulfillmentService
 {
+    protected $user;
+
     protected $parameters;
 
     protected $textResponse;

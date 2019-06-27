@@ -27,7 +27,7 @@ class DialogflowFulfillmentController extends Controller
         // Get user and user-related records based on the session ID
 
         // Pass parameters array to setParameters() 
-        $this->service->setParameters($this->request->agent->getParameters());
+        $this->service->setParameters($this->request->user, $this->request->agent->getParameters());
 
         // Execute process and generate a text response
         $this->service->process();
