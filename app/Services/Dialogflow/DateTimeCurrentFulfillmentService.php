@@ -32,7 +32,7 @@ class DateTimeCurrentFulfillmentService extends DialogflowFulfillmentService imp
         $date = date('F j', strtotime($currentDateTime));
         $year = date('Y', strtotime($currentDateTime));
 
-        $this->textResponse = $hour . ', ' . $day . ', ' . $date. ', ' . $year . '.';
+        $this->textResponse = $hour . ", " . $day . ", " . $date. ", " . $year . ".";
 
         return;
     }
