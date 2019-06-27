@@ -3,6 +3,7 @@
 use Log as Log;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use App\Repositories\LocationIqUserRepository;
 
 if (!function_exists('get_latitude_and_longitude')) {
 
@@ -21,6 +22,7 @@ if (!function_exists('get_latitude_and_longitude')) {
         if (strpos($userId, 'irene-lite-vbvypr') !== false or strpos($userId, 'irene-4fe98') !== false) {
             $key = config('services.location_iq.api_key');
         } else {
+            $locationIqUsersRepository = new LocationIqUserRepository;
             $locationIqUser = $locationIqUsersRepository->getByUserId($userId);
 
             if ($locationIqUser->status === 'DISABLED') {
