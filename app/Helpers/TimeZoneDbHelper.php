@@ -18,7 +18,7 @@ if (!function_exists('get_current_date_time')) {
         // TimeZoneDb request URL (https://api.timezonedb.com/v2.1/get-time-zone?key=YOUR_PRIVATE_TOKEN&format=json&by=position&lat=YOUR_LATITUDE&lng=YOUR_LONGITUDE)
 
         if (strpos($userId, config('app.dialogflow.irene_lite')) !== false or strpos($userId, config('app.dialogflow.irene')) !== false) {
-            $key = config('services.location_iq.api_key');
+            $key = config('services.timezone_db.api_key');
         } else {
             $timeZoneDbUserRepository = new TimeZoneDbUserRepository;
             $timeZoneDbUser = $timeZoneDbUserRepository->getByUserId($userId);
