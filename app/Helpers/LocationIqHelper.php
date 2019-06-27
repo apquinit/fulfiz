@@ -19,7 +19,7 @@ if (!function_exists('get_latitude_and_longitude')) {
 
         $guzzleClient = new Client;
 
-        if (strpos($userId, 'irene-lite-vbvypr') !== false or strpos($userId, 'irene-4fe98') !== false) {
+        if (strpos($userId, config('app.dialogflow.irene_lite')) !== false or strpos($userId, config('app.dialogflow.irene')) !== false) {
             $key = config('services.location_iq.api_key');
         } else {
             $locationIqUsersRepository = new LocationIqUserRepository;

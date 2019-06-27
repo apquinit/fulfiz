@@ -26,11 +26,11 @@ class BindSessionToDevice
     {
         $session = $request->agent->getSession();
 
-        if (strpos($session, 'irene-lite-vbvypr') !== false) {
-            $user = 'irene-lite-vbvypr';
+        if (strpos($session, config('app.dialogflow.irene_lite')) !== false) {
+            $user = config('app.dialogflow.irene_lite');
             Log::info('Bind session to device', ['Session' => $session, 'Device' => 'Irene Lite Messenger']);
-        } elseif(strpos($session, 'irene-4fe98') !== false) {
-            $user = 'irene-4fe98';
+        } elseif(strpos($session, config('app.dialogflow.irene')) !== false) {
+            $user = config('app.dialogflow.irene');
             Log::info('Bind session to device', ['Session' => $session, 'Device' => 'Irene Messenger']);
         } else {
             $device = $this->deviceRepository->getByCode($session);
