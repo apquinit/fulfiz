@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('home', ['appName' => config('app.name')]);
 });
 
-
 Route::group(['prefix' => 'dashboard'], function () {
     Voyager::routes();
 });
