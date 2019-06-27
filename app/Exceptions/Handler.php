@@ -50,9 +50,9 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof ModelNotFoundException) {
             return response(view('error', [
-                'message' => 'Model Not Found',
-                'code' => $exception->getStatusCode()
-            ]), $exception->getStatusCode());
+                'message' => 'Record Not Found',
+                'code' => 404
+            ]), 404);
         }
 
         if ($exception instanceof HttpException) {
