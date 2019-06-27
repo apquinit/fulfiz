@@ -32,14 +32,16 @@ class VerifyDialogflowKey
         // Get key from repository.
         $this->key = $this->keyRepository->getByName('dialogflow');
 
-        if ($this->key->status === 'DISABLED') {
+        if ($this->key->status === 'ENABLED') {
+            return $next($request);
+        } elseif ($this->key->status === 'DISABLED')  {
             abort(401, 'Unauthorized');
+        } else {
+            abort(500, 'Internal Server Error');
         }
 
         if ($this->key->token != $request->bearerToken()) {
             abort(403, 'Forbidden');
         } 
-        
-        return $next($request);
     }
 }
