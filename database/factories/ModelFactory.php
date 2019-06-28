@@ -31,7 +31,6 @@ $factory->define(Device::class, function (Faker $faker) {
 
 $factory->define(Key::class, function (Faker $faker) {
     return [
-        'user_id' => $faker->randomDigitNotNull,
         'name' => Str::random(10),
         'description' => $faker->text,
         'status' => $faker->randomElement(['ENABLED', 'DISABLED']),
