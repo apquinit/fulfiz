@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocationIqUsers extends Migration
+class CreateTimeZoneDbUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLocationIqUsers extends Migration
      */
     public function up()
     {
-        Schema::create('location_iq_users', function (Blueprint $table) {
+        Schema::create('time_zone_db_users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->char('status', 255);
@@ -29,6 +29,6 @@ class CreateLocationIqUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('location_iq_users');
+        Schema::dropIfExists('time_zone_db_users');
     }
 }
