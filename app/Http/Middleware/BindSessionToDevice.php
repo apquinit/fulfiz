@@ -29,7 +29,7 @@ class BindSessionToDevice
         if (strpos($session, config('app.dialogflow.irene_lite')) !== false) {
             $user = config('app.dialogflow.irene_lite');
             Log::info('Bind session to device', ['Session' => $session, 'Device' => 'Irene Lite Messenger']);
-        } elseif(strpos($session, config('app.dialogflow.irene')) !== false) {
+        } elseif (strpos($session, config('app.dialogflow.irene')) !== false) {
             $user = config('app.dialogflow.irene');
             Log::info('Bind session to device', ['Session' => $session, 'Device' => 'Irene Messenger']);
         } else {
