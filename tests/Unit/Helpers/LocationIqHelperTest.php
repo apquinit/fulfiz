@@ -13,11 +13,6 @@ class LocationIqHelperTest extends TestCase
     public function setUp() : void
     {
         parent::setUp();
-
-        config(['app.dialogflow.irene_lite' => 'irene-lite-vbvypr']);
-        config(['app.dialogflow.irene' => 'irene-4fe98']);
-        config(['services.location_iq.base_url' => 'https://us1.locationiq.com/v1/search.php']);
-        config(['services.location_iq.api_key' => '4c53f82e708066']);
     }
 
     /**

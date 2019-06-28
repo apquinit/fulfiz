@@ -12,12 +12,7 @@ class TimeZoneDbHelperTest extends TestCase
 
     public function setUp() : void
     {
-        parent::setUp();
-
-        config(['app.dialogflow.irene_lite' => 'irene-lite-vbvypr']);
-        config(['app.dialogflow.irene' => 'irene-4fe98']);
-        config(['services.timezone_db.base_url' => 'https://api.timezonedb.com/v2.1/get-time-zone']);
-        config(['services.timezone_db.api_key' => '0RPFRW3KR7BJ']);
+        parent::setUp();  
     }
 
     /**
