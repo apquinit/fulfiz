@@ -1,10 +1,11 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Models\User;
-use App\Models\LocationIqUser;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use App\Models\User;
+use App\Models\LocationIqUser;
+use App\Models\TimeZoneDbUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,14 @@ $factory->define(User::class, function (Faker $faker) {
 });
 
 $factory->define(LocationIqUser::class, function (Faker $faker) {
+    return [
+        'user_id' => $faker->randomDigitNotNull,
+        'status' => $faker->randomElement(['ENABLED', 'DISABLED']),
+        'token' => Str::random(10),
+    ];
+});
+
+$factory->define(TimeZoneDbUser::class, function (Faker $faker) {
     return [
         'user_id' => $faker->randomDigitNotNull,
         'status' => $faker->randomElement(['ENABLED', 'DISABLED']),
