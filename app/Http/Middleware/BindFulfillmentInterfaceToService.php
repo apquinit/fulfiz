@@ -21,7 +21,8 @@ class BindFulfillmentInterfaceToService
             $agent = WebhookClient::fromData($request->json()->all());
 
             app()->bind(
-                'App\Interfaces\DialogflowFulfillmentServiceInterface', function () use ($agent) {
+                'App\Interfaces\DialogflowFulfillmentServiceInterface',
+                function () use ($agent) {
                     if ($agent->getAction() === 'datetime.current') {
                         return new \App\Services\Dialogflow\DateTimeCurrentFulfillmentService;
                     } else {

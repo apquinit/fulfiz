@@ -9,11 +9,9 @@ before_script:
   - composer install --no-interaction
   - cp .env.example .env
   - php artisan key:generate
-  # - touch database/database.sqlite
-  # - php artisan migrate --database=sqlite
+  - touch database/database.sqlite
   
-# script:
-#   - php artisan key:generate
-#   - vendor/bin/phpcs --config-set show_warnings 0
-#   - vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migrations/*,*/tests/* app
-#   - vendor/bin/phpunit --coverage-text --testdox
+script:
+  - vendor/bin/phpcs --config-set show_warnings 0
+  - vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migrations/*,*/tests/* app
+  - vendor/bin/phpunit --coverage-text --testdox

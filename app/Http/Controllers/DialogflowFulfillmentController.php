@@ -19,14 +19,14 @@ class DialogflowFulfillmentController extends Controller
     }
 
     public function __invoke()
-    {        
+    {
         // Instantiate a Dialogflow Webhook client from the request
         $this->request->agent = $this->request->agent;
 
         // Get session ID (device code) from request
         // Get user and user-related records based on the session ID
 
-        // Pass parameters array to setParameters() 
+        // Pass parameters array to setParameters()
         $this->service->setParameters($this->request->user, $this->request->agent->getParameters());
 
         // Execute process and generate a text response
@@ -39,15 +39,7 @@ class DialogflowFulfillmentController extends Controller
         $this->request->agent->reply($textResponse);
 
         // Log request and response data
-        Log::info('Dialogflow request', [
-            'Session' => $this->request->agent->getSession(),
-            'Query' => $this->request->agent->getQuery(),
-            'Intent' => $this->request->agent->getIntent(),
-            'Action' => $this->request->agent->getAction(),
-            'Parameters' => $this->request->agent->getParameters(),
-            'Response' => $this->request->agent->render()
-            ]
-        );
+        Log::info('Dialogflow request', ['Session' => $this->request->agent->getSession(), 'Query' => $this->request->agent->getQuery(), 'Intent' => $this->request->agent->getIntent(), 'Action' => $this->request->agent->getAction(), 'Parameters' => $this->request->agent->getParameters(), 'Response' => $this->request->agent->render()]);
 
         // Return response to Dialogflow
         return response()->json($this->request->agent->render());

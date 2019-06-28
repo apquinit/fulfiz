@@ -34,7 +34,7 @@ class VerifyDialogflowKey
 
         if ($this->key->status === 'ENABLED') {
             return $next($request);
-        } elseif ($this->key->status === 'DISABLED')  {
+        } elseif ($this->key->status === 'DISABLED') {
             abort(401, 'Unauthorized');
         } else {
             abort(500, 'Internal Server Error');
@@ -42,6 +42,6 @@ class VerifyDialogflowKey
 
         if ($this->key->token != $request->bearerToken()) {
             abort(403, 'Forbidden');
-        } 
+        }
     }
 }
