@@ -17,7 +17,9 @@ if (!function_exists('get_latitude_and_longitude')) {
     {
         // Location IQ request URL (https://us1.locationiq.com/v1/search.php?key=YOUR_PRIVATE_TOKEN&q=SEARCH_STRING&format=json)
 
-        if (strpos($userId, chr(config('app.dialogflow.irene_lite'))) !== false or strpos($userId, chr(config('app.dialogflow.irene'))) !== false) {
+        dd($userId, config('app.dialogflow.irene_lite'));
+
+        if (strpos($userId, config('app.dialogflow.irene_lite')) !== false or strpos($userId, config('app.dialogflow.irene')) !== false) {
             $key = config('services.location_iq.api_key');
         } else {
             $locationIqUsersRepository = new LocationIqUserRepository;
