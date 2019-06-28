@@ -3,9 +3,11 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
-use App\Models\User;
+use App\Models\Device;
+use App\Models\Key;
 use App\Models\LocationIqUser;
 use App\Models\TimeZoneDbUser;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,25 @@ use App\Models\TimeZoneDbUser;
 | model instances for testing / seeding your application's database.
 |
 */
+
+$factory->define(Device::class, function (Faker $faker) {
+    return [
+        'user_id' => $faker->randomDigitNotNull,
+        'name' => Str::random(10),
+        'description' => $faker->text,
+        'code' => Str::random(10),
+    ];
+});
+
+$factory->define(Key::class, function (Faker $faker) {
+    return [
+        'user_id' => $faker->randomDigitNotNull,
+        'name' => Str::random(10),
+        'description' => $faker->text,
+        'status' => $faker->randomElement(['ENABLED', 'DISABLED']),
+        'token' => Str::random(10),
+    ];
+});
 
 $factory->define(User::class, function (Faker $faker) {
     return [
