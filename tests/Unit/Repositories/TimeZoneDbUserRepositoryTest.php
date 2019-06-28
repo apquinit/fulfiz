@@ -21,6 +21,14 @@ class TimeZoneDbUserRepositoryTest extends TestCase
     /**
      * @test
      */
+    public function TimeZoneDbUserRepository_class_should_exist()
+    {
+        $this->assertTrue(class_exists(TimeZoneDbUserRepository::class));
+    }
+
+    /**
+     * @test
+     */
     public function getByUserId_method_should_return_time_zone_db_user_object_when_passed_user_id()
     {
         factory(\App\Models\TimeZoneDbUser::class)->create(

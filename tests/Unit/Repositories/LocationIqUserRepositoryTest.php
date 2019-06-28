@@ -21,6 +21,14 @@ class LocationIqUserRepositoryTest extends TestCase
     /**
      * @test
      */
+    public function LocationIqUserRepository_class_should_exist()
+    {
+        $this->assertTrue(class_exists(LocationIqUserRepository::class));
+    }
+
+    /**
+     * @test
+     */
     public function getByUserId_method_should_return_location_iq_user_object_when_passed_user_id()
     {
         factory(\App\Models\LocationIqUser::class)->create(

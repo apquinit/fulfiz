@@ -21,6 +21,14 @@ class KeyRepositoryTest extends TestCase
     /**
      * @test
      */
+    public function KeyRepository_class_should_exist()
+    {
+        $this->assertTrue(class_exists(KeyRepository::class));
+    }
+
+    /**
+     * @test
+     */
     public function getByCode_method_should_return_key_object_when_passed_key_name()
     {
         factory(\App\Models\Key::class)->create(

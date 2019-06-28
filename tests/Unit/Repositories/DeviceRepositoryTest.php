@@ -21,6 +21,14 @@ class DeviceRepositoryTest extends TestCase
     /**
      * @test
      */
+    public function DeviceRepository_class_should_exist()
+    {
+        $this->assertTrue(class_exists(DeviceRepository::class));
+    }
+
+    /**
+     * @test
+     */
     public function getByCode_method_should_return_device_object_when_passed_device_code()
     {
         factory(\App\Models\Device::class)->create(
