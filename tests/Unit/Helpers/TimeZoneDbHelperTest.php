@@ -18,7 +18,7 @@ class TimeZoneDbHelperTest extends TestCase
     /**
      * @test
      */
-    public function get_current_date_time_method_shoud_return_current_date_time_when_passed_dialogflow_agent_id()
+    public function get_current_date_time_function_shoud_return_current_date_time_when_passed_dialogflow_agent_id()
     {
         $currentDateTime = get_current_date_time('dialogflow/agent/irene-lite-vbvypr', 14.5906216, 120.9799696);
 
@@ -29,7 +29,7 @@ class TimeZoneDbHelperTest extends TestCase
     /**
      * @test
      */
-    public function get_current_date_time_method_shoud_return_current_date_time_when_passed_user_id()
+    public function get_current_date_time_function_shoud_return_current_date_time_when_passed_user_id()
     {
         factory(\App\Models\TimeZoneDbUser::class)->create(
             [
