@@ -18,7 +18,7 @@ class LocationIqHelperTest extends TestCase
     /**
      * @test
      */
-    public function get_latitude_and_longitude_function_shoud_return_latitude_and_longitude_when_passed_dialogflow_agent_id()
+    public function get_latitude_and_longitude_function_should_return_latitude_and_longitude_when_passed_dialogflow_agent_id()
     {
         $location = get_latitude_and_longitude('dialogflow/agent/irene-lite-vbvypr', 'Manila');
 
@@ -27,10 +27,8 @@ class LocationIqHelperTest extends TestCase
         $this->assertTrue(true);
     }
 
-    /**
-     * @test
-     */
-    public function get_latitude_and_longitude_function_shoud_return_latitude_and_longitude_when_passed_user_id()
+
+    public function get_latitude_and_longitude_function_should_return_latitude_and_longitude_when_passed_user_id()
     {
         factory(\App\Models\LocationIqUser::class)->create(
             [
