@@ -14,12 +14,13 @@ class CreateKeysTable extends Migration
     public function up()
     {
         Schema::create('keys', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->char('name', 255);
-            $table->text('description');
-            $table->char('status', 255);
-            $table->char('token', 255);
+            $table->increments('id');
+            $table->string('name', 255)->nullable();
+            $table->text('description')->nullable();
+            $table->string('status', 255)->nullable();
+            $table->string('token', 255)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

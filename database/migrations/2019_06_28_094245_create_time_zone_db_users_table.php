@@ -14,11 +14,12 @@ class CreateTimeZoneDbUsersTable extends Migration
     public function up()
     {
         Schema::create('time_zone_db_users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('user_id');
-            $table->char('status', 255);
-            $table->char('token', 255);
+            $table->increments('id');
+            $table->integer('user_id')->nullable()->unique();
+            $table->string('status', 255)->nullable();
+            $table->string('token', 255)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
