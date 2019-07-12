@@ -75,7 +75,6 @@
                 </div>
 
                 <div class="links">
-
                     <a href="https://alexander-paul.gitbook.io/irene">Documentation</a>
                     <a href="https://github.com/apquinit/irene-server">Repository</a>
                     <a href="https://irene-server.statushub.io">Status</a>
