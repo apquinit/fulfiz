@@ -18,6 +18,7 @@ class CreateDevicesTable extends Migration
             $table->bigInteger('user_id');
             $table->char('name', 255);
             $table->text('description');
+            $table->char('status', 255);
             $table->char('code', 255);
             $table->timestamps();
         });
