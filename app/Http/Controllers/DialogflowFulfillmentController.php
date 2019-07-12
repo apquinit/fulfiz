@@ -21,7 +21,7 @@ class DialogflowFulfillmentController extends Controller
     public function __invoke()
     {
         // Instantiate a Dialogflow Webhook client from the request
-        $this->request->agent = $this->request->agent;
+        // $this->request->agent = $this->request->agent;
 
         // Get session ID (device code) from request
         // Get user and user-related records based on the session ID
