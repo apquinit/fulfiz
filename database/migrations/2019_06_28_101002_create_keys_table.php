@@ -14,7 +14,7 @@ class CreateKeysTable extends Migration
     public function up()
     {
         Schema::create('keys', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('name', 255)->nullable();
             $table->text('description')->nullable();
             $table->string('status', 255)->nullable();
