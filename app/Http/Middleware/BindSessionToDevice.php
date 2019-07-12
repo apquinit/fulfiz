@@ -34,8 +34,14 @@ class BindSessionToDevice
             Log::info('Bind session to device', ['Session' => $session, 'Device' => 'Irene Messenger']);
         } else {
             $device = $this->deviceRepository->getByCode($session);
-            $user = $device->user_id;
-            Log::info('Bind session to device', ['Session' => $session, 'Device' => $device->name]);
+            if ($device->status === 'ENABLED') {
+                $user = $device->user_id;
+                Log::info('Bind session to device', ['Session' => $session, 'Device' => $device->name]);
+            } elseif ($device->status === 'DISABLED') {
+                abort(401, 'Device Disabled');
+            } else {
+                abort(500, 'Internal Server Error');
+            }
         }
 
         $request->user = [
