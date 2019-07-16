@@ -7,6 +7,7 @@ use App\Models\Device;
 use App\Models\Key;
 use App\Models\LocationIqUser;
 use App\Models\TimeZoneDbUser;
+use App\Models\DarkSkyUser;
 use App\Models\User;
 
 /*
