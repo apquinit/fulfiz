@@ -66,6 +66,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
+                <a href="https://irene.statushub.io">Status</a>
                 <a href="{{ url('/dashboard') }}">Log in</a>
             </div>
 
@@ -77,7 +78,6 @@
                 <div class="links">
                     <a href="https://alexander-paul.gitbook.io/irene">Documentation</a>
                     <a href="https://github.com/apquinit/irene-server">Repository</a>
-                    <a href="https://irene.statushub.io">Status</a>
                 </div>
             </div>
         </div>
