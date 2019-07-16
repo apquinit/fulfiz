@@ -64,3 +64,11 @@ $factory->define(TimeZoneDbUser::class, function (Faker $faker) {
         'token' => Str::random(10),
     ];
 });
+
+$factory->define(DarkSkyUser::class, function (Faker $faker) {
+    return [
+        'user_id' => $faker->randomDigitNotNull,
+        'status' => $faker->randomElement(['ENABLED', 'DISABLED']),
+        'token' => Str::random(10),
+    ];
+});
