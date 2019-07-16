@@ -25,6 +25,10 @@ class BindFulfillmentInterfaceToService
                 function () use ($agent) {
                     if ($agent->getAction() === 'datetime.current') {
                         return new \App\Services\Dialogflow\DateTimeCurrentFulfillmentService;
+                    } elseif ($agent->getAction() === 'weather.current') {
+                        return new \App\Services\Dialogflow\WeatherCurrentFulfillmentService;
+                    } elseif ($agent->getAction() === 'weather.date') {
+                        return new \App\Services\Dialogflow\WeatherDateFulfillmentService;
                     } else {
                         abort(500, 'Internal Server Error');
                     }
