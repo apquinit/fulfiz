@@ -20,5 +20,8 @@ abstract class TestCase extends BaseTestCase
         
         config(['services.timezone_db.base_url' => 'https://api.timezonedb.com/v2.1/get-time-zone']);
         config(['services.timezone_db.api_key' => '0RPFRW3KR7BJ']);
+
+        config(['services.dark_sky.base_url' => 'https://api.darksky.net/forecast']);
+        config(['services.dark_sky.api_key' => '5a050170535218d28b85e8cad4e6f781']);
     }
 }

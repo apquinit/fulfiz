@@ -20,8 +20,8 @@ if (!function_exists('get_latitude_and_longitude')) {
         if (strpos($userId, config('app.dialogflow.irene_lite')) !== false or strpos($userId, config('app.dialogflow.irene')) !== false) {
             $key = config('services.location_iq.api_key');
         } else {
-            $locationIqUsersRepository = new LocationIqUserRepository;
-            $locationIqUser = $locationIqUsersRepository->getByUserId((int) $userId);
+            $locationIqUserRepository = new LocationIqUserRepository;
+            $locationIqUser = $locationIqUserRepository->getByUserId((int) $userId);
 
             if ($locationIqUser->status === 'ENABLED') {
                 $key = $locationIqUser->token;

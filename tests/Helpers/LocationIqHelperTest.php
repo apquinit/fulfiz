@@ -18,19 +18,18 @@ class LocationIqHelperTest extends TestCase
     /**
      * @test
      */
-    public function get_latitude_and_longitude_function_should_return_latitude_and_longitude_when_passed_dialogflow_agent_id()
+    public function get_latitude_and_longitude_function_should_return_latitude_and_longitude_when_passed_dialogflow_agent_id_and_city()
     {
         $location = get_latitude_and_longitude('dialogflow/agent/irene-lite-vbvypr', 'Manila');
 
         $this->assertArrayHasKey('lat', $location);
         $this->assertArrayHasKey('lon', $location);
-        $this->assertTrue(true);
     }
 
     /**
      * @test
      */
-    public function get_latitude_and_longitude_function_should_return_latitude_and_longitude_when_passed_user_id()
+    public function get_latitude_and_longitude_function_should_return_latitude_and_longitude_when_passed_user_id_and_city()
     {
         factory(\App\Models\LocationIqUser::class)->create(
             [
@@ -44,6 +43,5 @@ class LocationIqHelperTest extends TestCase
 
         $this->assertArrayHasKey('lat', $location);
         $this->assertArrayHasKey('lon', $location);
-        $this->assertTrue(true);
     }
 }
