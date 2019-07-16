@@ -24,7 +24,6 @@ class LocationIqHelperTest extends TestCase
 
         $this->assertArrayHasKey('lat', $location);
         $this->assertArrayHasKey('lon', $location);
-        $this->assertTrue(true);
     }
 
     /**
@@ -44,6 +43,5 @@ class LocationIqHelperTest extends TestCase
 
         $this->assertArrayHasKey('lat', $location);
         $this->assertArrayHasKey('lon', $location);
-        $this->assertTrue(true);
     }
 }
