@@ -20,6 +20,7 @@ class WeatherCurrentFulfillmentService extends DialogflowFulfillmentService impl
     public function process() : void
     {
         $location = get_latitude_and_longitude($this->user['id'], $this->parameters['city']);
+        
         $latitude = $location['lat'];
         $longitude = $location['lon'];
 
