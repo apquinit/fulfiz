@@ -44,7 +44,7 @@ if (!function_exists('get_current_weather')) {
     }
 }
 
-if (!function_exists('get_weather_by_date')) {
+if (!function_exists('get_date_weather')) {
 
     /**
      * Get current weather of a given location by latitude and longitude.
