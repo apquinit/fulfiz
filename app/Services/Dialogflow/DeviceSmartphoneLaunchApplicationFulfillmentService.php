@@ -19,7 +19,7 @@ class DeviceSmartphoneLaunchApplicationFulfillmentService extends DialogflowFulf
     }
 
     public function process() : void
-    { 
+    {
         $responseCode = send_autoremote_message($this->user['device_code'], 'LAUNCH ' . strtoupper($this->parameters['application']));
 
         if ($responseCode === 200) {
