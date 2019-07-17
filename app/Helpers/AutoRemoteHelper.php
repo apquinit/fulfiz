@@ -13,15 +13,14 @@ if (!function_exists('send_autoremote_message')) {
      * @param
      * @return
      */
-    function send_autoremote_message(string $code, string $message) : int
+    function send_autoremote_message(string $deviceCode, string $message) : int
     {
         // AutoRemote request URL (https://autoremotejoaomgcd.appspot.com/sendmessage?key=KEY&message=MESSAGE)
-
-        if (strpos($code, config('app.dialogflow.irene')) !== false) {
+        if ($deviceCode === 'irene-messenger') {
             $key = config('services.autoremote.api_key');
         } else {
             $deviceRepository = new DeviceRepository;
-            $device = $deviceRepository->getByCode($code);
+            $device = $deviceRepository->getByCode($deviceCode);
 
             if ($device->status === 'ENABLED') {
                 $key = $device->key;
