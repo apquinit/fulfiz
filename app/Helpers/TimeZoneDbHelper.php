@@ -38,7 +38,7 @@ if (!function_exists('get_current_date_time')) {
         $content = json_decode($response->getBody()->getContents(), true);
         $currentDateTime = $content['formatted'];
 
-        Log::info('Timezone DB current date and time request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $currentDateTime]);
+        Log::info('TimeZoneDB current date and time request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $currentDateTime]);
 
         return $currentDateTime;
     }
