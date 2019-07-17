@@ -22,6 +22,6 @@ class PushbulletHelperTest extends TestCase
     {
         $responseCode = push_note_to_channel('irene-test', 'Unit Test', 'This is a test message.');
 
-        $this->assertArrayHasKey('AbstractText', $instantAnswer);
+        $this->assertEquals($responseCode, 200);
     }
 }
