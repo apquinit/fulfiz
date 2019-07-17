@@ -35,7 +35,6 @@ class WeatherDateFulfillmentService extends DialogflowFulfillmentService impleme
         $precipProbability = $dateWeather['precipProbability'];
         $precipProbabilityPercent = round((float)$precipProbability * 100) . '%';
         $precipIntensity = $dateWeather['precipIntensity'];
-        $precipIntensityPercent = round((float)$precipIntensity * 100) . '%';
         $humidity = $dateWeather['humidity'];
         $humidityPercent = round((float)$humidity * 100) . '%';
         $windSpeed = $dateWeather['windSpeed'];
@@ -43,7 +42,7 @@ class WeatherDateFulfillmentService extends DialogflowFulfillmentService impleme
         $pressure = $dateWeather['pressure'];
         if (array_key_exists('precipType', $dateWeather)) {
             $precipType = $dateWeather['precipType'];
-            $precipTextResponse = 'Chance of ' . $precipType . ' is ' . $precipProbabilityPercent . ' with an intensity of ' .  $precipIntensityPercent . '. ';
+            $precipTextResponse = 'Chance of ' . $precipType . ' is ' . $precipProbabilityPercent . ' with an intensity of ' .  $precipIntensity . ' mm/hr. ';
         } else {
             $precipTextResponse = 'Chance of precipitation is 0%. ';
         }
