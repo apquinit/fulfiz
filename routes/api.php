@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware(['dialogflow.key', 'dialogflow.session'])->prefix('dialogflow')->group(function () {
     Route::post('/fulfillment', 'DialogflowFulfillmentController');
 });
+
+Route::middleware(['pushbullet.key'])->prefix('pushbullet')->group(function () {
+    Route::post('/notification', 'PushbulletNotificationController');
+});
