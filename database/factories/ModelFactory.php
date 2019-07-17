@@ -10,6 +10,7 @@ use App\Models\TimeZoneDbUser;
 use App\Models\DarkSkyUser;
 use App\Models\DuckDuckGoUser;
 use App\Models\WolframAlphaUser;
+use App\Models\PushbulletUser;
 use App\Models\User;
 
 /*
@@ -85,6 +86,14 @@ $factory->define(DuckDuckGoUser::class, function (Faker $faker) {
 });
 
 $factory->define(WolframAlphaUser::class, function (Faker $faker) {
+    return [
+        'user_id' => $faker->randomDigitNotNull,
+        'status' => $faker->randomElement(['ENABLED', 'DISABLED']),
+        'token' => Str::random(10),
+    ];
+});
+
+$factory->define(PushbulletUser::class, function (Faker $faker) {
     return [
         'user_id' => $faker->randomDigitNotNull,
         'status' => $faker->randomElement(['ENABLED', 'DISABLED']),
