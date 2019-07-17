@@ -21,8 +21,6 @@ class PushbulletHelperTest extends TestCase
     public function push_note_to_channel_should_return_response_code_when_passed_channel_and_title_and_message()
     {
         $responseCode = push_note_to_channel('irene-test', 'Unit Test', 'This is a test message.');
-        
-        dd($responseCode);
 
         $this->assertArrayHasKey('AbstractText', $instantAnswer);
     }
