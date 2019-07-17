@@ -8,7 +8,7 @@ use App\Repositories\DuckDuckGoUserRepository;
 if (!function_exists('get_instant_answer')) {
 
     /**
-     * Get current weather of a given location by latitude and longitude.
+     * Get web search results of a given topic.
      *
      * @param
      * @return
