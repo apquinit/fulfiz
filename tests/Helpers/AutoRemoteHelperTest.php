@@ -20,7 +20,7 @@ class AutoRemoteHelperTest extends TestCase
      */
     public function send_autoremote_message_function_should_return_status_code_when_passed_dialogflow_agent_id_and_message()
     {
-        $responseCode = send_autoremote_message('dialogflow/agent/irene-4fe98', 'TEST');
+        $responseCode = send_autoremote_message('irene-messenger', 'TEST');
 
         $this->assertEquals($responseCode, 200);
     }
