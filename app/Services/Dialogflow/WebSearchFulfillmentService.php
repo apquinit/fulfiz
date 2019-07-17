@@ -20,8 +20,12 @@ class WebSearchFulfillmentService extends DialogflowFulfillmentService implement
     public function process() : void
     {
         $instantAnswer = get_instant_answer($this->user['id'], $this->parameters['topic']);
-        
-        $this->textResponse = $instantAnswer['AbstractText'];
+
+        if (empty($instantAnswer['AbstractText'])) {
+            $this->textResponse = "The topic '" . $this->parameters['topic'] . "' is quite ambiguous. Please provide a more specific query.";
+        } else {
+            $this->textResponse = $instantAnswer['AbstractText'];
+        }
         
         return;
     }
