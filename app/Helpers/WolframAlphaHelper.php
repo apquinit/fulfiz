@@ -35,10 +35,10 @@ if (!function_exists('get_default_fallback')) {
         $guzzleClient = new Client;
         $requestUrl = config('services.wolfram_alpha.base_url') . '?appid=' . config('services.wolfram_alpha.api_key') . '&i=' . $query . '&units=' . config('services.wolfram_alpha.units');
         $response  = $guzzleClient->get($requestUrl);
-        $shortAnswer = $response->getBody()->getContents();
+        $defaultFallback = $response->getBody()->getContents();
         
-        Log::info('WolframAlpha short answer request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $shortAnswer]);
+        Log::info('WolframAlpha short answer request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $defaultFallback]);
         
-        return $shortAnswer;
+        return $defaultFallback;
     }
 }
