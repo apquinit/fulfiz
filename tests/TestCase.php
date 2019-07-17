@@ -26,5 +26,8 @@ abstract class TestCase extends BaseTestCase
 
         config(['services.wolfram_alpha.base_url' => 'https://api.wolframalpha.com/v1/result']);
         config(['services.wolfram_alpha.api_key' => 'ETLETX-AHJPWUWGQ4']);
+
+        config(['services.pushbullet.base_url' => 'https://api.pushbullet.com/v2']);
+        config(['services.pushbullet.api_key' => 'o.6W7oRgL4xzqeOVHJrnFE9CObQOBlGCBy']);
     }
 }

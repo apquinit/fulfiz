@@ -8,7 +8,7 @@ use App\Repositories\WolframAlphaUserRepository;
 if (!function_exists('get_default_fallback')) {
 
     /**
-     * Get current weather of a given location by latitude and longitude.
+     * Get short answer of a given query.
      *
      * @param
      * @return
