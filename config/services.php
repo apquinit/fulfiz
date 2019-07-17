@@ -62,6 +62,7 @@ return [
     'wolfram_alpha' => [
         'base_url' => env('WOLFRAM_ALPHA_URL', null),
         'api_key' => env('WOLFRAM_ALPHA_KEY', null),
+        'units' => 'metric',
     ],
 
     'timezone_db' => [

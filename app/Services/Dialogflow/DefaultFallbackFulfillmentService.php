@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Services\Dialogflow;
+
+use App\Interfaces\DialogflowFulfillmentServiceInterface;
+
+class DefaultFallbackFulfillmentService extends DialogflowFulfillmentService implements DialogflowFulfillmentServiceInterface
+{
+    private $query;
+
+    public function setParameters(array $user, array $parameters) : void
+    {
+        $this->user = $user;
+        $this->parameters = $parameters;
+    }
+
+    public function getTextResponse() : string
+    {
+        return $this->textResponse;
+    }
+
+    public function process() : void
+    {
+        $defaultFallback  = get_default_fallback($this->user['id'], $this->parameters['query']);
+
+        if (is_numeric($defaultFallback)) {
+            return;
+        } else {
+            if (strpos($defaultFallback, ".") !== false) {
+                $this->textResponse = ucfirst($defaultFallback);
+            } else {
+                $this->textResponse = ucfirst($defaultFallback) . '.';
+            }
+        }
+        
+        return;
+    }
+}

@@ -21,7 +21,15 @@ class DialogflowFulfillmentController extends Controller
     public function __invoke()
     {
         // Pass parameters array to setParameters()
-        $this->service->setParameters($this->request->user, $this->request->agent->getParameters());
+        if ($this->request->agent->getAction() === 'default.fallback') {
+            $parameters = [
+                'query' => $this->request->agent->getQuery()
+            ];
+            
+            $this->service->setParameters($this->request->user, $parameters);
+        } else {
+            $this->service->setParameters($this->request->user, $this->request->agent->getParameters());
+        }
 
         // Execute process and generate a text response
         $this->service->process();
