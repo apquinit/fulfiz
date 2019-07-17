@@ -29,7 +29,7 @@ class DuckDuckGoUserRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function getByUserId_method_should_return_dauck_duck_go_user_object_when_passed_user_id()
+    public function getByUserId_method_should_return_duck_duck_go_user_object_when_passed_user_id()
     {
         factory(\App\Models\DuckDuckGoUser::class)->create(
             [
