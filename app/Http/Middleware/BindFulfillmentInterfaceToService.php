@@ -23,7 +23,9 @@ class BindFulfillmentInterfaceToService
             app()->bind(
                 'App\Interfaces\DialogflowFulfillmentServiceInterface',
                 function () use ($agent) {
-                    if ($agent->getAction() === 'datetime.current') {
+                    if ($agent->getAction() === 'default.fallback') {
+                        return new \App\Services\Dialogflow\DefaultFallbackFulfillmentService;
+                    } elseif ($agent->getAction() === 'datetime.current') {
                         return new \App\Services\Dialogflow\DateTimeCurrentFulfillmentService;
                     } elseif ($agent->getAction() === 'weather.current') {
                         return new \App\Services\Dialogflow\WeatherCurrentFulfillmentService;
