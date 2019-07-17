@@ -23,5 +23,8 @@ abstract class TestCase extends BaseTestCase
 
         config(['services.dark_sky.base_url' => 'https://api.darksky.net/forecast']);
         config(['services.dark_sky.api_key' => '5a050170535218d28b85e8cad4e6f781']);
+
+        config(['services.wolfram_alpha.base_url' => 'https://api.wolframalpha.com/v1/result']);
+        config(['services.wolfram_alpha.api_key' => 'ETLETX-AHJPWUWGQ4']);
     }
 }
