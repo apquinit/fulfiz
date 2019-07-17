@@ -29,6 +29,8 @@ class BindFulfillmentInterfaceToService
                         return new \App\Services\Dialogflow\WeatherCurrentFulfillmentService;
                     } elseif ($agent->getAction() === 'weather.date') {
                         return new \App\Services\Dialogflow\WeatherDateFulfillmentService;
+                    } elseif ($agent->getAction() === 'web.search') {
+                        return new \App\Services\Dialogflow\WebSearchFulfillmentService;
                     } else {
                         abort(500, 'Internal Server Error');
                     }
