@@ -20,6 +20,7 @@ class CreateDevicesTable extends Migration
             $table->text('description')->nullable();
             $table->string('status', 255)->nullable();
             $table->string('code', 255)->nullable()->unique();
+            $table->string('key', 255)->nullable()->unique();
             $table->timestamps();
             $table->softDeletes();
         });
