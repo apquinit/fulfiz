@@ -32,7 +32,7 @@ class DateTimeCurrentFulfillmentServiceTest extends TestCase
     public function DateTimeCurrentFulfillmentService_class_should_return_text_response_when_passed_user_and_parameters_array()
     {
         $user = [
-            'id' => 'irene-lite-vbvypr'
+            'id' => 'dialogflow/agent/irene-lite-vbvypr'
         ];
 
         $parameters = [
