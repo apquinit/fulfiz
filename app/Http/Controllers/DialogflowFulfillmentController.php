@@ -29,7 +29,7 @@ class DialogflowFulfillmentController extends Controller
             $this->service->setParameters($this->request->user, $parameters);
         } else {
             $this->service->setParameters($this->request->user, $this->request->agent->getParameters());
-        }        
+        }
 
         // Execute process and generate a text response
         $this->service->process();
