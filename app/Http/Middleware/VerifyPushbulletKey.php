@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Repositories\KeyRepository;
 
-class VerifyDialogflowKey
+class VerifyPushbulletKey
 {
     private $keyRepository;
     private $key;
@@ -30,12 +30,12 @@ class VerifyDialogflowKey
     public function handle($request, Closure $next)
     {
         // Get key from repository.
-        $this->key = $this->keyRepository->getByName('dialogflow');
+        $this->key = $this->keyRepository->getByName('pushbullet');
 
         if ($this->key->token != $request->bearerToken()) {
             abort(403, 'Forbidden');
         }
-
+        
         if ($this->key->status === 'ENABLED') {
             return $next($request);
         } elseif ($this->key->status === 'DISABLED') {
