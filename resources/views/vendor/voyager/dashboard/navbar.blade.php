@@ -16,7 +16,7 @@
                     <li class="active">
                         <a href="{{ route('voyager.dashboard')}}"><i class="voyager-dashboard"></i> {{ __('voyager::generic.dashboard') }}</a>
                     </li>
-                    {{-- @foreach ($segments as $segment)
+                    @foreach ($segments as $segment)
                         @php
                         $url .= '/'.$segment;
                         @endphp
@@ -27,7 +27,7 @@
                                 <a href="{{ $url }}">{{ ucfirst($segment) }}</a>
                             </li>
                         @endif
-                    @endforeach --}}
+                    @endforeach
                 @endif
             </ol>
             @show
