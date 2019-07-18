@@ -11,6 +11,10 @@
 |
 */
 
+if (App::environment('production', 'staging')) {
+    URL::forceScheme('https');
+}
+
 Route::get('/', function () {
     return view('home', ['appName' => config('app.name')]);
 });
