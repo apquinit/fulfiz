@@ -1,38 +1,83 @@
 <?php
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Third Party Services
+    |--------------------------------------------------------------------------
+    |
+    | This file is for storing the credentials for third party services such
+    | as Stripe, Mailgun, SparkPost and others. This file provides a sane
+    | default location for this type of information, allowing packages
+    | to have a conventional place to find your various credentials.
+    |
+    */
+
+    'mailgun' => [
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
+        'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
+    ],
+
+    'postmark' => [
+        'token' => env('POSTMARK_TOKEN'),
+    ],
+
+    'ses' => [
+        'key' => env('AWS_ACCESS_KEY_ID'),
+        'secret' => env('AWS_SECRET_ACCESS_KEY'),
+        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
+
+    'sparkpost' => [
+        'secret' => env('SPARKPOST_SECRET'),
+    ],
+
+    'stripe' => [
+        'model' => App\User::class,
+        'key' => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+        'webhook' => [
+            'secret' => env('STRIPE_WEBHOOK_SECRET'),
+            'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
+        ],
+    ],
+
     'location_iq' => [
-        'base_url' => 'https://us1.locationiq.com/v1/search.php',
-        'api_key' => env('API_LOCATION_IQ_KEY', getenv('API_LOCATION_IQ_KEY') ? null : null)
+        'base_url' => env('LOCATION_IQ_URL', null),
+        'api_key' => env('LOCATION_IQ_KEY', null)
     ],
 
     'dark_sky' => [
-        'base_url' => 'https://api.darksky.net/forecast',
-        'api_key' => env('API_DARK_SKY_KEY', getenv('API_DARK_SKY_KEY') ? null : null),
+        'base_url' => env('DARK_SKY_URL', null),
+        'api_key' => env('DARK_SKY_KEY', null),
         'units' => 'si',
     ],
-
+    
     'duck_duck_go' => [
-        'base_url' => 'https://api.duckduckgo.com',
+        'base_url' => env('DUCK_DUCK_GO_URL', null),
     ],
 
     'wolfram_alpha' => [
-        'base_url' => 'https://api.wolframalpha.com/v1/result',
-        'api_key' => env('API_WOLFRAM_ALPHA_KEY', getenv('API_WOLFRAM_ALPHA_KEY') ? null : null),
+        'base_url' => env('WOLFRAM_ALPHA_URL', null),
+        'api_key' => env('WOLFRAM_ALPHA_KEY', null),
+        'units' => 'metric',
     ],
 
     'timezone_db' => [
-        'base_url' => 'https://api.timezonedb.com/v2.1/get-time-zone',
-        'api_key' => env('API_TIMEZONE_DB_KEY', getenv('API_TIMEZONE_DB_KEY') ? null : null),
+        'base_url' => env('TIMEZONE_DB_URL', null),
+        'api_key' => env('TIMEZONE_DB_KEY', null),
     ],
 
     'autoremote' => [
-        'base_url' => 'https://autoremotejoaomgcd.appspot.com/sendmessage',
-        'api_key' => env('API_AUTOREMOTE_KEY', getenv('API_AUTOREMOTE_KEY') ? null : null),
+        'base_url' => env('AUTOREMOTE_URL', null),
+        'api_key' => env('AUTOREMOTE_KEY', null),
     ],
 
     'pushbullet' => [
-        'base_url' => 'https://api.pushbullet.com/v2',
-        'api_key' => env('API_PUSHBULLET_KEY', getenv('API_PUSHBULLET_KEY') ? null : null),
+        'base_url' => env('PUSHBULLET_URL', null),
+        'api_key' => env('PUSHBULLET_KEY', null),
     ]
+
 ];
