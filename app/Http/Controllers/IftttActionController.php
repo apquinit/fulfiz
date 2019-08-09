@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use Illuminate\Http\Request;
 
 class IftttActionController extends Controller
@@ -15,6 +16,10 @@ class IftttActionController extends Controller
 
     public function status()
     {
+        // Log request and response data
+        Log::info('IFTTT request', ['Request ID' => $this->request->header('X-Request-ID')]);
+
+        // Return response to IFTTT
         return response()->json(['success' => 'success'], 200);
     }
 }
