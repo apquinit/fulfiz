@@ -33,15 +33,15 @@ class VerifyPushbulletKey
         $this->key = $this->keyRepository->getByName('pushbullet');
 
         if ($this->key->token != $request->bearerToken()) {
-            abort(403, 'Forbidden');
+            abort(401, 'Unauthorized.');
         }
         
         if ($this->key->status === 'ENABLED') {
             return $next($request);
         } elseif ($this->key->status === 'DISABLED') {
-            abort(401, 'Unauthorized');
+            abort(401, 'Unauthorized.');
         } else {
-            abort(500, 'Internal Server Error');
+            abort(500, 'Internal server error.');
         }
     }
 }
