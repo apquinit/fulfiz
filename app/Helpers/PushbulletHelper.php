@@ -1,9 +1,6 @@
 <?php
 
 use Log as Log;
-use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Client;
-use App\Repositories\PushbulletUserRepository;
 
 if (!function_exists('push_note_to_channel')) {
 
@@ -13,7 +10,7 @@ if (!function_exists('push_note_to_channel')) {
      * @param
      * @return
      */
-    function push_note_to_channel(string $channel, string $title, string $message) : int
+    function push_note_to_channel(string $channel, string $title, string $message) : array
     {
         // Pushbullet request URL (https://api.pushbullet.com/v2/pushes)
         $curl = curl_init(config('services.pushbullet.base_url') . '/pushes');
@@ -26,9 +23,17 @@ if (!function_exists('push_note_to_channel')) {
         $response = curl_exec($curl);
 
         if ($response === '{}') {
-            return 200;
+            Log::info('Pushbullet push note to channel request', ['Status' => 200, 'Request' => config('services.pushbullet.base_url') . '/pushes', 'Response' => 'success']);
+            return [
+                'message' => 'success',
+                'code' => 200,
+            ];
         } else {
-            return 500;
+            Log::info('Pushbullet push note to channel request', ['Status' => 500, 'Request' => config('services.pushbullet.base_url') . '/pushes', 'Response' => 'error']);
+            return [
+                'message' => 'error',
+                'code' => 500,
+            ];
         }
     }
 }
