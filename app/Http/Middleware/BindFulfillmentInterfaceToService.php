@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Dialogflow\WebhookClient;
-use App\Interfaces\DialogflowFulfillmentServiceInterface;
 
 class BindFulfillmentInterfaceToService
 {
