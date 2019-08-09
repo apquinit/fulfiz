@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Log;
 use Illuminate\Http\Request;
-use Dialogflow\WebhookClient;
 use App\Interfaces\DialogflowFulfillmentServiceInterface;
 
 class DialogflowFulfillmentController extends Controller

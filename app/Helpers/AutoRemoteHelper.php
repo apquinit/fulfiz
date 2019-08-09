@@ -1,7 +1,6 @@
 <?php
 
 use Log as Log;
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use App\Repositories\DeviceRepository;
 

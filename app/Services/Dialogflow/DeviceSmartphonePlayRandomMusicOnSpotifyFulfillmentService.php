@@ -4,7 +4,7 @@ namespace App\Services\Dialogflow;
 
 use App\Interfaces\DialogflowFulfillmentServiceInterface;
 
-class DeviceSmartphoneLaunchApplicationFulfillmentService extends DialogflowFulfillmentService implements DialogflowFulfillmentServiceInterface
+class DeviceSmartphonePlayRandomMusicOnSpotifyFulfillmentService extends DialogflowFulfillmentService implements DialogflowFulfillmentServiceInterface
 {
     public function setParameters(array $user, array $parameters) : void
     {
@@ -19,10 +19,10 @@ class DeviceSmartphoneLaunchApplicationFulfillmentService extends DialogflowFulf
 
     public function process() : void
     {
-        $responseCode = send_autoremote_message($this->user['device_code'], 'LAUNCH ' . strtoupper($this->parameters['application']));
+        $responseCode = send_autoremote_message($this->user['device_code'], 'PLAY RANDOM MUSIC ON SPOTIFY');
 
         if ($responseCode === 200) {
-            $textResponseArray = ['Okay.', 'Sure!', 'Got it.', 'Opening application.', 'Okay. Opening application.', 'Sure! Opening application.', 'Got it. Opening application.'];
+            $textResponseArray = ['Okay.', 'Sure!', 'Got it.', 'Playing music on Spotify.', 'Okay. Playing music on Spotify.', 'Sure! Playing music on Spotify.', 'Got it. Playing music on Spotify.'];
             $textResponseIndex = array_rand($textResponseArray);
             $this->textResponse = $textResponseArray[$textResponseIndex];
         } else {
