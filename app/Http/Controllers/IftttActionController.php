@@ -21,7 +21,7 @@ class IftttActionController extends Controller
         Log::info('IFTTT request', ['Request Type' => 'Status Check', 'Request ID' => $this->request->header('X-Request-ID')]);
 
         // Return response to IFTTT
-        return response()->json(['success' => 'success'], 200);
+        return response()->json(['message' => 'success'], 200);
     }
 
     public function testSetup()
