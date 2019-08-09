@@ -25,9 +25,9 @@ if (!function_exists('get_current_date_time')) {
             if ($timeZoneDbUser->status === 'ENABLED') {
                 $key = $timeZoneDbUser->token;
             } elseif ($timeZoneDbUser->status === 'DISABLED') {
-                abort(401, 'Service Disabled');
+                abort(403, 'Service disabled.');
             } else {
-                abort(500, 'Internal Server Error');
+                abort(500, 'Internal server error.');
             }
         }
 

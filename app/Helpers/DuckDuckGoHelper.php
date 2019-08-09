@@ -32,9 +32,9 @@ if (!function_exists('get_instant_answer')) {
                 $content = json_decode($response->getBody()->getContents(), true);
                 $instantAnswer = $content;
             } elseif ($duckDuckGoUser->status === 'DISABLED') {
-                abort(401, 'Service Disabled');
+                abort(403, 'Service disabled.');
             } else {
-                abort(500, 'Internal Server Error');
+                abort(500, 'Internal server error.');
             }
         }
         
