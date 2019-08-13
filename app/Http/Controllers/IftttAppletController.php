@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Log;
 use Illuminate\Http\Request;
 
-class IftttActionController extends Controller
+class IftttAppletController extends Controller
 {
     private $request;
     private $deviceCode;
