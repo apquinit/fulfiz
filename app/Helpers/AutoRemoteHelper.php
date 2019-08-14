@@ -24,9 +24,9 @@ if (!function_exists('send_autoremote_message')) {
             if ($device->status === 'ENABLED') {
                 $key = $device->key;
             } elseif ($device->status === 'DISABLED') {
-                abort(401, 'Device Disabled');
+                abort(403, 'Device disabled.');
             } else {
-                abort(500, 'Internal Server Error');
+                abort(500, 'Internal server error.');
             }
         }
 

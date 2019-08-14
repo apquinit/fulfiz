@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Repositories\KeyRepository;
 
-class VerifyDialogflowKey
+class VerifyIftttKey
 {
     private $keyRepository;
     private $key;
@@ -30,12 +30,12 @@ class VerifyDialogflowKey
     public function handle($request, Closure $next)
     {
         // Get key from repository.
-        $this->key = $this->keyRepository->getByName('dialogflow');
+        $this->key = $this->keyRepository->getByName('ifttt');
 
-        if ($this->key->token != $request->bearerToken()) {
+        if ($this->key->token != $request->header('IFTTT-Channel-Key')) {
             abort(401, 'Unauthorized.');
         }
-
+        
         if ($this->key->status === 'ENABLED') {
             return $next($request);
         } elseif ($this->key->status === 'DISABLED') {

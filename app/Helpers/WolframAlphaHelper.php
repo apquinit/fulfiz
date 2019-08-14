@@ -25,9 +25,9 @@ if (!function_exists('get_default_fallback')) {
             if ($wolframAlphaUser->status === 'ENABLED') {
                 $key = $wolframAlphaUser->token;
             } elseif ($wolframAlphaUser->status === 'DISABLED') {
-                abort(401, 'Service Disabled');
+                abort(403, 'Service disabled.');
             } else {
-                abort(500, 'Internal Server Error');
+                abort(500, 'Internal server error.');
             }
         }
 

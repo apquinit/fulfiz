@@ -20,17 +20,17 @@ class PushbulletNotificationController extends Controller
 
         // Check channel name
         if (empty($content->channel)) {
-            abort(400, 'Bad Request');
+            abort(400, 'Bad request.');
         }
 
         // Check channel title
         if (empty($content->title)) {
-            abort(400, 'Bad Request');
+            abort(400, 'Bad request.');
         }
 
         // Check channel message
         if (empty($content->message)) {
-            abort(400, 'Bad Request');
+            abort(400, 'Bad request.');
         }
 
         // Return response
