@@ -71,7 +71,7 @@ class IftttAppletController extends Controller
 
         $user = $this->userRepository->getByUserId($userId);
 
-        // Set note title, and message
+        // Set note title and message
         $title = 'Irene';
         $message = ucwords($user->name) . ' arrived home.';
 
