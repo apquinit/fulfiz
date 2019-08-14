@@ -41,9 +41,9 @@ class BindSessionToDevice
                 $code = $device->code;
                 Log::info('Bind session to device', ['Session' => $session, 'Device' => $device->name]);
             } elseif ($device->status === 'DISABLED') {
-                abort(401, 'Device Disabled');
+                abort(403, 'Device disabled.');
             } else {
-                abort(500, 'Internal Server Error');
+                abort(500, 'Internal server error.');
             }
         }
 

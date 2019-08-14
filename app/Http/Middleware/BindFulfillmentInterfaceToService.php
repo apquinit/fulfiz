@@ -37,7 +37,7 @@ class BindFulfillmentInterfaceToService
                     } elseif ($agent->getAction() === 'web.search') {
                         return new \App\Services\Dialogflow\WebSearchFulfillmentService;
                     } else {
-                        abort(500, 'Internal Server Error');
+                        abort(500, 'Internal server error.');
                     }
                 }
             );

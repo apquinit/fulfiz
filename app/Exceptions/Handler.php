@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof ModelNotFoundException) {
             return response(view('error', [
-                'message' => 'Record Not Found',
+                'message' => 'Record not found.',
                 'code' => 404
             ]), 404);
         }
@@ -58,12 +58,12 @@ class Handler extends ExceptionHandler
         if ($exception instanceof HttpException) {
             if ($exception->getStatusCode() === 404 and $exception->getMessage() === '') {
                 return response(view('error', [
-                    'message' => 'Page Not Found',
+                    'message' => 'Page not found.',
                     'code' => $exception->getStatusCode()
                 ]), $exception->getStatusCode());
             } else if ($exception->getStatusCode() === 405 and $exception->getMessage() === '') {
                 return response(view('error', [
-                    'message' => 'Method Not Allowed',
+                    'message' => 'Method not allowed.',
                     'code' => $exception->getStatusCode()
                 ]), $exception->getStatusCode());
             }

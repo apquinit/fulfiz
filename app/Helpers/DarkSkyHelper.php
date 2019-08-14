@@ -25,9 +25,9 @@ if (!function_exists('get_current_weather')) {
             if ($darkSkyUser->status === 'ENABLED') {
                 $key = $darkSkyUser->token;
             } elseif ($darkSkyUser->status === 'DISABLED') {
-                abort(401, 'Service Disabled');
+                abort(403, 'Service disabled.');
             } else {
-                abort(500, 'Internal Server Error');
+                abort(500, 'Internal server error.');
             }
         }
 
@@ -64,9 +64,9 @@ if (!function_exists('get_date_weather')) {
             if ($darkSkyUser->status === 'ENABLED') {
                 $key = $darkSkyUser->token;
             } elseif ($darkSkyUser->status === 'DISABLED') {
-                abort(401, 'Service Disabled');
+                abort(403, 'Service disabled.');
             } else {
-                abort(500, 'Internal Server Error');
+                abort(500, 'Internal server error.');
             }
         }
 
