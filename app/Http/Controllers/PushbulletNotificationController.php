@@ -37,6 +37,5 @@ class PushbulletNotificationController extends Controller
         $data = push_note_to_channel($content->channel, $content->title, $content->message);
 
         return response(['data' => $data], 200)->header('Content-Type', 'application/json;charset=UTF-8');
-
     }
 }
