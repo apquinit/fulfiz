@@ -23,6 +23,9 @@ if (!function_exists('get_latitude_and_longitude')) {
             $locationIqUser = $locationIqUserRepository->getByUserId((int) $userId);
 
             if ($locationIqUser->status === 'ENABLED') {
+                if (empty($locationIqUser->token)) {
+                    abort(500, 'Internal server error.');
+                }
                 $key = $locationIqUser->token;
             } elseif ($locationIqUser->status === 'DISABLED') {
                 abort(403, 'Service disabled.');

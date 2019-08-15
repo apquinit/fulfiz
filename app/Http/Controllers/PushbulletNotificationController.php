@@ -18,24 +18,24 @@ class PushbulletNotificationController extends Controller
         // Get request content
         $content = json_decode($this->request->getContent());
 
-        // Check channel name
+        // Check channel
         if (empty($content->channel)) {
-            abort(400, 'Bad request.');
+            abort(400, 'Channel is required.');
         }
 
-        // Check channel title
+        // Check title
         if (empty($content->title)) {
-            abort(400, 'Bad request.');
+            abort(400, 'Title is required.');
         }
 
-        // Check channel message
+        // Check message
         if (empty($content->message)) {
-            abort(400, 'Bad request.');
+            abort(400, 'Message is required.');
         }
 
         // Return response
-        return [
-            'status' => push_note_to_channel($content->channel, $content->title, $content->message)
-        ];
+        $data = push_note_to_channel($content->channel, $content->title, $content->message);
+
+        return response(['data' => $data], 200)->header('Content-Type', 'application/json;charset=UTF-8');
     }
 }

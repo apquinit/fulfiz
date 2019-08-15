@@ -25,15 +25,13 @@ if (!function_exists('push_note_to_channel')) {
         if ($response === '{}') {
             Log::info('Pushbullet push note to channel request', ['Status' => 200, 'Request' => config('services.pushbullet.base_url') . '/pushes', 'Response' => 'success']);
             return [
-                'message' => 'success',
-                'code' => 200,
+                'channel' => $channel,
+                'title' => $title,
+                'message' => $message,
             ];
         } else {
             Log::info('Pushbullet push note to channel request', ['Status' => 500, 'Request' => config('services.pushbullet.base_url') . '/pushes', 'Response' => 'error']);
-            return [
-                'message' => 'error',
-                'code' => 500,
-            ];
+            abort(500, 'Internal server error.');
         }
     }
 }

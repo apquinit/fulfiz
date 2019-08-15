@@ -45,39 +45,40 @@ return [
     ],
 
     'location_iq' => [
-        'base_url' => env('LOCATION_IQ_URL', null),
-        'api_key' => env('LOCATION_IQ_KEY', null)
+        'base_url' => env('LOCATION_IQ_URL'),
+        'api_key' => env('LOCATION_IQ_KEY')
     ],
 
     'dark_sky' => [
-        'base_url' => env('DARK_SKY_URL', null),
-        'api_key' => env('DARK_SKY_KEY', null),
+        'base_url' => env('DARK_SKY_URL'),
+        'api_key' => env('DARK_SKY_KEY'),
         'units' => 'si',
     ],
     
     'duck_duck_go' => [
-        'base_url' => env('DUCK_DUCK_GO_URL', null),
+        'base_url' => env('DUCK_DUCK_GO_URL'),
     ],
 
     'wolfram_alpha' => [
-        'base_url' => env('WOLFRAM_ALPHA_URL', null),
-        'api_key' => env('WOLFRAM_ALPHA_KEY', null),
+        'base_url' => env('WOLFRAM_ALPHA_URL'),
+        'api_key' => env('WOLFRAM_ALPHA_KEY'),
         'units' => 'metric',
     ],
 
     'timezone_db' => [
-        'base_url' => env('TIMEZONE_DB_URL', null),
-        'api_key' => env('TIMEZONE_DB_KEY', null),
+        'base_url' => env('TIMEZONE_DB_URL'),
+        'api_key' => env('TIMEZONE_DB_KEY'),
     ],
 
     'autoremote' => [
-        'base_url' => env('AUTOREMOTE_URL', null),
-        'api_key' => env('AUTOREMOTE_KEY', null),
+        'base_url' => env('AUTOREMOTE_URL'),
+        'api_key' => env('AUTOREMOTE_KEY'),
     ],
 
     'pushbullet' => [
-        'base_url' => env('PUSHBULLET_URL', null),
-        'api_key' => env('PUSHBULLET_KEY', null),
+        'base_url' => env('PUSHBULLET_URL'),
+        'api_key' => env('PUSHBULLET_KEY'),
+        'channel' => env('PUSHBULLET_CHANNEL', 'irene'),
     ]
 
 ];

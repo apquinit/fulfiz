@@ -22,7 +22,8 @@ class PushbulletHelperTest extends TestCase
     {
         $responseArray = push_note_to_channel('irene-test', 'Unit Test', 'This is a test message.');
 
+        $this->assertTrue(array_key_exists('channel', $responseArray));
+        $this->assertTrue(array_key_exists('title', $responseArray));
         $this->assertTrue(array_key_exists('message', $responseArray));
-        $this->assertTrue(array_key_exists('code', $responseArray));
     }
 }
