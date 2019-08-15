@@ -22,6 +22,9 @@ if (!function_exists('send_autoremote_message')) {
             $device = $deviceRepository->getByCode($deviceCode);
 
             if ($device->status === 'ENABLED') {
+                if (empty($device->key)) {
+                    abort(500, 'Internal server error.');
+                }
                 $key = $device->key;
             } elseif ($device->status === 'DISABLED') {
                 abort(403, 'Device disabled.');
