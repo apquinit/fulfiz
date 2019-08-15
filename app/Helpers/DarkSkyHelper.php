@@ -62,6 +62,9 @@ if (!function_exists('get_date_weather')) {
             $darkSkyUser = $darkSkyUserRepository->getByUserId((int) $userId);
 
             if ($darkSkyUser->status === 'ENABLED') {
+                if (empty($darkSkyUser->token)) {
+                    abort(500, 'Internal server error.');
+                }
                 $key = $darkSkyUser->token;
             } elseif ($darkSkyUser->status === 'DISABLED') {
                 abort(403, 'Service disabled.');
