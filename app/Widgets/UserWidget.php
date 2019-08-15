@@ -4,7 +4,7 @@ namespace App\Widgets;
 
 use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
-use  App\Models\User;
+use App\Models\User;
 
 class UserWidget extends Widget
 {

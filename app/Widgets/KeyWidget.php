@@ -4,7 +4,7 @@ namespace App\Widgets;
 
 use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
-use  App\Models\Key;
+use App\Models\Key;
 
 class KeyWidget extends Widget
 {
