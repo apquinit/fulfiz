@@ -23,6 +23,9 @@ if (!function_exists('get_default_fallback')) {
             $wolframAlphaUser = $wolframAlphaUserRepository->getByUserId((int) $userId);
 
             if ($wolframAlphaUser->status === 'ENABLED') {
+                if (empty($wolframAlphaUser->token)) {
+                    abort(500, 'Internal server error.');
+                }
                 $key = $wolframAlphaUser->token;
             } elseif ($wolframAlphaUser->status === 'DISABLED') {
                 abort(403, 'Service disabled.');
@@ -32,7 +35,7 @@ if (!function_exists('get_default_fallback')) {
         }
 
         $guzzleClient = new Client;
-        $requestUrl = config('services.wolfram_alpha.base_url') . '?appid=' . config('services.wolfram_alpha.api_key') . '&i=' . $query . '&units=' . config('services.wolfram_alpha.units');
+        $requestUrl = config('services.wolfram_alpha.base_url') . '?appid=' . $key . '&i=' . $query . '&units=' . config('services.wolfram_alpha.units');
         $response  = $guzzleClient->get($requestUrl);
         $defaultFallback = $response->getBody()->getContents();
         

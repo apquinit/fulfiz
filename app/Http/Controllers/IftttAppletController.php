@@ -26,7 +26,10 @@ class IftttAppletController extends Controller
         Log::info('IFTTT request', ['Request Type' => 'Status Check', 'Request ID' => $this->request->header('X-Request-ID')]);
 
         // Return response to IFTTT
-        return response()->json(['message' => 'success'], 200);
+        return response(['data' => [
+            'message' => 'success'
+            ]
+        ], 200)->header('Content-Type', 'application/json;charset=UTF-8');
     }
 
     public function testSetup()
@@ -35,8 +38,11 @@ class IftttAppletController extends Controller
         Log::info('IFTTT request', ['Request Type' => 'Test Setup', 'Request ID' => $this->request->header('X-Request-ID')]);
 
         // Mock data value
-        // $deviceCode = config('app.dialogflow.irene');
-        $deviceCode = 'uvLPoqMf';
+        $deviceCode = config('app.device.default');
+
+        if (empty($deviceCode)) {
+            abort(500, 'Internal server error.');
+        }
 
         // Add value to data array
         $data = [
@@ -55,7 +61,15 @@ class IftttAppletController extends Controller
 
     public function actionArrivedHome()
     {
-        // Get device code
+       // Get device code
+        if (empty($this->request->actionFields)) {
+            abort(400, 'Bad request.');
+        }
+
+        if (empty($this->request->actionFields['device_code'])) {
+            abort(400, 'Bad request.');
+        }
+
         $deviceCode = $this->request->actionFields['device_code'];
 
         // Get device user
@@ -71,14 +85,19 @@ class IftttAppletController extends Controller
 
         $user = $this->userRepository->getByUserId($userId);
 
-        // Set note title, and message
+        // Set note title and message
+        $channel = config('services.pushbullet.channel');
         $title = 'Irene';
         $message = ucwords($user->name) . ' arrived home.';
 
         // Push note to channel
-        $status = push_note_to_channel('irene', $title, $message);
+        $pushbullet = push_note_to_channel($channel, $title, $message);
 
         // Return response
-        return response($status['code'])->header('Content-Type', 'application/json;charset=UTF-8');
+        return response(['data' => [
+            'id' => $device->id,
+            'pushbullet' => $pushbullet
+            ]
+        ], 200)->header('Content-Type', 'application/json;charset=UTF-8');
     }
 }

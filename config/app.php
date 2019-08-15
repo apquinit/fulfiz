@@ -129,7 +129,7 @@ return [
     | Dialogflow Agent Identifiers
     |--------------------------------------------------------------------------
     |
-    | This value is the of Irene and Irene Lite on Messenger. This value is used when the
+    | This value is the identifiers of Irene and Irene Lite on Messenger. This value is used when the
     | framework needs to place the agent's id in condition checks in helpers or
     | any other location as required by the application or its packages.
     |
@@ -138,6 +138,21 @@ return [
     'dialogflow' => [
         'irene' => env('DIALOGFLOW_AGENT_IRENE_ID'),
         'irene_lite' => env('DIALOGFLOW_AGENT_IRENE_LITE_ID'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Device Identifiers
+    |--------------------------------------------------------------------------
+    |
+    | This value is used when the framework needs
+    | to place device details in condition checks in helpers or
+    | any other location as required by the application or its packages.
+    |
+    */
+
+    'device' => [
+        'default' => env('DEFAULT_DEVICE_CODE'),
     ],
 
     /*
