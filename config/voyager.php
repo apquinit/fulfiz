@@ -149,7 +149,9 @@ return [
         ],
 
         'widgets' => [
-
+            'App\\Widgets\\UserWidget',
+            'App\\Widgets\\DeviceWidget',
+            'App\\Widgets\\KeyWidget',
         ],
 
     ],
