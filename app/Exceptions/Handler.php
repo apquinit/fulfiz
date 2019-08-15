@@ -4,8 +4,8 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Handler extends ExceptionHandler
 {
@@ -48,30 +48,24 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof ModelNotFoundException) {
-            return response(view('error', [
-                'message' => 'Record not found.',
-                'code' => 404
-            ]), 404);
-        }
-
         if ($exception instanceof HttpException) {
             if ($exception->getStatusCode() === 404 and $exception->getMessage() === '') {
                 return response(view('error', [
                     'message' => 'Page not found.',
-                    'code' => $exception->getStatusCode()
-                ]), $exception->getStatusCode());
-            } else if ($exception->getStatusCode() === 405 and $exception->getMessage() === '') {
-                return response(view('error', [
-                    'message' => 'Method not allowed.',
-                    'code' => $exception->getStatusCode()
-                ]), $exception->getStatusCode());
+                    'code' => 404
+                ]), 404);
+            } else {
+                return response(['error' => [
+                    'code' => $exception->getStatusCode(),
+                    'message' => $exception->getMessage(),
+                ]], $exception->getStatusCode())->header('Content-Type', 'application/json;charset=UTF-8');
             }
-
-            return response(view('error', [
-                'message' => $exception->getMessage(),
-                'code' => $exception->getStatusCode()
-            ]), $exception->getStatusCode());
+        } else if ($exception instanceof ModelNotFoundException) {
+            return response(['error' => [
+                'code' => 404,
+                'message' => 'Record not found.',
+                ]
+            ], 404)->header('Content-Type', 'application/json;charset=UTF-8');
         }
 
         return parent::render($request, $exception);
