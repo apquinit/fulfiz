@@ -38,14 +38,14 @@
                    aria-expanded="false"><img src="{{ $user_avatar }}" class="profile-img"> <span
                             class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-menu-animated">
-                    <li class="profile-img">
+                    {{-- <li class="profile-img">
                         <img src="{{ $user_avatar }}" class="profile-img">
                         <div class="profile-body">
                             <h5>{{ app('VoyagerAuth')->user()->name }}</h5>
-                            {{-- <h6>{{ app('VoyagerAuth')->user()->email }}</h6> --}}
+                            <h6>{{ app('VoyagerAuth')->user()->email }}</h6>
                         </div>
                     </li>
-                    <li class="divider"></li>
+                    <li class="divider"></li> --}}
                     <?php $nav_items = config('voyager.dashboard.navbar_items'); ?>
                     @if(is_array($nav_items) && !empty($nav_items))
                     @foreach($nav_items as $name => $item)
