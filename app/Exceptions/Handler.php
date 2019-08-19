@@ -48,7 +48,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        // HTTP Exceptions
+        // Model not found exception
+        if ($exception instanceof ModelNotFoundException) {
+            return response(['errors' => [
+                'code' => 404,
+                'message' => 'Record not found.',
+                ]
+            ], 404)->header('Content-Type', 'application/json;charset=UTF-8');
+        }
+        
+        // HTTP exceptions
         if ($exception instanceof HttpException) {
             if ($exception->getStatusCode() === 404 and $exception->getMessage() === '') {
                 return response(view('error', [
@@ -63,15 +72,6 @@ class Handler extends ExceptionHandler
             }
         }
         
-        // Model Not Found Exception
-        if ($exception instanceof ModelNotFoundException) {
-            return response(['errors' => [
-                'code' => 404,
-                'message' => 'Record not found.',
-                ]
-            ], 404)->header('Content-Type', 'application/json;charset=UTF-8');
-        }
-
         return parent::render($request, $exception);
     }
 }
