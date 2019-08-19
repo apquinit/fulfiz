@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof HttpException) {
             if ($exception->getStatusCode() === 404 and $exception->getMessage() === '') {
-                return response(view('errors', [
+                return response(view('error', [
                     'message' => 'Page not found.',
                     'code' => 404
                 ]), 404);
