@@ -33,7 +33,7 @@ class ArrivedLocationController extends Controller
         }
 
         $deviceCode = $this->request->actionFields['device_code'];
-        $location = $this->request->actionFields['location'];
+        $locationName = $this->request->actionFields['location_name'];
 
         // Get device user
         $device = $this->deviceRepository->getByCode($deviceCode);
@@ -51,7 +51,7 @@ class ArrivedLocationController extends Controller
         // Set note title and message
         $channel = config('services.pushbullet.channel');
         $title = 'Irene';
-        $message = ucwords($user->name) . ' arrived at ' . $location . '.';
+        $message = ucwords($user->name) . ' arrived at ' . $locationName . '.';
 
         // Push note to channel
         $pushbullet = push_note_to_channel($channel, $title, $message);
