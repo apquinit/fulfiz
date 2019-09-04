@@ -19,7 +19,13 @@ if (!function_exists('get_instant_answer')) {
         if (strpos($userId, config('app.dialogflow.irene_lite')) !== false or strpos($userId, config('app.dialogflow.irene')) !== false) {
             $guzzleClient = new Client;
             $requestUrl = config('services.duck_duck_go.base_url') . '/?q=' . $topic  . '&format=json&no_redirect=1&no_html=1&skip_disambig=1';
-            $response  = $guzzleClient->get($requestUrl);
+            
+            try {
+                $response  = $guzzleClient->get($requestUrl);
+            } catch (\Exception $e) {
+                abort(500, 'Internal server error.');
+            }
+
             $content = json_decode($response->getBody()->getContents(), true);
             $instantAnswer = $content;
         } else {
@@ -28,7 +34,13 @@ if (!function_exists('get_instant_answer')) {
             if ($duckDuckGoUser->status === 'ENABLED') {
                 $guzzleClient = new Client;
                 $requestUrl = config('services.duck_duck_go.base_url') . '/?q=' . $topic  . '&format=json&no_redirect=1&no_html=1&skip_disambig=1';
-                $response  = $guzzleClient->get($requestUrl);
+                
+                try {
+                    $response  = $guzzleClient->get($requestUrl);
+                } catch (\Exception $e) {
+                    abort(500, 'Internal server error.');
+                }
+                
                 $content = json_decode($response->getBody()->getContents(), true);
                 $instantAnswer = $content;
             } elseif ($duckDuckGoUser->status === 'DISABLED') {

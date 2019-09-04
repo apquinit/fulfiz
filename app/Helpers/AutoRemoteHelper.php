@@ -35,7 +35,13 @@ if (!function_exists('send_autoremote_message')) {
 
         $guzzleClient = new Client;
         $requestUrl = config('services.autoremote.base_url') . '?key=' . $key . '&message=' . $message;
-        $response  = $guzzleClient->get($requestUrl);
+
+        try {
+            $response  = $guzzleClient->get($requestUrl);
+        } catch (\Exception $e) {
+            abort(500, 'Internal server error.');
+        }
+
         $responseCode = $response->getStatusCode();
         
         Log::info('AutoRemote message request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl]);

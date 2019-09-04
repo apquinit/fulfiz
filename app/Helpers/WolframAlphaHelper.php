@@ -36,7 +36,13 @@ if (!function_exists('get_default_fallback')) {
 
         $guzzleClient = new Client;
         $requestUrl = config('services.wolfram_alpha.base_url') . '?appid=' . $key . '&i=' . $query . '&units=' . config('services.wolfram_alpha.units');
-        $response  = $guzzleClient->get($requestUrl);
+
+        try {
+            $response  = $guzzleClient->get($requestUrl);
+        } catch (\Exception $e) {
+            abort(500, 'Internal server error.');
+        }
+
         $defaultFallback = $response->getBody()->getContents();
         
         Log::info('WolframAlpha short answer request', ['Status' => $response->getStatusCode(), 'Request' => $requestUrl, 'Response' => $defaultFallback]);

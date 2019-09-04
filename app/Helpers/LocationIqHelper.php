@@ -36,7 +36,13 @@ if (!function_exists('get_latitude_and_longitude')) {
 
         $guzzleClient = new Client;
         $requestUrl = config('services.location_iq.base_url') . '?key=' . $key . '&q=' . $city . '&format=json';
-        $response  = $guzzleClient->get($requestUrl);
+
+        try {
+            $response  = $guzzleClient->get($requestUrl);
+        } catch (\Exception $e) {
+            abort(500, 'Internal server error.');
+        }
+
         $content = json_decode($response->getBody()->getContents(), true);
         $location = [
             'lat' => $content[0]['lat'],

@@ -20,7 +20,11 @@ if (!function_exists('push_note_to_channel')) {
         curl_setopt($curl, CURLOPT_HTTPHEADER, ['Access-Token: ' . config('services.pushbullet.api_key', 'Content-Type: application/json')]);
         curl_setopt($curl, CURLOPT_POSTFIELDS, ['channel_tag' => $channel, 'type' => 'note', 'title' => $title, 'body' => $message]);
 
-        $response = curl_exec($curl);
+        try {
+            $response = curl_exec($curl);
+        } catch (\Exception $e) {
+            abort(500, 'Internal server error.');
+        }
 
         if ($response === '{}') {
             Log::info('Pushbullet push note to channel request', ['Status' => 200, 'Request' => config('services.pushbullet.base_url') . '/pushes', 'Response' => 'success']);
