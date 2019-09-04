@@ -75,7 +75,13 @@ if (!function_exists('get_date_weather')) {
 
         $guzzleClient = new Client;
         $requestUrl = config('services.dark_sky.base_url') . '/' . $key . '/' . $latitude . ',' . $longitude . ',' . $date . '?exclude=[currently,minutely,hourly,alerts,flags]' . '&units=' . config('services.dark_sky.units');
-        $response  = $guzzleClient->get($requestUrl);
+        
+        try {
+            $response  = $guzzleClient->get($requestUrl);
+        } catch (\Exception $e) {
+            abort(500, 'Internal server error.');
+        }
+        
         $content = json_decode($response->getBody()->getContents(), true);
         $dateWeather = $content['daily']['data'][0];
         

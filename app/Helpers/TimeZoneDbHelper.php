@@ -36,7 +36,13 @@ if (!function_exists('get_current_date_time')) {
 
         $guzzleClient = new Client;
         $requestUrl = config('services.timezone_db.base_url') . '?key=' . $key . '&format=json&by=position&lat=' . $latitude . '&lng=' . $longitude;
-        $response  = $guzzleClient->get($requestUrl);
+
+        try {
+            $response  = $guzzleClient->get($requestUrl);
+        } catch (\Exception $e) {
+            abort(500, 'Internal server error.');
+        }
+
         $content = json_decode($response->getBody()->getContents(), true);
         $currentDateTime = $content['formatted'];
 
