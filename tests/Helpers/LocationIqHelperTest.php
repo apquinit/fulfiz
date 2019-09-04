@@ -34,7 +34,7 @@ class LocationIqHelperTest extends TestCase
         factory(\App\Models\LocationIqUser::class)->create(
             [
                 'user_id' => 1,
-                'token' => '4c53f82e708066',
+                'token' => config('services.location_iq.api_key'),
                 'status' => 'ENABLED'
             ]
         );

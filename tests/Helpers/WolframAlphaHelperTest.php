@@ -33,7 +33,7 @@ class WolframAlphaHelperTest extends TestCase
         factory(\App\Models\WolframAlphaUser::class)->create(
             [
                 'user_id' => 1,
-                'token' => 'ETLETX-AHJPWUWGQ4',
+                'token' => config('services.wolfram_alpha.api_key'),
                 'status' => 'ENABLED'
             ]
         );

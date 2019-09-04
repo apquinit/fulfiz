@@ -34,7 +34,7 @@ class TimeZoneDbHelperTest extends TestCase
         factory(\App\Models\TimeZoneDbUser::class)->create(
             [
                 'user_id' => 1,
-                'token' => '0RPFRW3KR7BJ',
+                'token' => config('services.timezone_db.api_key'),
                 'status' => 'ENABLED'
             ]
         );

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Ifttt\Action;
+namespace App\Http\Controllers\Ifttt\Actions;
 
 use Log;
 use Illuminate\Http\Request;

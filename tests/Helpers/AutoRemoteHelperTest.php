@@ -33,12 +33,12 @@ class AutoRemoteHelperTest extends TestCase
         factory(\App\Models\Device::class)->create(
             [
                 'status' => 'ENABLED',
-                'code' => 'uvLPoqMf',
-                'key' => 'fXbXbF6_tJo:APA91bFHN8DEiJ7BDRVMWSDEqJt_gWIqBTus1QhuevCUYmmgwf-ssqf5znXY4uCEoKZCBcjancLI3R8preYWBlWrrWhk4McWWmyKSKvJBrvaRCkIPJ_faOJFgR6wSvJwdTIGVPvh1hDm'
+                'code' => config('app.device.default'),
+                'key' => config('services.autoremote.api_key')
             ]
         );
 
-        $responseCode = send_autoremote_message('uvLPoqMf', 'TEST');
+        $responseCode = send_autoremote_message(config('app.device.default'), 'TEST');
 
         $this->assertEquals($responseCode, 200);
     }
