@@ -23,12 +23,12 @@ Route::middleware(['pushbullet.key'])->prefix('pushbullet')->group(function () {
 
 Route::middleware(['ifttt.key'])->prefix('ifttt')->group(function () {
     Route::prefix('v1')->group(function () {
-        Route::get('status', 'Ifttt\AppletController@status');
-        Route::post('test/setup', 'Ifttt\AppletController@testSetup');
+        Route::get('status', 'Ifttt\Test\StatusController');
+        Route::post('test/setup', 'Ifttt\Test\SetupController');
         Route::prefix('triggers')->group(function () {
         });
         Route::prefix('actions')->group(function () {
-            Route::post('arrived_location', 'Ifttt\AppletController@actionArrivedLocation');
+            Route::post('arrived_location', 'Ifttt\Action\ArrivedLocationController');
         });
     });
 });
