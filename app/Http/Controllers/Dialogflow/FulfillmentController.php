@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dialogflow;
 
 use Log;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Interfaces\DialogflowFulfillmentServiceInterface;
 
-class DialogflowFulfillmentController extends Controller
+class FulfillmentController extends Controller
 {
     private $request;
     private $service;

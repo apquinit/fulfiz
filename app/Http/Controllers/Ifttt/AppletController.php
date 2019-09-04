@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Ifttt;
 
 use Log;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use App\Repositories\DeviceRepository;
 
-class IftttAppletController extends Controller
+class AppletController extends Controller
 {
     private $request;
     private $userRepository;
@@ -48,8 +49,9 @@ class IftttAppletController extends Controller
         $data = [
             'samples' => [
                 'actions' => [
-                    'arrived_home' => [
-                        'device_code' => $deviceCode
+                    'arrived_location' => [
+                        'device_code' => $deviceCode,
+                        'location' => 'home'
                     ]
                 ]
             ],
