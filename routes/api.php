@@ -29,6 +29,7 @@ Route::middleware(['ifttt.key'])->prefix('ifttt')->group(function () {
         });
         Route::prefix('actions')->group(function () {
             Route::post('arrived_location', 'Ifttt\Action\ArrivedLocationController');
+            Route::post('left_location', 'Ifttt\Action\LeftLocationController');
         });
     });
 });

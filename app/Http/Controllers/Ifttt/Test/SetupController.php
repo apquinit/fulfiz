@@ -19,7 +19,8 @@ class SetupController extends Controller
     {
         // Mock device code and location value
         $deviceCode = config('app.device.default');
-        $locationName = 'home';
+        $arrivedLocationName = 'home';
+        $leftLocationName = 'the office';
 
         if (empty($deviceCode)) {
             abort(500, 'Internal server error.');
@@ -31,7 +32,11 @@ class SetupController extends Controller
                 'actions' => [
                     'arrived_location' => [
                         'device_code' => $deviceCode,
-                        'location_name' => $locationName
+                        'location_name' => $arrivedLocationName
+                    ],
+                    'left_location' => [
+                        'device_code' => $deviceCode,
+                        'location_name' => $leftLocationName
                     ]
                 ]
             ],
