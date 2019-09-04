@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Ifttt\Action;
 
 use Log;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use App\Repositories\DeviceRepository;
 
-class IftttAppletController extends Controller
+class ArrivedLocationController extends Controller
 {
     private $request;
     private $userRepository;
@@ -20,46 +21,7 @@ class IftttAppletController extends Controller
         $this->deviceRepository = $deviceRepository;
     }
 
-    public function status()
-    {
-        // Log request and response data
-        Log::info('IFTTT request', ['Request Type' => 'Status Check', 'Request ID' => $this->request->header('X-Request-ID')]);
-
-        // Return response to IFTTT
-        return response(['data' => [
-            'message' => 'success'
-            ]
-        ], 200)->header('Content-Type', 'application/json;charset=UTF-8');
-    }
-
-    public function testSetup()
-    {
-        // Log request and response data
-        Log::info('IFTTT request', ['Request Type' => 'Test Setup', 'Request ID' => $this->request->header('X-Request-ID')]);
-
-        // Mock data value
-        $deviceCode = config('app.device.default');
-
-        if (empty($deviceCode)) {
-            abort(500, 'Internal server error.');
-        }
-
-        // Add value to data array
-        $data = [
-            'samples' => [
-                'actions' => [
-                    'arrived_home' => [
-                        'device_code' => $deviceCode
-                    ]
-                ]
-            ],
-        ];
-
-        // Return response to IFTTT
-        return response(['data' => $data], 200)->header('Content-Type', 'application/json;charset=UTF-8');
-    }
-
-    public function actionArrivedHome()
+    public function __invoke()
     {
        // Get device code
         if (empty($this->request->actionFields)) {
@@ -71,6 +33,7 @@ class IftttAppletController extends Controller
         }
 
         $deviceCode = $this->request->actionFields['device_code'];
+        $locationName = $this->request->actionFields['location_name'];
 
         // Get device user
         $device = $this->deviceRepository->getByCode($deviceCode);
@@ -88,10 +51,13 @@ class IftttAppletController extends Controller
         // Set note title and message
         $channel = config('services.pushbullet.channel');
         $title = 'Irene';
-        $message = ucwords($user->name) . ' arrived home.';
+        $message = ucwords($user->name) . ' arrived at ' . $locationName . '.';
 
         // Push note to channel
         $pushbullet = push_note_to_channel($channel, $title, $message);
+
+        // Log request and response data
+        Log::info('IFTTT request', ['Request Type' => 'Arrived Location', 'Notification' => $pushbullet,'Request ID' => $this->request->header('X-Request-ID')]);
 
         // Return response
         return response(['data' => [

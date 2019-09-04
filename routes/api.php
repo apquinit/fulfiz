@@ -14,21 +14,22 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware(['dialogflow.key', 'dialogflow.session'])->prefix('dialogflow')->group(function () {
-    Route::post('fulfillment', 'DialogflowFulfillmentController');
+    Route::post('fulfillment', 'Dialogflow\FulfillmentController');
 });
 
 Route::middleware(['pushbullet.key'])->prefix('pushbullet')->group(function () {
-    Route::post('notification', 'PushbulletNotificationController');
+    Route::post('notification', 'Pushbullet\NotificationController');
 });
 
 Route::middleware(['ifttt.key'])->prefix('ifttt')->group(function () {
     Route::prefix('v1')->group(function () {
-        Route::get('status', 'IftttAppletController@status');
-        Route::post('test/setup', 'IftttAppletController@testSetup');
+        Route::get('status', 'Ifttt\Test\StatusController');
+        Route::post('test/setup', 'Ifttt\Test\SetupController');
         Route::prefix('triggers')->group(function () {
         });
         Route::prefix('actions')->group(function () {
-            Route::post('arrived_home', 'IftttAppletController@actionArrivedHome');
+            Route::post('arrived_location', 'Ifttt\Action\ArrivedLocationController');
+            Route::post('left_location', 'Ifttt\Action\LeftLocationController');
         });
     });
 });
