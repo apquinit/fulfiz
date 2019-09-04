@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pushbullet;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PushbulletNotificationController extends Controller
+class NotificationController extends Controller
 {
     private $request;
 
