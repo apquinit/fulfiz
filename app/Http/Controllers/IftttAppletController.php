@@ -59,7 +59,7 @@ class IftttAppletController extends Controller
         return response(['data' => $data], 200)->header('Content-Type', 'application/json;charset=UTF-8');
     }
 
-    public function actionArrivedHome()
+    public function actionArrivedLocation()
     {
        // Get device code
         if (empty($this->request->actionFields)) {

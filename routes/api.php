@@ -28,7 +28,7 @@ Route::middleware(['ifttt.key'])->prefix('ifttt')->group(function () {
         Route::prefix('triggers')->group(function () {
         });
         Route::prefix('actions')->group(function () {
-            Route::post('arrived_home', 'IftttAppletController@actionArrivedHome');
+            Route::post('arrived_home', 'IftttAppletController@actionArrivedLocation');
         });
     });
 });
