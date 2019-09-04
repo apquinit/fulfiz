@@ -23,9 +23,6 @@ class ArrivedLocationController extends Controller
 
     public function __invoke()
     {
-        // Log request and response data
-        Log::info('IFTTT request', ['Request Type' => 'Arrived Location', 'Request ID' => $this->request->header('X-Request-ID')]);
-
        // Get device code
         if (empty($this->request->actionFields)) {
             abort(400, 'Bad request.');
@@ -36,6 +33,7 @@ class ArrivedLocationController extends Controller
         }
 
         $deviceCode = $this->request->actionFields['device_code'];
+        $location = $this->request->actionFields['location'];
 
         // Get device user
         $device = $this->deviceRepository->getByCode($deviceCode);
@@ -53,10 +51,13 @@ class ArrivedLocationController extends Controller
         // Set note title and message
         $channel = config('services.pushbullet.channel');
         $title = 'Irene';
-        $message = ucwords($user->name) . ' arrived home.';
+        $message = ucwords($user->name) . ' arrived at ' . $location . '.';
 
         // Push note to channel
         $pushbullet = push_note_to_channel($channel, $title, $message);
+
+        // Log request and response data
+        Log::info('IFTTT request', ['Request Type' => 'Arrived Location', 'Notification' => $pushbullet,'Request ID' => $this->request->header('X-Request-ID')]);
 
         // Return response
         return response(['data' => [

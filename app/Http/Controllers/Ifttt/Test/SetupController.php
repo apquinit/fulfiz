@@ -17,9 +17,6 @@ class SetupController extends Controller
 
     public function __invoke()
     {
-        // Log request and response data
-        Log::info('IFTTT request', ['Request Type' => 'Test Setup', 'Request ID' => $this->request->header('X-Request-ID')]);
-
         // Mock device code and location value
         $deviceCode = config('app.device.default');
         $location = 'home';
@@ -39,6 +36,9 @@ class SetupController extends Controller
                 ]
             ],
         ];
+
+        // Log request and response data
+        Log::info('IFTTT request', ['Request Type' => 'Test Setup', 'Request ID' => $this->request->header('X-Request-ID')]);
 
         // Return response to IFTTT
         return response(['data' => $data], 200)->header('Content-Type', 'application/json;charset=UTF-8');
