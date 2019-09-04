@@ -42,7 +42,7 @@ class DarkSkyHelperTest extends TestCase
         factory(\App\Models\DarkSkyUser::class)->create(
             [
                 'user_id' => 1,
-                'token' => '5a050170535218d28b85e8cad4e6f781',
+                'token' => config('services.dark_sky.api_key'),
                 'status' => 'ENABLED'
             ]
         );
@@ -89,7 +89,7 @@ class DarkSkyHelperTest extends TestCase
         factory(\App\Models\DarkSkyUser::class)->create(
             [
                 'user_id' => 1,
-                'token' => '5a050170535218d28b85e8cad4e6f781',
+                'token' => config('services.dark_sky.api_key'),
                 'status' => 'ENABLED'
             ]
         );
