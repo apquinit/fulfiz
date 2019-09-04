@@ -6,8 +6,6 @@ use App\Interfaces\DialogflowFulfillmentServiceInterface;
 
 class DefaultFallbackFulfillmentService extends DialogflowFulfillmentService implements DialogflowFulfillmentServiceInterface
 {
-    private $query;
-
     public function setParameters(array $user, array $parameters) : void
     {
         $this->user = $user;
@@ -21,9 +19,21 @@ class DefaultFallbackFulfillmentService extends DialogflowFulfillmentService imp
 
     public function process() : void
     {
-        $defaultFallback  = get_default_fallback($this->user['id'], $this->parameters['query']);
+        // $defaultFallback  = get_default_fallback($this->user['id'], $this->parameters['query']);
+        $instantAnswer = get_instant_answer($this->user['id'], $this->parameters['query']);
+        $defaultFallback = $instantAnswer['AbstractText'];
+
+        if (empty($defaultFallback)) {
+            try {
+                $defaultFallback  = get_default_fallback($this->user['id'], $this->parameters['query']);
+            } catch (\Exception $e) {
+                $this->textResponse = "Query '" . $this->parameters['query'] . "' is quite ambiguous. Can you please be more specific with your question?";
+                return;
+            }
+        }
 
         if (is_numeric($defaultFallback)) {
+            $this->textResponse = $defaultFallback;
             return;
         } else {
             if (strpos($defaultFallback, ".") !== false) {
