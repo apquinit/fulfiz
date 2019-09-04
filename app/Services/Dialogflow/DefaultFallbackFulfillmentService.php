@@ -24,12 +24,7 @@ class DefaultFallbackFulfillmentService extends DialogflowFulfillmentService imp
         $defaultFallback = $instantAnswer['AbstractText'];
 
         if (empty($defaultFallback)) {
-            try {
-                $defaultFallback  = get_default_fallback($this->user['id'], $this->parameters['query']);
-            } catch (\Exception $e) {
-                $this->textResponse = "Query '" . $this->parameters['query'] . "' is quite ambiguous. Can you please be more specific with your question?";
-                return;
-            }
+            $defaultFallback  = get_default_fallback($this->user['id'], $this->parameters['query']);
         }
 
         if (is_numeric($defaultFallback)) {
