@@ -24,6 +24,7 @@
             <directory suffix=".php">./app/Helpers</directory>
             <directory suffix=".php">./app/Repositories</directory>
             <directory suffix=".php">./app/Services</directory>
+            <directory suffix=".php">./app/Services/Dialogflow/DeviceSmartphonePlayRandomMusicOnSpotifyFulfillmentService</directory>
         </whitelist>
     </filter>
     <php>
