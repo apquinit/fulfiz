@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Ifttt\Test;
+namespace App\Http\Controllers\Ifttt;
 
 use Log;
 use Illuminate\Http\Request;

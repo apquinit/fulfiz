@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Ifttt\Test;
+namespace App\Http\Controllers\Ifttt;
 
 use Log;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SetupController extends Controller
+class TestSetupController extends Controller
 {
     private $request;
 
@@ -17,26 +17,21 @@ class SetupController extends Controller
 
     public function __invoke()
     {
-        // Mock device code and location value
+        // Get default device code
         $deviceCode = config('app.device.default');
-        $arrivedLocationName = 'home';
-        $leftLocationName = 'the office';
 
         if (empty($deviceCode)) {
             abort(500, 'Internal server error.');
         }
 
-        // Add value to data array
+        // Add mock values to data array
         $data = [
             'samples' => [
                 'actions' => [
-                    'arrived_location' => [
+                    'push_notification' => [
                         'device_code' => $deviceCode,
-                        'location_name' => $arrivedLocationName
-                    ],
-                    'left_location' => [
-                        'device_code' => $deviceCode,
-                        'location_name' => $leftLocationName
+                        'title' => 'Title',
+                        'message' => 'Message',
                     ]
                 ]
             ],
