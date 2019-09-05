@@ -35,7 +35,7 @@ class PushNotificationController extends Controller
         $arrayResponse = $this->service->getArrayResponse();
 
         // Log request and response data
-        Log::info('IFTTT request', ['Request Type' => 'Arrived Location', 'Notification' => $arrayResponse,'Request ID' => $this->request->header('X-Request-ID')]);
+        Log::info('IFTTT request', ['Request Type' => 'Push Notification', 'Notification' => $arrayResponse,'Request ID' => $this->request->header('X-Request-ID')]);
 
         // Return response
         return response(['data' => $arrayResponse], 200)->header('Content-Type', 'application/json;charset=UTF-8');

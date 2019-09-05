@@ -18,7 +18,7 @@ class StatusController extends Controller
     public function __invoke()
     {
         // Log request and response data
-        Log::info('IFTTT request', ['Request Type' => 'Status Check', 'Request ID' => $this->request->header('X-Request-ID')]);
+        Log::info('IFTTT request', ['Request Type' => 'Check Status', 'Request ID' => $this->request->header('X-Request-ID')]);
 
         // Return response to IFTTT
         return response(['data' => [
