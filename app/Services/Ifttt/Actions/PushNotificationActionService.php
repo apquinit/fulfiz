@@ -20,7 +20,7 @@ class PushNotificationActionService extends IftttActionService
 
     public function getArrayResponse() : array
     {
-        return $this->arrayResponse;   
+        return $this->arrayResponse;
     }
 
     public function process() : void
