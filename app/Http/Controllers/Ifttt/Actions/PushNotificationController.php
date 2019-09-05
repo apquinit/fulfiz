@@ -29,10 +29,8 @@ class PushNotificationController extends Controller
             abort(400, 'Bad request.');
         }
 
-        $parameters = $this->request->actionFields;
-
-        // Call Push Notification IFTTT Service
-        $this->service->setParameters($parameters);
+        // Call push notification action service
+        $this->service->setParameters($this->request->actionFields);
         $this->service->process();
         $arrayResponse = $this->service->getArrayResponse();
 
