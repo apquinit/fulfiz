@@ -66,7 +66,6 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
-                <a href="https://bot.dialogflow.com/c4ebe524-bf78-40ac-a1a3-d32e14cfaa94">Demo</a>
                 <a href="https://irene.statushub.io">Status</a>
                 <a href="{{ url('/dashboard') }}">Log in</a>
             </div>
