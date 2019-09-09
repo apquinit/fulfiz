@@ -71,7 +71,7 @@ After installation, populate .env file with your database details and personal A
 vendor\bin\phpunit --testdox 
 ```
 
-### Code style tests
+### Coding style tests
 
 ```
 vendor/bin/phpcs --config-set show_warnings 0
