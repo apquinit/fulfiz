@@ -80,8 +80,8 @@ vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migratio
 
 Coming soon!
 
-For reference, please visit deployed sample in [Heroku](https://irene-server.herokuapp.com/).
-Also, feel free to chat Irene on Facebook [Messenger](https://www.facebook.com/irene.artificial.intelligence.assistant.lite/)!
+For reference, please visit latest deployed version in [Heroku](https://irene-server.herokuapp.com/).
+Also, feel free to give Irene a chat on Facebook [Messenger](https://www.facebook.com/irene.artificial.intelligence.assistant.lite/)!
 
 ## License
 
