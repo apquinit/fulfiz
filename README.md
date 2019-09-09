@@ -78,8 +78,11 @@ vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migratio
 
 ## Deployment
 
-Coming soon! For reference, please visit deployed sample in [Heroku](https://irene-server.herokuapp.com/).
+Coming soon!
+
+For reference, please visit deployed sample in [Heroku](https://irene-server.herokuapp.com/).
 Also, feel free to chat Irene on Facebook [Messenger](https://www.facebook.com/irene.artificial.intelligence.assistant.lite/)!
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
