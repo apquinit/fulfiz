@@ -5,7 +5,7 @@ Irene Server is a server application that handles requests and webhooks of Irene
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
@@ -33,7 +33,7 @@ WolframAlpha
 TimezoneDB
 ```
 
-### Installing
+### Installation
 
 Clone the repository.
 
@@ -61,7 +61,7 @@ php artisan key:generate
 
 After installation, populate .env file with the database details and personal API keys.
 
-## Running the tests
+## Testing
 
 ### Unit tests
 
@@ -76,13 +76,11 @@ vendor/bin/phpcs --config-set show_warnings 0
 vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migrations/*,*/tests/* app
 ```
 
-## Deployment
-
-Coming soon!
-
-For reference, please visit latest deployed version in [Heroku](https://irene-server.herokuapp.com/).
-Also, feel free to give Irene a chat on Facebook [Messenger](https://www.facebook.com/irene.artificial.intelligence.assistant.lite/)!
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Additional Notes
+
+For reference, please visit latest deployed version in [Heroku](https://irene-server.herokuapp.com/).
+Also, feel free to give Irene a chat on Facebook [Messenger](https://www.facebook.com/irene.artificial.intelligence.assistant.lite/)!
