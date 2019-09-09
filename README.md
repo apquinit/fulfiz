@@ -25,7 +25,7 @@ JSON PHP Extension
 BCMath PHP Extension
 ```
 
-#### API Requirements (Accounts and Keys)
+#### Service Requirements (API Accounts and Keys)
 
 ```
 Dark Sky
@@ -61,7 +61,7 @@ Set application key.
 php artisan key:generate
 ```
 
-After installation, populate .env file with your database details and personal API keys.
+After installation, populate .env file with the database details and personal API keys.
 
 ## Running the tests
 
