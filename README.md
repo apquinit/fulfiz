@@ -61,15 +61,15 @@ php artisan key:generate
 
 After installation, populate .env file with the database details and personal API keys.
 
-## Testing
+### Testing
 
-### Unit tests
+#### Unit tests
 
 ```
 vendor\bin\phpunit --testdox 
 ```
 
-### Coding style tests
+#### Coding style tests
 
 ```
 vendor/bin/phpcs --config-set show_warnings 0
