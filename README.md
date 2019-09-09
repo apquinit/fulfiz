@@ -5,7 +5,7 @@ Irene Server is a server application that handles requests and webhooks of Irene
 
 ## Getting Started
 
-These instructions will help you set up a copy of the project up and running on your machine.
+These instructions will help you set up the project on your machine.
 
 ### Prerequisites
 
@@ -66,7 +66,7 @@ After installation, populate .env file with the database details and personal AP
 #### Unit tests
 
 ```
-vendor\bin\phpunit --testdox 
+vendor/bin/phpunit --testdox 
 ```
 
 #### Coding style tests
@@ -82,5 +82,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Additional Notes
 
-For reference, please visit latest deployed version in [Heroku](https://irene-server.herokuapp.com/).
+For reference, check out the latest deployed version in [Heroku](https://irene-server.herokuapp.com/).
 Also, feel free to give Irene a chat on Facebook [Messenger](https://www.facebook.com/irene.artificial.intelligence.assistant.lite/)!
