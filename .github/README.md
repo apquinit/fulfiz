@@ -75,7 +75,7 @@ vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/routes/*,*/migratio
 
 ## License
 
-Irene Server is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Irene Server is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
 
 ## Additional Notes
 
