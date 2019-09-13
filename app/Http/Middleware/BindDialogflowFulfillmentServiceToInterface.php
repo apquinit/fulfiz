@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Dialogflow\WebhookClient;
 
-class BindServiceToInterface
+class BindDialogflowFulfillmentServiceToInterface
 {
     /**
      * Handle an incoming request.

@@ -6,12 +6,14 @@ use Closure;
 use Log;
 use App\Repositories\DeviceRepository;
 
-class BindSessionToDevice
+class GetUserAndDeviceFromDialogflowSession
 {
     private $deviceRepository;
 
     public function __construct(DeviceRepository $deviceRepository)
     {
+    dd(1);
+
         $this->deviceRepository = $deviceRepository;
     }
 

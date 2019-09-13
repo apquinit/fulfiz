@@ -17,7 +17,7 @@ Route::get('/', function () {
     return 'Irene';
 });
 
-Route::middleware(['dialogflow.key', 'dialogflow.session'])->prefix('dialogflow')->group(function () {
+Route::middleware(['dialogflow.fulfillment', 'dialogflow.key', 'dialogflow.session'])->prefix('dialogflow')->group(function () {
     Route::post('fulfillment', 'Dialogflow\FulfillmentController');
 });
 

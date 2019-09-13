@@ -19,7 +19,6 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
-        \App\Http\Middleware\BindServiceToInterface::class,
     ];
 
     /**
@@ -58,8 +57,9 @@ class Kernel extends HttpKernel
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'dialogflow.fulfillment' => \App\Http\Middleware\BindDialogflowFulfillmentServiceToInterface::class,
         'dialogflow.key' => \App\Http\Middleware\VerifyDialogflowKey::class,
-        'dialogflow.session' => \App\Http\Middleware\BindSessionToDevice::class,
+        'dialogflow.session' => \App\Http\Middleware\GetUserAndDeviceFromDialogflowSession::class,
         'ifttt.key' => \App\Http\Middleware\VerifyIftttKey::class,
         'pushbullet.key' => \App\Http\Middleware\VerifyPushbulletKey::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
@@ -75,6 +75,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middlewarePriority = [
+        \App\Http\Middleware\BindDialogflowFulfillmentServiceToInterface::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         // \App\Http\Middleware\Authenticate::class,
@@ -82,6 +83,6 @@ class Kernel extends HttpKernel
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,
         \App\Http\Middleware\VerifyDialogflowKey::class,
-        \App\Http\Middleware\BindSessionToDevice::class,
+        \App\Http\Middleware\GetUserAndDeviceFromDialogflowSession::class,
     ];
 }
