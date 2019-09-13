@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return 'Irene';
+    return config('app.name') . ' ' . config('app.version');
 });
 
 Route::middleware(['dialogflow.fulfillment', 'dialogflow.key', 'dialogflow.session'])->prefix('dialogflow')->group(function () {
