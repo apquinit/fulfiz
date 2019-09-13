@@ -80,4 +80,5 @@ Irene Server is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Additional Notes
 
 For reference, explore the project's [Postman Collection](https://app.getpostman.com/run-collection/4a15944cf8740f934549#?env%5BIrene%20-%20Local%5D=W3sia2V5IjoiYmFzZV91cmwiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiZGlhbG9nZmxvd190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJwdXNoYnVsbGV0X3Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6InB1c2hidWxsZXRfYWNjZXNzX3Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjpmYWxzZX1d).
+
 Also, feel free to give Irene a chat on Facebook [Messenger](https://www.facebook.com/irene.artificial.intelligence.assistant.lite)!
