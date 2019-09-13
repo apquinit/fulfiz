@@ -16,34 +16,30 @@ class BindDialogflowFulfillmentServiceToInterface
      */
     public function handle($request, Closure $next)
     {
-        if ($request->is('api/dialogflow/fulfillment')) {
-            $agent = WebhookClient::fromData($request->json()->all());
+        $agent = WebhookClient::fromData($request->json()->all());
 
-            app()->bind(
-                'App\Interfaces\DialogflowFulfillmentServiceInterface',
-                function () use ($agent) {
-                    if ($agent->getAction() === 'default.fallback') {
-                        return new \App\Services\Dialogflow\DefaultFallbackFulfillmentService;
-                    } elseif ($agent->getAction() === 'datetime.current') {
-                        return new \App\Services\Dialogflow\DateTimeCurrentFulfillmentService;
-                    } elseif ($agent->getAction() === 'device.smartphone.launch_application') {
-                        return new \App\Services\Dialogflow\DeviceSmartphoneLaunchApplicationFulfillmentService;
-                    } elseif ($agent->getAction() === 'device.smartphone.play_random_music_on_spotify') {
-                        return new \App\Services\Dialogflow\DeviceSmartphonePlayRandomMusicOnSpotifyFulfillmentService;
-                    } elseif ($agent->getAction() === 'weather.current') {
-                        return new \App\Services\Dialogflow\WeatherCurrentFulfillmentService;
-                    } elseif ($agent->getAction() === 'weather.date') {
-                        return new \App\Services\Dialogflow\WeatherDateFulfillmentService;
-                    } else {
-                        abort(500, 'Internal server error.');
-                    }
+        app()->bind(
+            'App\Interfaces\DialogflowFulfillmentServiceInterface',
+            function () use ($agent) {
+                if ($agent->getAction() === 'default.fallback') {
+                    return new \App\Services\Dialogflow\DefaultFallbackFulfillmentService;
+                } elseif ($agent->getAction() === 'datetime.current') {
+                    return new \App\Services\Dialogflow\DateTimeCurrentFulfillmentService;
+                } elseif ($agent->getAction() === 'device.smartphone.launch_application') {
+                    return new \App\Services\Dialogflow\DeviceSmartphoneLaunchApplicationFulfillmentService;
+                } elseif ($agent->getAction() === 'device.smartphone.play_random_music_on_spotify') {
+                    return new \App\Services\Dialogflow\DeviceSmartphonePlayRandomMusicOnSpotifyFulfillmentService;
+                } elseif ($agent->getAction() === 'weather.current') {
+                    return new \App\Services\Dialogflow\WeatherCurrentFulfillmentService;
+                } elseif ($agent->getAction() === 'weather.date') {
+                    return new \App\Services\Dialogflow\WeatherDateFulfillmentService;
+                } else {
+                    abort(500, 'Internal server error.');
                 }
-            );
+            }
+        );
 
-            $request->agent = $agent;
-
-            return $next($request);
-        }
+        $request->agent = $agent;
         
         return $next($request);
     }

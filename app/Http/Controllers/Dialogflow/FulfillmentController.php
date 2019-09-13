@@ -5,21 +5,22 @@ namespace App\Http\Controllers\Dialogflow;
 use Log;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Interfaces\DialogflowFulfillmentServiceInterface;
 
 class FulfillmentController extends Controller
 {
     private $request;
     private $service;
 
-    public function __construct(Request $request, DialogflowFulfillmentServiceInterface $service)
+    public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->service = $service;
     }
 
     public function __invoke()
     {
+        // Resolve fulfillment service interface from container
+        $this->service = resolve('App\Interfaces\DialogflowFulfillmentServiceInterface');
+
         // Pass parameters array to setParameters()
         if ($this->request->agent->getAction() === 'default.fallback') {
             $parameters = [
