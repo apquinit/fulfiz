@@ -12,8 +12,6 @@ class GetUserAndDeviceFromDialogflowSession
 
     public function __construct(DeviceRepository $deviceRepository)
     {
-    dd(1);
-
         $this->deviceRepository = $deviceRepository;
     }
 
