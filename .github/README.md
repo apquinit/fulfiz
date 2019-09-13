@@ -56,7 +56,7 @@ Set application key.
 php artisan key:generate
 ```
 
-After installation, populate .env file with the database details and personal API keys.
+After installation, populate the .env file with the database and API credentials.
 
 ## Testing
 
