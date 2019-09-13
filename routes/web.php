@@ -11,6 +11,10 @@
 |
 */
 
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
+
 Route::group(['prefix' => '/'], function () {
     Voyager::routes();
 });
