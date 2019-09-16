@@ -10,4 +10,9 @@ class DeviceRepository extends Repository
     {
         return Device::where('code', $code)->firstOrFail();
     }
+
+    public function getByUserId(int $userId) : Device
+    {
+        return Device::where('user_id', $userId)->firstOrFail();
+    }
 }

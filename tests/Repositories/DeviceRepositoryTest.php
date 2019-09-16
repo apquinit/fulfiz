@@ -41,4 +41,20 @@ class DeviceRepositoryTest extends TestCase
 
         $this->assertTrue($device instanceof \App\Models\Device);
     }
+
+    /**
+     * @test
+     */
+    public function getByUserId_method_should_return_device_object_when_passed_user_id()
+    {
+        factory(\App\Models\Device::class)->create(
+            [
+                'user_id' => 1,
+            ]
+        );
+
+        $device = $this->deviceRepository->getByUserId(1);
+
+        $this->assertTrue($device instanceof \App\Models\Device);
+    }
 }
