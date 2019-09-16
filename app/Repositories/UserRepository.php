@@ -10,4 +10,9 @@ class UserRepository extends Repository
     {
         return User::where('id', $userId)->firstOrFail();
     }
+
+    public function getByUserName(string $name) : User
+    {
+        return User::where('name', $name)->firstOrFail();
+    }
 }

@@ -41,4 +41,20 @@ class UserRepositoryTest extends TestCase
 
         $this->assertTrue($user instanceof \App\Models\User);
     }
+
+    /**
+     * @test
+     */
+    public function getByUserName_method_should_return_user_object_when_passed_user_name()
+    {
+        factory(\App\Models\User::class)->create(
+            [
+                'name' => 'test',
+            ]
+        );
+
+        $user = $this->userRepository->getByUserName('test');
+
+        $this->assertTrue($user instanceof \App\Models\User);
+    }
 }
