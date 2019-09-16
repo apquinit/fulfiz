@@ -79,6 +79,11 @@ return [
         'base_url' => env('PUSHBULLET_URL'),
         'api_key' => env('PUSHBULLET_KEY'),
         'channel' => env('PUSHBULLET_CHANNEL', 'irene'),
+    ],
+
+    'facebook_graph' => [
+        'base_url' => env('FACEBOOK_GRAPH_URL'),
+        'api_key' => env('FACEBOOK_PAGE_ACCESS_TOKEN_IRENE'),
     ]
 
 ];
