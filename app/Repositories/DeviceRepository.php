@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Device;
+use Illuminate\Database\Eloquent\Collection;
 
 class DeviceRepository extends Repository
 {
@@ -11,8 +12,8 @@ class DeviceRepository extends Repository
         return Device::where('code', $code)->firstOrFail();
     }
 
-    public function getByUserId(int $userId) : Device
+    public function getAllDevicesByUserId(int $userId) : Collection
     {
-        return Device::where('user_id', $userId)->firstOrFail();
+        return Device::select('name', 'code')->where('user_id', $userId)->where('status', 'ENABLED')->get();
     }
 }
