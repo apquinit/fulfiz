@@ -55,7 +55,7 @@ if (!function_exists('get_date_weather')) {
     {
         // Dark Sky request URL (https://api.darksky.net/forecast/YOUR_PRIVATE_TOKEN/14.5906216,120.9799696,2019-07-16T12:00:00+08:00?exclude=[minutely,hourly,daily,alerts,flags]&units=si)
 
-        if (strpos($userId, config('app.dialogflow.irene_lite')) !== false or strpos($userId, config('app.dialogflow.irene')) !== false) {
+        if ($userId === config('app.dialogflow.irene_lite')) {
             $key = config('services.dark_sky.api_key');
         } else {
             $darkSkyUserRepository = new DarkSkyUserRepository;
