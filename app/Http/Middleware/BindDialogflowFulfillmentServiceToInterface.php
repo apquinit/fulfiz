@@ -27,8 +27,6 @@ class BindDialogflowFulfillmentServiceToInterface
                     return new \App\Services\Dialogflow\DateTimeCurrentFulfillmentService;
                 } elseif ($agent->getAction() === 'device.smartphone.launch_application') {
                     return new \App\Services\Dialogflow\DeviceSmartphoneLaunchApplicationFulfillmentService;
-                } elseif ($agent->getAction() === 'device.smartphone.play_random_music_on_spotify') {
-                    return new \App\Services\Dialogflow\DeviceSmartphonePlayRandomMusicOnSpotifyFulfillmentService;
                 } elseif ($agent->getAction() === 'weather.current') {
                     return new \App\Services\Dialogflow\WeatherCurrentFulfillmentService;
                 } elseif ($agent->getAction() === 'weather.date') {
