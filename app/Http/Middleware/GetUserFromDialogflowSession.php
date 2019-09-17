@@ -30,7 +30,7 @@ class GetUserFromDialogflowSession
         
         if (strpos($session, config('app.dialogflow.irene_lite')) !== false) {
             $userId = config('app.dialogflow.irene_lite');
-            $userName = 'Irene Lite Messenger';
+            $userName = 'Irene Lite';
             Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
         } elseif (strpos($session, config('app.dialogflow.irene')) !== false) {
             if (isset($request['originalDetectIntentRequest']['payload']['source']) and $request['originalDetectIntentRequest']['payload']['source'] === 'facebook') {
@@ -44,7 +44,7 @@ class GetUserFromDialogflowSession
                 Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
             } else {
                 $userId = config('app.dialogflow.irene');
-                $userName = 'Irene Messenger';
+                $userName = 'Irene';
                 Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
             }
         } else {
