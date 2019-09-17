@@ -59,7 +59,7 @@ class Kernel extends HttpKernel
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'dialogflow.fulfillment' => \App\Http\Middleware\BindDialogflowFulfillmentServiceToInterface::class,
         'dialogflow.key' => \App\Http\Middleware\VerifyDialogflowKey::class,
-        'dialogflow.session' => \App\Http\Middleware\GetUserAndDeviceFromDialogflowSession::class,
+        'dialogflow.session' => \App\Http\Middleware\GetUserFromDialogflowSession::class,
         'ifttt.key' => \App\Http\Middleware\VerifyIftttKey::class,
         'pushbullet.key' => \App\Http\Middleware\VerifyPushbulletKey::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
