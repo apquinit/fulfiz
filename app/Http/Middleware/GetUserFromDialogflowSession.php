@@ -27,18 +27,21 @@ class GetUserFromDialogflowSession
     public function handle($request, Closure $next)
     {
         $session = $request->agent->getSession();
-
-        if (isset($request['originalDetectIntentRequest']['payload']['source']) and $request['originalDetectIntentRequest']['payload']['source'] === 'facebook') {
-            if (strpos($session, config('app.dialogflow.irene_lite')) !== false) {
-                $userId = config('app.dialogflow.irene_lite');
-                Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
-            } elseif (strpos($session, config('app.dialogflow.irene')) !== false) {
+        
+        if (strpos($session, config('app.dialogflow.irene_lite')) !== false) {
+            $userId = config('app.dialogflow.irene_lite');
+            Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
+        } elseif (strpos($session, config('app.dialogflow.irene')) !== false) {
+            if (isset($request['originalDetectIntentRequest']['payload']['source']) and $request['originalDetectIntentRequest']['payload']['source'] === 'facebook') {
                 // Get Facebook user PSID
                 $psid = $request['originalDetectIntentRequest']['payload']['data']['sender']['id'];
                 $userName = get_facebook_graph_user_name($psid);
                 // Get User
                 $user = $this->userRepository->getByUserName($userName);
                 $userId = $user->id;
+                Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
+            } else {
+                $userId = config('app.dialogflow.irene_lite');
                 Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
             }
         } else {
