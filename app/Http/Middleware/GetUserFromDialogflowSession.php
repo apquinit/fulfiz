@@ -30,24 +30,29 @@ class GetUserFromDialogflowSession
         
         if (strpos($session, config('app.dialogflow.irene_lite')) !== false) {
             $userId = config('app.dialogflow.irene_lite');
+            $userName = 'Irene Lite Messenger';
             Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
         } elseif (strpos($session, config('app.dialogflow.irene')) !== false) {
             if (isset($request['originalDetectIntentRequest']['payload']['source']) and $request['originalDetectIntentRequest']['payload']['source'] === 'facebook') {
                 // Get Facebook user PSID
                 $psid = $request['originalDetectIntentRequest']['payload']['data']['sender']['id'];
-                $userName = get_facebook_graph_user_name($psid);
+                $name = get_facebook_graph_user_name($psid);
                 // Get User
-                $user = $this->userRepository->getByUserName($userName);
+                $user = $this->userRepository->getByUserName($name);
                 $userId = $user->id;
+                $userName = $user->name;
                 Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
             } else {
-                $userId = config('app.dialogflow.irene_lite');
+                $userId = config('app.dialogflow.irene');
+                $userName = 'Irene Messenger';
                 Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
             }
         } else {
             $device = $this->deviceRepository->getByCode($session);
             if ($device->status === 'ENABLED') {
-                $userId = $device->user_id;
+                $user = $this->userRepository->getByUserId($device->user_id);
+                $userId = $user->id;
+                $userName = $user->name;
                 Log::info('Get user and device from session', ['Session' => $session, 'Source' => $device->name, 'User' => $userId]);
             } elseif ($device->status === 'DISABLED') {
                 abort(403, 'Device disabled.');
@@ -58,6 +63,7 @@ class GetUserFromDialogflowSession
 
         $request->user = [
             'id' => $userId,
+            'name' => $userName
         ];
 
         return $next($request);
