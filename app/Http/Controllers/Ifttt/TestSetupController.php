@@ -18,7 +18,7 @@ class TestSetupController extends Controller
     public function __invoke()
     {
         // Get default device code
-        $deviceCode = config('app.device.default');
+        $deviceCode = 'test';
 
         if (empty($deviceCode)) {
             abort(500, 'Internal server error.');

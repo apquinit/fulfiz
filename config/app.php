@@ -142,21 +142,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Device Identifiers
-    |--------------------------------------------------------------------------
-    |
-    | This value is used when the framework needs
-    | to place device details in condition checks in helpers or
-    | any other location as required by the application or its packages.
-    |
-    */
-
-    'device' => [
-        'default' => env('DEFAULT_DEVICE_CODE'),
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
