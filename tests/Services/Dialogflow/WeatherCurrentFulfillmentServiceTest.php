@@ -32,7 +32,7 @@ class WeatherCurrentFulfillmentServiceTest extends TestCase
     public function WeatherCurrentFulfillmentService_class_should_return_text_response_when_passed_user_and_parameters_array()
     {
         $user = [
-            'id' => 'dialogflow/agent/irene-lite-vbvypr'
+            'id' => 'irene-lite-vbvypr'
         ];
 
         $parameters = [

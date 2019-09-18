@@ -53,8 +53,8 @@ class DeviceRepositoryTest extends TestCase
             ]
         );
 
-        $device = $this->deviceRepository->getByUserId(1);
+        $device = $this->deviceRepository->getAllDevicesByUserId(1);
 
-        $this->assertTrue($device instanceof \App\Models\Device);
+        $this->assertTrue($device instanceof \Illuminate\Database\Eloquent\Collection);
     }
 }

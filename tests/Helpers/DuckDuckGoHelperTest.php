@@ -20,7 +20,7 @@ class DuckDuckGoHelperTest extends TestCase
      */
     public function get_instant_answer_function_should_return_instant_answer_when_passed_dialogflow_agent_id_and_topic()
     {
-        $instantAnswer = get_instant_answer('dialogflow/agent/irene-lite-vbvypr', 'Artificial intelligence');
+        $instantAnswer = get_instant_answer('irene-lite-vbvypr', 'Artificial intelligence');
 
         $this->assertArrayHasKey('AbstractText', $instantAnswer);
     }

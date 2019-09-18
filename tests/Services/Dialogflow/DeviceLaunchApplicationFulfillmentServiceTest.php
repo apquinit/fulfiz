@@ -32,7 +32,7 @@ class DeviceLaunchApplicationFulfillmentServiceTest extends TestCase
     public function DeviceLaunchApplicationFulfillmentService_class_should_return_text_response_when_passed_user_and_parameters_array()
     {
         $user = [
-            'id' => 'dialogflow/agent/irene-lite-vbvypr',
+            'id' => 'irene-lite-vbvypr',
             'device_code' => 'irene-messenger'
         ];
 
