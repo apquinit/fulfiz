@@ -26,7 +26,6 @@ class FulfillmentController extends Controller
             $parameters = [
                 'query' => $this->request->agent->getQuery()
             ];
-            
             $this->service->setParameters($this->request->user, $parameters);
         } else {
             $this->service->setParameters($this->request->user, $this->request->agent->getParameters());

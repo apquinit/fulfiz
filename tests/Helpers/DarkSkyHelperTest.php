@@ -20,7 +20,7 @@ class DarkSkyHelperTest extends TestCase
      */
     public function get_current_weather_function_should_return_current_weather_when_passed_dialogflow_agent_id_and_latitude_longitude()
     {
-        $currentWeather = get_current_weather('dialogflow/agent/irene-lite-vbvypr', 14.5906216, 120.9799696);
+        $currentWeather = get_current_weather('irene-lite-vbvypr', 14.5906216, 120.9799696);
 
         $this->assertArrayHasKey('summary', $currentWeather);
         $this->assertArrayHasKey('temperature', $currentWeather);
@@ -47,7 +47,7 @@ class DarkSkyHelperTest extends TestCase
             ]
         );
 
-        $currentWeather = get_current_weather('dialogflow/agent/irene-lite-vbvypr', 14.5906216, 120.9799696);
+        $currentWeather = get_current_weather('irene-lite-vbvypr', 14.5906216, 120.9799696);
 
         $this->assertArrayHasKey('summary', $currentWeather);
         $this->assertArrayHasKey('temperature', $currentWeather);
@@ -66,7 +66,7 @@ class DarkSkyHelperTest extends TestCase
      */
     public function get_date_weather_function_should_return_date_weather_when_passed_dialogflow_agent_id_and_latitude_longitude_and_date()
     {
-        $dateWeather = get_date_weather('dialogflow/agent/irene-lite-vbvypr', 14.5906216, 120.9799696, '2019-07-17T12:00:00+08:00');
+        $dateWeather = get_date_weather('irene-lite-vbvypr', 14.5906216, 120.9799696, '2019-07-17T12:00:00+08:00');
 
         $this->assertArrayHasKey('summary', $dateWeather);
         $this->assertArrayHasKey('temperatureMin', $dateWeather);
@@ -94,7 +94,7 @@ class DarkSkyHelperTest extends TestCase
             ]
         );
 
-        $dateWeather = get_date_weather('dialogflow/agent/irene-lite-vbvypr', 14.5906216, 120.9799696, '2019-07-17T12:00:00+08:00');
+        $dateWeather = get_date_weather('irene-lite-vbvypr', 14.5906216, 120.9799696, '2019-07-17T12:00:00+08:00');
 
         $this->assertArrayHasKey('summary', $dateWeather);
         $this->assertArrayHasKey('temperatureMin', $dateWeather);

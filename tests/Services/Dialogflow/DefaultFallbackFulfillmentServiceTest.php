@@ -32,7 +32,7 @@ class DefaultFallbackFulfillmentServiceTest extends TestCase
     public function DefaultFallbackFulfillmentService_class_should_return_text_response_when_passed_user_and_parameters_array()
     {
         $user = [
-            'id' => 'dialogflow/agent/irene-lite-vbvypr'
+            'id' => 'irene-lite-vbvypr'
         ];
 
         $parameter = [

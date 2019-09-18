@@ -16,7 +16,7 @@ if (!function_exists('get_instant_answer')) {
     {
         // DuckDuckGo request URL (https://api.duckduckgo.com/?q=QUERY&format=json&no_redirect=1&no_html=1&skip_disambig=1)
 
-        if (strpos($userId, config('app.dialogflow.irene_lite')) !== false or strpos($userId, config('app.dialogflow.irene')) !== false) {
+        if ($userId === config('app.dialogflow.irene_lite') or $userId === config('app.dialogflow.irene')) {
             $guzzleClient = new Client;
             $requestUrl = config('services.duck_duck_go.base_url') . '/?q=' . $topic  . '&format=json&no_redirect=1&no_html=1&skip_disambig=1';
             

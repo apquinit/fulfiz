@@ -16,7 +16,7 @@ if (!function_exists('get_default_fallback')) {
     {
         // WolframAlpha request URL (https://api.wolframalpha.com/v1/result?appid=DEMO&i=QUERY)
 
-        if (strpos($userId, config('app.dialogflow.irene_lite')) !== false or strpos($userId, config('app.dialogflow.irene')) !== false) {
+        if ($userId === config('app.dialogflow.irene_lite') or $userId === config('app.dialogflow.irene')) {
             $key = config('services.wolfram_alpha.api_key');
         } else {
             $wolframAlphaUserRepository = new WolframAlphaUserRepository;

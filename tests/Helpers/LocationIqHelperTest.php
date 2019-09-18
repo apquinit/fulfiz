@@ -20,7 +20,7 @@ class LocationIqHelperTest extends TestCase
      */
     public function get_latitude_and_longitude_function_should_return_latitude_and_longitude_when_passed_dialogflow_agent_id_and_city()
     {
-        $location = get_latitude_and_longitude('dialogflow/agent/irene-lite-vbvypr', 'Manila');
+        $location = get_latitude_and_longitude('irene-lite-vbvypr', 'Manila');
 
         $this->assertArrayHasKey('lat', $location);
         $this->assertArrayHasKey('lon', $location);

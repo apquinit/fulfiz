@@ -20,7 +20,7 @@ class WolframAlphaHelperTest extends TestCase
      */
     public function get_default_fallback_function_should_return_default_fallback_when_passed_dialogflow_agent_id_and_query()
     {
-        $defaultFallback = get_default_fallback('dialogflow/agent/irene-lite-vbvypr', 'Who invented peanut butter?');
+        $defaultFallback = get_default_fallback('irene-lite-vbvypr', 'Who invented peanut butter?');
 
         $this->assertTrue(is_string($defaultFallback));
     }
