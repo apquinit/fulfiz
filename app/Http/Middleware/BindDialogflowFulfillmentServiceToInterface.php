@@ -25,8 +25,8 @@ class BindDialogflowFulfillmentServiceToInterface
                     return new \App\Services\Dialogflow\DefaultFallbackFulfillmentService;
                 } elseif ($agent->getAction() === 'datetime.current') {
                     return new \App\Services\Dialogflow\DateTimeCurrentFulfillmentService;
-                } elseif ($agent->getAction() === 'device.smartphone.launch_application') {
-                    return new \App\Services\Dialogflow\DeviceSmartphoneLaunchApplicationFulfillmentService;
+                } elseif ($agent->getAction() === 'device.launch_application') {
+                    return new \App\Services\Dialogflow\DeviceLaunchApplicationFulfillmentService;
                 } elseif ($agent->getAction() === 'weather.current') {
                     return new \App\Services\Dialogflow\WeatherCurrentFulfillmentService;
                 } elseif ($agent->getAction() === 'weather.date') {

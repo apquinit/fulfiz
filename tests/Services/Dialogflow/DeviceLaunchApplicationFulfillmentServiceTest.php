@@ -5,9 +5,9 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Services\Dialogflow\DeviceSmartphoneLaunchApplicationFulfillmentService;
+use App\Services\Dialogflow\DeviceLaunchApplicationFulfillmentService;
 
-class DeviceSmartphoneLaunchApplicationFulfillmentServiceTest extends TestCase
+class DeviceLaunchApplicationFulfillmentServiceTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -15,21 +15,21 @@ class DeviceSmartphoneLaunchApplicationFulfillmentServiceTest extends TestCase
     {
         parent::setUp();
 
-        $this->deviceSmartphoneLaunchApplicationFulfillmentService = new DeviceSmartphoneLaunchApplicationFulfillmentService;
+        $this->deviceSmartphoneLaunchApplicationFulfillmentService = new DeviceLaunchApplicationFulfillmentService;
     }
 
     /**
      * @test
      */
-    public function DeviceSmartphoneLaunchApplicationFulfillmentService_class_should_exist()
+    public function DeviceLaunchApplicationFulfillmentService_class_should_exist()
     {
-        $this->assertTrue(class_exists(DeviceSmartphoneLaunchApplicationFulfillmentService::class));
+        $this->assertTrue(class_exists(DeviceLaunchApplicationFulfillmentService::class));
     }
 
     /**
      * @test
      */
-    public function DeviceSmartphoneLaunchApplicationFulfillmentService_class_should_return_text_response_when_passed_user_and_parameters_array()
+    public function DeviceLaunchApplicationFulfillmentService_class_should_return_text_response_when_passed_user_and_parameters_array()
     {
         $user = [
             'id' => 'dialogflow/agent/irene-lite-vbvypr',

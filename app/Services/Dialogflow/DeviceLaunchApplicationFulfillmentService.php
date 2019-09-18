@@ -4,7 +4,7 @@ namespace App\Services\Dialogflow;
 
 use App\Interfaces\DialogflowFulfillmentServiceInterface;
 
-class DeviceSmartphoneLaunchApplicationFulfillmentService extends DialogflowFulfillmentService implements DialogflowFulfillmentServiceInterface
+class DeviceLaunchApplicationFulfillmentService extends DialogflowFulfillmentService implements DialogflowFulfillmentServiceInterface
 {
     public function setParameters(array $user, array $parameters) : void
     {
