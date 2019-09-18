@@ -70,11 +70,6 @@ return [
         'api_key' => env('TIMEZONE_DB_KEY'),
     ],
 
-    'autoremote' => [
-        'base_url' => env('AUTOREMOTE_URL'),
-        'api_key' => env('AUTOREMOTE_KEY'),
-    ],
-
     'pushbullet' => [
         'base_url' => env('PUSHBULLET_URL'),
         'api_key' => env('PUSHBULLET_KEY'),
