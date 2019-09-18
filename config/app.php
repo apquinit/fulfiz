@@ -140,6 +140,10 @@ return [
         'irene_lite' => env('DIALOGFLOW_AGENT_IRENE_LITE_ID'),
     ],
 
+    'default_device' => [
+        'code' => env('DEFAULT_DEVICE_CODE'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
