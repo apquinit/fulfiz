@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Log;
-use App\Repositories\DeviceRepository;
 use App\Repositories\UserRepository;
+use App\Repositories\DeviceRepository;
 
 class GetUserFromDialogflowSession
 {
