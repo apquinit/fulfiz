@@ -31,7 +31,7 @@ class GetUserFromDialogflowSession
         if (strpos($session, config('app.dialogflow.irene_lite')) !== false) {
             $userId = config('app.dialogflow.irene_lite');
             $userName = 'Irene Lite';
-            Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
+            Log::info('Get user and device from session', ['Session' => $session, 'User' => $userName]);
         } elseif (strpos($session, config('app.dialogflow.irene')) !== false) {
             if (isset($request['originalDetectIntentRequest']['payload']['source']) and $request['originalDetectIntentRequest']['payload']['source'] === 'facebook') {
                 // Get Facebook user PSID
@@ -41,11 +41,11 @@ class GetUserFromDialogflowSession
                 $user = $this->userRepository->getByUserName($name);
                 $userId = $user->id;
                 $userName = $user->name;
-                Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
+                Log::info('Get user and device from session', ['Session' => $session, 'User' => $userName]);
             } else {
                 $userId = config('app.dialogflow.irene');
                 $userName = 'Irene';
-                Log::info('Get user and device from session', ['Session' => $session, 'Source' => 'Facebook', 'User' => $userId]);
+                Log::info('Get user and device from session', ['Session' => $session, 'User' => $userName]);
             }
         } else {
             $device = $this->deviceRepository->getByCode($session);
@@ -53,7 +53,7 @@ class GetUserFromDialogflowSession
                 $user = $this->userRepository->getByUserId($device->user_id);
                 $userId = $user->id;
                 $userName = $user->name;
-                Log::info('Get user and device from session', ['Session' => $session, 'Source' => $device->name, 'User' => $userId]);
+                Log::info('Get user and device from session', ['Session' => $session, 'User' => $userName]);
             } elseif ($device->status === 'DISABLED') {
                 abort(403, 'Device disabled.');
             } else {
